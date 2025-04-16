@@ -1,3 +1,7 @@
+# Personas
+
+## Histórias de usuário
+
 # 🛒 Requisitos Funcionais - E-commerce 
 
 ## 1. Cadastro e Autenticação
@@ -87,3 +91,9 @@
 - **RF38.** O sistema deve permitir wishlist (lista de desejos) por usuário.  
 - **RF39.** O sistema deve permitir que o cliente compartilhe produtos nas redes sociais.  
 - **RF40.** O sistema deve ter suporte a internacionalização (multi-idioma e multi-moeda).  
+
+# Requisito não funcional
+
+# Restrições
+
+# Diagrama de casos de uso
