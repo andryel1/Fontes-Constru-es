@@ -94,6 +94,64 @@
 
 # Requisito não funcional
 
+---
+
+##  Segurança
+
+- **RNF01.** As senhas devem ser armazenadas de forma criptografada.
+- **RNF02.** O sistema deve implementar autenticação em dois fatores (2FA) para administradores.
+- **RNF03.** Deve haver limitação de tentativas de login para evitar ataques de força bruta.
+- **RNF04.** Toda comunicação deve ser feita via HTTPS com certificado SSL válido.
+
+---
+
+##  Desempenho
+
+- **RNF05.** As páginas devem carregar em no máximo 3 segundos em conexões de 5 Mbps.
+- **RNF06.** O sistema deve suportar até 10.000 usuários simultâneos sem degradação perceptível.
+- **RNF07.** As buscas devem retornar resultados em menos de 1 segundo em média.
+
+---
+
+## 📱 Usabilidade
+
+- **RNF08.** A interface deve ser responsiva e adaptável a dispositivos móveis e desktops.
+- **RNF09.** O sistema deve estar disponível em pelo menos dois idiomas (Português e Inglês).
+- **RNF10.** O processo de compra deve ser possível em até 3 cliques a partir da visualização do produto.
+
+---
+
+##  Manutenibilidade
+
+- **RNF11.** O sistema deve seguir uma arquitetura modular para facilitar atualizações e correções.
+- **RNF12.** O código deve estar documentado seguindo o padrão interno da equipe de desenvolvimento.
+
+---
+
+##  Escalabilidade
+
+- **RNF13.** O sistema deve ser escalável horizontalmente em ambiente de nuvem.
+- **RNF14.** O banco de dados deve permitir particionamento para lidar com grande volume de dados.
+
+---
+
+##  Disponibilidade e Confiabilidade
+
+- **RNF15.** A aplicação deve ter uma disponibilidade mínima de 99,5% ao mês (SLA).
+- **RNF16.** Em caso de falhas, o sistema deve realizar tentativas automáticas de recuperação e registrar logs de erro.
+
+---
+
+##  Compatibilidade e Integração
+
+- **RNF17.** O sistema deve ser compatível com os navegadores: Chrome, Firefox, Edge e Safari.
+
+---
+
 # Restrições
 
 # Diagrama de casos de uso
+
+![alt text](<UML Use Case Diagram.jpg>)
+ 
+<a href="https://miro.com/app/board/uXjVIBLsGlM=/">Clique aqui para acessar o Diagrama</a>
