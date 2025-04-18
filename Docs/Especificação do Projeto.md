@@ -73,10 +73,6 @@ Fernanda lida com trocas, dúvidas e reclamações de clientes. Usa o sistema pa
 - **HU03.** Como **cliente**, quero **entrar usando minha conta do Google ou Facebook**, para que **eu não precise preencher formulários longos**.  
 - **HU04.** Como **cliente**, quero **habilitar autenticação em dois fatores**, para que **minha conta fique mais segura**.
 
-<<<<<<< HEAD
-=======
----
->>>>>>> 238e554f6233d49cf64856343d0b60ab5493516d
 
 ## 2. Gerenciamento de Produtos (Admin)
 
@@ -84,10 +80,6 @@ Fernanda lida com trocas, dúvidas e reclamações de clientes. Usa o sistema pa
 - **HU06.** Como **administrador**, quero **editar e remover produtos existentes**, para que **eu possa manter o catálogo atualizado**.  
 - **HU07.** Como **administrador**, quero **associar categorias e tags aos produtos**, para que **os clientes possam encontrá-los com mais facilidade**.
 
-<<<<<<< HEAD
-=======
----
->>>>>>> 238e554f6233d49cf64856343d0b60ab5493516d
 
 ## 3. Navegação e Busca
 
@@ -95,10 +87,6 @@ Fernanda lida com trocas, dúvidas e reclamações de clientes. Usa o sistema pa
 - **HU09.** Como **cliente**, quero **usar a busca com sugestões automáticas**, para que **eu encontre produtos mesmo com termos aproximados**.  
 - **HU10.** Como **cliente**, quero **ver recomendações de produtos**, para que **eu descubra itens relacionados ao meu interesse**.
 
-<<<<<<< HEAD
-=======
----
->>>>>>> 238e554f6233d49cf64856343d0b60ab5493516d
 
 ## 4. Carrinho e Checkout
 
@@ -106,10 +94,6 @@ Fernanda lida com trocas, dúvidas e reclamações de clientes. Usa o sistema pa
 - **HU12.** Como **cliente**, quero **escolher entre boleto, Pix ou cartão de crédito**, para que **eu possa pagar da forma que preferir**.  
 - **HU13.** Como **cliente**, quero **salvar meus endereços de entrega**, para que **eu não precise digitar tudo novamente a cada compra**.
 
-<<<<<<< HEAD
-=======
----
->>>>>>> 238e554f6233d49cf64856343d0b60ab5493516d
 
 ## 5. Pós-Venda
 
@@ -117,20 +101,12 @@ Fernanda lida com trocas, dúvidas e reclamações de clientes. Usa o sistema pa
 - **HU15.** Como **cliente**, quero **ver o histórico dos meus pedidos**, para que **eu possa acompanhar minhas compras anteriores**.  
 - **HU16.** Como **cliente**, quero **solicitar devolução ou reembolso com poucos cliques**, para que **eu tenha segurança ao comprar**.
 
-<<<<<<< HEAD
-=======
----
->>>>>>> 238e554f6233d49cf64856343d0b60ab5493516d
 
 ## 6. Painel Administrativo
 
 - **HU17.** Como **administrador**, quero **gerenciar usuários da plataforma**, para que **eu possa controlar os acessos e permissões**.  
 - **HU18.** Como **administrador**, quero **configurar banners e promoções**, para que **o site fique mais atrativo e atualizado**.
 
-<<<<<<< HEAD
-=======
----
->>>>>>> 238e554f6233d49cf64856343d0b60ab5493516d
 
 ## 7. Funcionalidades Avançadas
 
