@@ -65,27 +65,6 @@ Fernanda lida com trocas, dúvidas e reclamações de clientes. Usa o sistema pa
 
 ---
 
-## 🔄 Persona 4 – Comprador Frequente com Assinatura
-
-**Nome:** João Batista  
-**Idade:** 42 anos  
-**Profissão:** Empresário  
-**Localização:** Curitiba – PR  
-**Descrição:**  
-João compra mensalmente os mesmos produtos por assinatura. Quer comodidade e não gosta de surpresas. Valoriza entregas pontuais e controle sobre cobranças.
-
-**Objetivos:**
-- Gerenciar suas assinaturas de forma simples.
-- Ser avisado sobre pagamentos e entregas.
-- Pausar ou cancelar sua assinatura com facilidade.
-
-**Frustrações:**
-- Falta de transparência sobre o ciclo da assinatura.
-- Dificuldade para alterar endereço ou forma de pagamento.
-
----
-
-
 ## Histórias de usuário
 
 ---
