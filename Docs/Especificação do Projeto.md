@@ -1,11 +1,8 @@
 # Especificação de Projeto
 
 ## Personas
-# 👥 Personas do Sistema de E-commerce
 
----
-
-## 🛍️ Persona 1 – Cliente Final
+### Persona 1 – Cliente Final
 
 **Nome:** Juliana Ribeiro  
 **Idade:** 28 anos  
@@ -25,7 +22,7 @@ Juliana adora fazer compras online, principalmente em promoções. Usa o celular
 
 ---
 
-## 📦 Persona 2 – Administrador do Sistema
+### Persona 2 – Administrador do Sistema
 
 **Nome:** Marcos Silva  
 **Idade:** 35 anos  
@@ -45,7 +42,7 @@ Marcos é responsável por manter o sistema rodando bem. Ele atualiza produtos, 
 
 ---
 
-## 💬 Persona 3 – Atendente de Suporte
+### Persona 3 – Atendente de Suporte
 
 **Nome:** Fernanda Costa  
 **Idade:** 24 anos  
