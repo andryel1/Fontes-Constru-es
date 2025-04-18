@@ -1,8 +1,10 @@
-# Personas
+# Especificação de Projeto
+
+## Personas
 
 ## Histórias de usuário
 
-# 🛒 Requisitos Funcionais - E-commerce 
+# Requisitos Funcionais - E-commerce 
 
 ## 1. Cadastro e Autenticação
 
@@ -94,8 +96,6 @@
 
 # Requisito não funcional
 
----
-
 ##  Segurança
 
 - **RNF01.** As senhas devem ser armazenadas de forma criptografada.
@@ -113,7 +113,7 @@
 
 ---
 
-## 📱 Usabilidade
+##  Usabilidade
 
 - **RNF08.** A interface deve ser responsiva e adaptável a dispositivos móveis e desktops.
 - **RNF09.** O sistema deve estar disponível em pelo menos dois idiomas (Português e Inglês).
@@ -148,8 +148,45 @@
 
 ---
 
-# Restrições
+## Restrições
 
+As seguintes restrições devem ser observadas durante o desenvolvimento, implantação e operação do sistema:
+
+
+###  Tempo e Cronograma
+
+- **R01.** O sistema deve estar com a versão mínima funcional (MVP) entregue em até 5 meses após o início do desenvolvimento.
+- **R02.** As funcionalidades de cadastro, autenticação, carrinho e pagamento devem estar prontas até o segundo mês do projeto.
+
+---
+
+###  Orçamento
+
+- **R03.** O custo total da infraestrutura (servidores, APIs de terceiros, gateways, etc.) não deve ultrapassar R$2.000 mensais.
+- **R04.** Ferramentas e bibliotecas utilizadas devem ser preferencialmente de código aberto ou possuir licenças gratuitas.
+
+---
+
+###  Tecnológicas
+
+- **R05.** A aplicação deve ser compatível com dispositivos Android e iOS, utilizando design responsivo.
+- **R06.** A hospedagem deve ser feita em ambiente cloud (AWS, Azure, ou similar) com suporte a escalabilidade.
+
+---
+
+###  Legais e Regulatórias
+
+- **R07.** O sistema deve estar em conformidade com a LGPD (Lei Geral de Proteção de Dados).
+- **R08.** Dados pessoais sensíveis devem ser tratados com consentimento e criptografia adequada.
+
+---
+
+###  Integrações
+
+- **R09.** O sistema deve integrar-se obrigatoriamente com gateways de pagamento homologados (ex: Stripe, PayPal, PagSeguro).
+- **R10.** A emissão de nota fiscal deve ser feita por meio de integração com sistema externo compatível com a prefeitura local.
+
+---
 # Diagrama de casos de uso
 
 ![alt text](<UML Use Case Diagram.jpg>)
