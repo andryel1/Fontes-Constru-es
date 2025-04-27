@@ -6,5 +6,6 @@
 
 ## Modelo ER
 <a href=https://lucid.app/lucidchart/84b2ac92-11cc-4da1-b600-cf72c06daa70/edit?viewport_loc=-2361%2C-159%2C2990%2C1208%2C0_0&invitationId=inv_695f5e32-8490-4074-9197-02f9f82af714>Clique aqui para acessar o Diagrama</a>
+
 ## Projeto Base de Dados
 ## Tecnologias Usadas
