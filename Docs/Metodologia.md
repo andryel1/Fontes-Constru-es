@@ -6,7 +6,7 @@ A metodologia usada é a scrum, com foco para entregas para curtos prazos. Além
 
 | Foto | Especificação |
 | ------ | -------------- |
-![TRUNK BASED](</home/andryel/Downloads/gitflow.png>) | imagem do desenvolvimento baseado em tronco
+![TRUNK BASED](</Docs/Img/gitflow.png>) | imagem do desenvolvimento baseado em tronco
 o desenvolvimento baseado em trunk é uma metodologia para lançar novos recursos e pequenas mudanças rapidamente, ao mesmo tempo que ajuda a evitar longas correções de bugs e "merge hell".
 
 
