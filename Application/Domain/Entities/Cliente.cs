@@ -8,6 +8,7 @@ namespace Documentos.PROJETOPESSOAL.Fontes_Constru_es.Domain.Entities
         public string Telefone { get; set; }
         public string Email { get; set; }
         public DateTime DataNascimento { get; set; }
+        public Usuario Usuarios { get; set; }
     }
     
 }
