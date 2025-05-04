@@ -1,6 +1,6 @@
 namespace Documentos.PROJETOPESSOAL.Fontes_Constru_es.Domain.Entities
 {
-    public class Cliente : entity
+    public class Cliente : Entitybase
     {
         public string Nome { get; set; }
         public int Cpf { get; set; }
