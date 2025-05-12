@@ -9,7 +9,9 @@ namespace Domain.Entities
     {
         public int Quantidade { get; set; }
         public double Preco { get; set; }
-        collection<Produto> Produtos { get; set; }
-
+        public Produto Produto { get; set; } 
+        public Carrinho Carrinho { get; set; } 
+        public int CarrinhoId { get; set; } 
+        public int ProdutoId { get; set; } 
     }
 }

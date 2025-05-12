@@ -7,6 +7,8 @@ namespace Domain.Entities
 {
     public class Tag : Entitybase
     {
-        
+        public string nome { get; set; }
+        public List<Produto> Produtos { get; set; } 
+
     }
 }
