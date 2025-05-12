@@ -7,6 +7,8 @@ namespace Domain.Entities
 {
     public class ListaDesejo : Entitybase
     {
-        
+        public DateTime DataAdicionada { get; set; }
+        public List<Produto> Produtos { get; set; }
+        public List<Cliente> Clientes { get; set; } 
     }
 }
