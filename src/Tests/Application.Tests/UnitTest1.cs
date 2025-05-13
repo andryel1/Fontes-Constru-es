@@ -1,4 +1,4 @@
-namespace Tests;
+namespace MeuProjeto.Tests.Application;
 
 public class UnitTest1
 {

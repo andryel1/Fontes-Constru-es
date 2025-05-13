@@ -7,6 +7,7 @@ namespace Domain.Entities
 {
     public class Categoria : Entitybase
     {
-        
+        public string nome;
+        public List<Produto> Produtos { get; set; } 
     }
 }

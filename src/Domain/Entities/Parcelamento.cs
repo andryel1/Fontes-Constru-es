@@ -12,7 +12,6 @@ namespace Domain.Entities
         public double Juros { get; set; }
         public double ValorParcela { get; set; }
         public DateTime DataVencimento { get; set; }
-        public List<Pagamento> Pagamentos { get; set; }
         public pagamento Pagamento { get; set; }
         public int PagamentoId { get; set; }
     }
