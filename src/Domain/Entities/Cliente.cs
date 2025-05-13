@@ -1,14 +1,15 @@
-namespace Documentos.PROJETOPESSOAL.Fontes_Constru_es.Domain.Entities
+namespace Ecommerce.Domain.Entities
 {
     public class Cliente : Entitybase
     {
-        public string Nome { get; set; }
-        public int Cpf { get; set; }
-        public string Password { get; set; }
-        public string Telefone { get; set; }
-        public string Email { get; set; }
+        public required string Nome { get; set; }
+        public required int Cpf { get; set; }
+        public required string Password { get; set; }
+        public required string Telefone { get; set; }
+        public required string Email { get; set; }
         public DateTime DataNascimento { get; set; }
-        public Usuario Usuarios { get; set; }
+       public Usuario? Usuarios { get; set; }
+    
     }
     
 }

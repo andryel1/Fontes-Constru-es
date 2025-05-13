@@ -1,17 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Domain.Entities
+namespace Ecommerce.Domain.Entities
 {
     public class DetalhePedido : Entitybase
     {
-        public string nomeProduto { get; set; }
-        public int quantidade { get; set; }
-        public double preco { get; set; }
-        public double subTotal { get; set; }
-        public Pedido Pedido { get; set; }
+        public required string NomeProduto { get; set; }
+        public int Quantidade { get; set; }
+        public double Preco { get; set; }
+        public double SubTotal { get; set; }
+        public required Pedido Pedido { get; set; }
         public int PedidoId { get; set; }
     }
 }

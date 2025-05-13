@@ -1,14 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Ecommerce.Domain.Entities;
 
 namespace Domain.Entities
 {
     public class ListaDesejo : Entitybase
     {
         public DateTime DataAdicionada { get; set; }
-        public List<Produto> Produtos { get; set; }
-        public Cliente cliente { get; set; } 
+        public required List<Produto> Produtos { get; set; }
+        public required Cliente Clientes { get; set; } 
     }
 }

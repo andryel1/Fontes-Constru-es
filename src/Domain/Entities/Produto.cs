@@ -1,23 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Domain.Entities
+
+namespace Ecommerce.Domain.Entities
 {
     public class Produto : Entitybase
     {
-        public string nome { get; set; }
-        public string descricao { get; set; }
-        public string estoque { get; set; }
-        public string preco { get; set; }
-       public collection<Imagem> imagens { get; set; }
-        public collection<Avaliacao> avaliacoes { get; set; }
-        public collection<ItemCarrinho> itensCarrinho { get; set; }
-        public collection<Pedido> pedidos { get; set; }
-        public collection<ListaDesejo> listaDesejos { get; set; }
-        public collection<Categoria> categorias { get; set; }
-        public collection<Tag> tags { get; set; }
-
+        public required string Nome { get; set; }
+        public required string Descricao { get; set; }
+        public required string Estoque { get; set; }
+        public required string Preco { get; set; }
+        public required ICollection<Imagem> Imagens { get; set; }
+        public required ICollection<Avaliacao> Avaliacoes { get; set; }
+        public required ICollection<ItemCarrinho> ItensCarrinho { get; set; }
+        public required ICollection<Pedido> Pedidos { get; set; }
+        public required ICollection<ListaDesejo> ListaDesejos { get; set; }
+        public required ICollection<Categoria> Categorias { get; set; }
+        public required ICollection<Tag> Tags { get; set; }
     }
 }
