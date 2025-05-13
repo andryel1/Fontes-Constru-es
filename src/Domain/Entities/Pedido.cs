@@ -10,9 +10,9 @@ namespace Domain.Entities
         public DateTime DataPedido { get; set; }
         public string Status { get; set; }
         public double ValorTotal { get; set; }
-        public List<carrinho> Itens { get; set; } 
+        public List<Carrinho> Itens { get; set; } 
         public List<Cliente> Clientes { get; set; }
-        public string dataEnvio { get; set; }
-        public string dataEntrega { get; set; }
+        public DateTime? DataEnvio { get; set; }
+        public DateTime? DataEntrega { get; set; }
     }
 }

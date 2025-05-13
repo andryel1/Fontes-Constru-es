@@ -9,6 +9,6 @@ namespace Domain.Entities
     {
         public DateTime DataAdicionada { get; set; }
         public List<Produto> Produtos { get; set; }
-        public List<Cliente> Clientes { get; set; } 
+        public Cliente cliente { get; set; } 
     }
 }

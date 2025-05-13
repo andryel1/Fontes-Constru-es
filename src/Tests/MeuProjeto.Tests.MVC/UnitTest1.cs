@@ -1,4 +1,4 @@
-namespace WebApi.Tests;
+namespace MeuProjeto.Tests.MVC;
 
 public class UnitTest1
 {
