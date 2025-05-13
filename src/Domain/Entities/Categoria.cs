@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Domain.Entities
+namespace Ecommerce.Domain.Entities
 {
     public class Categoria : Entitybase
     {
-        public string nome;
+        public required string Nome;
         public List<Produto> Produtos { get; set; } 
     }
 }
