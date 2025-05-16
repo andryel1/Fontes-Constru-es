@@ -8,7 +8,7 @@ namespace Ecommerce.Domain.Entities
         public required string Telefone { get; set; }
         public required string Email { get; set; }
         public DateTime DataNascimento { get; set; }
-       public Usuario? Usuarios { get; set; }
+        public Usuario? Usuarios { get; set; }
     
     }
     

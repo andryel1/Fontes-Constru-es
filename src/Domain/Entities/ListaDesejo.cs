@@ -1,6 +1,4 @@
-using Ecommerce.Domain.Entities;
-
-namespace Domain.Entities
+namespace Ecommerce.Domain.Entities
 {
     public class ListaDesejo : Entitybase
     {
