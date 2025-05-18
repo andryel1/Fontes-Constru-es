@@ -7,6 +7,5 @@ namespace Ecommerce.Domain.Entities
         public DateTime Data { get; set; }
         public required Cliente Cliente { get; set; }
         public required Produto Produto { get; set; }
-        
     }
 }

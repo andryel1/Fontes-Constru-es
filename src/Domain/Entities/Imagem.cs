@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 
 namespace Ecommerce.Domain.Entities
 {
