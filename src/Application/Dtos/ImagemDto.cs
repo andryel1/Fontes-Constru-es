@@ -7,4 +7,5 @@ public class ImagemDto
     public int Id { get; set; }
     public required Uri Url { get; set; }
     public required Produto Produto { get; set; }
+    public int ProdutoId { get; set; }
 }
