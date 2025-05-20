@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Ecommerce.Domain.Entities
 using Application.Services;
 using Application.Repository;
 

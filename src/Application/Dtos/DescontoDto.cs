@@ -1,6 +1,6 @@
 using Ecommerce.Domain.Entities;
 
-namespace Ecommerce.Application.Dtos;
+namespace Application.Dtos;
 
 public class DescontoDto
 {

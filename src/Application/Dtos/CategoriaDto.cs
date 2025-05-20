@@ -1,10 +1,10 @@
 using Ecommerce.Domain.Entities;
 
-namespace Application.Dtos;
-
-public class CategoriaDto
+namespace Ecommerce.Application.Dtos
 {
-    public int Id { get; set; }
-    public required string Nome { get; set; }
-    public required List<Produto> Produtos { get; set; } 
+    public class CategoriaDto
+    {
+        public required string Nome;
+        public required List<Produto> Produtos { get; set; } 
+    }
 }
