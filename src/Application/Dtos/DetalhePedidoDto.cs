@@ -1,7 +1,8 @@
 using Ecommerce.Domain.Entities;
- namespace Ecommerce.Application.Dtos;
 
-class DetalhePedidoDto
+namespace Application.Dtos;
+
+public class DetalhePedidoDto
 {
         public required string NomeProduto { get; set; }
         public required int Quantidade { get; set; }

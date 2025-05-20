@@ -13,7 +13,8 @@ namespace Ecommerce.Domain.Entities
         public required string SobrenomeDestinatario { get; set; }
         public required string CpfDestinatario { get; set; }
         public required string EmailDestinatario { get; set; }
-        
+        public required Produto Produto { get; set; }
+        public required int ProdutoId { get; set; }
         public required DateTime DatetimeEnvio { get; set; }
         public required DateTime DataDeEnvioPrevista { get; set; }
     }

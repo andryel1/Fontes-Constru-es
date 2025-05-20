@@ -1,13 +1,13 @@
 using Ecommerce.Domain.Entities;
 
-namespace Ecommerce.Application.Dtos;
+namespace Application.Dtos;
 public class ClienteDto
 {
-    public required string UserName { get; set; }
-    public required string Telefone { get; set; }
-    public required string Endereco { get; set; }
-    public required string Cidade { get; set; }
-    public required string Estado { get; set; }
-    public required string Cep { get; set; }
-    public required string Pais { get; set; }
+        public required string Nome { get; set; }
+        public required int Cpf { get; set; }
+        public required string Password { get; set; }
+        public required string Telefone { get; set; }
+        public required string Email { get; set; }
+        public DateTime DataNascimento { get; set; }
+        public Usuario? Usuarios { get; set; }
 }

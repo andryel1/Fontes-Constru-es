@@ -1,3 +1,9 @@
+using Application.DependencyInjection;
+using DependencyInjectionSample.Interfaces;
+using DependencyInjectionSample.Services;
+using Microsoft.AspNetCore.Builder;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,7 +20,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseHttpsRedirection();ICarrinhoService
 
 var summaries = new[]
 {
@@ -35,6 +41,7 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast")
 .WithOpenApi();
+builder.Services.AddApplicationServices();
 
 app.Run();
 
