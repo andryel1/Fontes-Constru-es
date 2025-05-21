@@ -26,6 +26,7 @@
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Domain\Ecommerce.Domain.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\MeuProjetoMVC\MeuProjetoMVC.csproj" />
   </ItemGroup>
 
 </Project>

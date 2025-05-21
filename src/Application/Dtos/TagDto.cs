@@ -2,9 +2,9 @@ using Ecommerce.Domain.Entities;
 
 namespace Application.Dtos;
 
-public class CategoriaDto
+public class TagDto
 {
     public int Id { get; set; }
     public required string Nome { get; set; }
-    public List<Produto> Produtos { get; set; } = new();
+    public required List<Produto> Produtos { get; set; } 
 }

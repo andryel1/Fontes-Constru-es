@@ -1,12 +1,13 @@
 using Application.Dtos;
+using Ecommerce.Domain.Entities;
 
 namespace Application.Interfaces.Repository;
 
-public interface ICategoriaRepository
+public interface ICategoriaRepository : IInterfaceBaseRepository<CategoriaDto, Categoria>
 {
-    Task<CategoriaDto> AdicionarCategoria(CategoriaDto categoria);
-    Task<CategoriaDto> AtualizarCategoria(CategoriaDto categoria);
-    Task<bool> DeletarCategoria(int id);
-    Task<CategoriaDto> ObterCategoriaPorId(int id);
-    Task<List<CategoriaDto>> ObterTodasCategorias();
+    Task<List<CategoriaDto>> ObterCategoriasPorNome(string nome);
+    Task<List<CategoriaDto>> ObterCategoriasPorProdutoId(int produtoId);
+    Task<bool> AdicionarProdutoACategoria(int categoriaId, int produtoId);
+    Task<bool> RemoverProdutoDaCategoria(int categoriaId, int produtoId);
+
 }
