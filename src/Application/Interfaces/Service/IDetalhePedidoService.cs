@@ -1,11 +1,8 @@
 using Application.Interfaces.Repository;
 
-namespace Application.Interfaces.Services
+namespace Application.Interfaces.Service
 {
-    public interface IDetalhePedidoService : IDetalhePedidoRepository
+    public interface IDetalhePedidoService : IDescontoRepository
     {
-    Task<bool> VerificarSeProdutoJaFoiAdicionadoAoPedido(int pedidoId, Guid produtoId);
-    Task<bool> VerificarSeProdutoJaFoiAdicionadoAoCarrinho(Guid produtoId);
-    Task<bool> VerificarSeProdutoJaFoiAdicionadoAoCarrinhoPorId(int id);
     }
 }

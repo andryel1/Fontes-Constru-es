@@ -1,6 +1,6 @@
-using application.Interfaces.Repository;
+using Application.Interfaces.Repository;
 
-namespace application.Interfaces.Service
+namespace Application.Interfaces.Service
 {
     public interface IInformacoesEnvioService : IInformacoesEnvioRepository
     {

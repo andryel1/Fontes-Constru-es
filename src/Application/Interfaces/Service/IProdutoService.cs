@@ -1,6 +1,7 @@
 using Application.Interfaces.Repository;
+using Application.Dtos;
 
-namespace Application.Interfaces.Services
+namespace Application.Interfaces.Service
 {
     public interface IProdutoService : IProdutoRepository
     {

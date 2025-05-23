@@ -1,14 +1,9 @@
-using Application.Interfaces.Services;
+using Application.Interfaces.Service;
 
-namespace application.service
+namespace Application.Service
 {
-    public class CarrinhoService : ICarrinhoService
+    public class DescontoService(IDescontoService descontoService)
     {
-        private readonly ICarrinhoService _carrinhoService;
-
-        public CarrinhoService(ICarrinhoService carrinhoService)
-        {
-            _carrinhoService = carrinhoService;
-        }
+        private readonly IDescontoService _descontoService = descontoService;
     }
 }

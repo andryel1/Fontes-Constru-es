@@ -1,13 +1,8 @@
-using aplication.Interfaces.Service;
+using Application.Interfaces.Service;
 
 namespace Application.Service;
 
-public class UsuarioService : IUsuarioService
+public class UsuarioService(IUsuarioService usuarioService) : IUsuarioService
 {
-    private readonly IUsuarioService _usuarioService;
-
-    public UsuarioService(IUsuarioService usuarioService)
-    {
-        _usuarioService = usuarioService;
-    }
+    private readonly IUsuarioService _usuarioService = usuarioService;
 }
