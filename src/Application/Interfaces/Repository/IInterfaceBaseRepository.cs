@@ -1,6 +1,7 @@
 using Application.Dtos;
 
 namespace Application.Interfaces.Repository;
+
 public interface IInterfaceBaseRepository<TDto, TEntity>
 {
     Task<TDto> Adicionar(TDto entity);

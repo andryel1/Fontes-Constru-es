@@ -1,8 +1,6 @@
-using Application.Dtos;
 using Application.Interfaces.Repository;
-using Ecommerce.Domain.Entities;
 
-namespace Application.Interfaces.Services;
+namespace Application.Interfaces.Service;
 
 public interface IAvaliacaoService : IAvaliaçaoRepository
 {

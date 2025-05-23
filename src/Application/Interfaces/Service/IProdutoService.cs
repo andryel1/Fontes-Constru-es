@@ -1,10 +1,8 @@
-using Ecommerce.Domain.Entities;
 using Application.Interfaces.Repository;
-using Application.Dtos;
 
 namespace Application.Interfaces.Services
 {
-    public interface IProdutoService
+    public interface IProdutoService : IProdutoRepository
     {
         Task<ProdutoDto> VerificarProdutoExistente(string nome);
         Task<ProdutoDto> NomeNaoPodeSerVazioOuNUlo(string nome);
