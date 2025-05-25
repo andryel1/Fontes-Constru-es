@@ -3,16 +3,10 @@ using Application.Dtos;
 
 namespace Application.Service;
 
-public class PedidoService : IPedidoService
+public class PedidoService(IPedidoService pedidoService) : IPedidoService
 {
-    private readonly IPedidoService _pedidoService;
+    private readonly IPedidoService _pedidoService = pedidoService;
 
-    public PedidoService(IPedidoService pedidoService)
-    {
-        _pedidoService = pedidoService;
-    }
-
-    // IInterfaceBaseRepository<PedidoDto, Pedido>
     public Task<PedidoDto> Adicionar(PedidoDto dto)
     {
         throw new NotImplementedException();
