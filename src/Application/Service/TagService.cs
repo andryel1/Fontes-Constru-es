@@ -4,14 +4,9 @@ using Application.Dtos;
 namespace Application.Service;
 
 // Implements all required interfaces
-public class TagService : ITagService
+public class TagService(ITagService tagService) : ITagService
 {
-    private readonly ITagService _tagService;
-
-    public TagService(ITagService tagService)
-    {
-        _tagService = tagService;
-    }
+    private readonly ITagService _tagService = tagService;
 
     public async Task<TagDto> Adicionar(TagDto dto)
     {
