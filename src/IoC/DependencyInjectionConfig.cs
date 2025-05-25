@@ -15,6 +15,16 @@ public static class DependencyInjectionConfig
         services.AddScoped<ITagService, TagService>();
         services.AddScoped<IProdutoService, ProdutoService>();
         services.AddScoped<ICarrinhoService, CarrinhoService>();
+        services.AddScoped<IInformacoesEnvioService, InformacoesEnvioService>();
+        services.AddScoped<IUsuarioService, UsuarioService>();
+        services.AddScoped<IDescontoService, DescontoService>();
+        services.AddScoped<IAvaliacaoService, AvaliacaoService>();
+        services.AddScoped<ICategoriaService, CategoriaService>();
+        services.AddScoped<IClienteService, ClienteService>();
+        services.AddScoped<IDetalhePedidoService, DetalhePedidoService>();
+        services.AddScoped<IImagemService, ImagemService>();    
+        services.AddScoped<IEnviarEmailService, EnviarEmailService>();
+
 
         return services;
     }
