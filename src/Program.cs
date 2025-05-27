@@ -2,6 +2,8 @@ using Application.DependencyInjection;
 using DependencyInjectionSample.Interfaces;
 using DependencyInjectionSample.Services;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 
 var builder = WebApplication.CreateBuilder(args);
