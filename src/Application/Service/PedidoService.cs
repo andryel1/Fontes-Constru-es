@@ -1,5 +1,6 @@
 using Application.Interfaces.Service;
 using Application.Dtos;
+using System.Linq;
 
 namespace Application.Service;
 
@@ -7,27 +8,26 @@ public class PedidoService(IPedidoService pedidoService) : IPedidoService
 {
     private readonly IPedidoService _pedidoService = pedidoService;
 
-public Task<PedidoDto> Adicionar(PedidoDto dto)
+public async Task<PedidoDto> Adicionar(PedidoDto dto)
 {
-
     if (dto.Valor <= 0)
     {
-        throw new ArgumentException("O campo 'Valor' do PedidoDto deve ser maior que zero.", nameof(dto));
+        throw new ArgumentException("O campo 'Valor' do PedidoDto deve ser maior que zero.");
     }
     if (dto.DataPagamento == DateTime.MinValue)
     {
-        throw new ArgumentException("O campo 'DataPagamento' do PedidoDto não pode ser uma data vazia.", nameof(dto));
+        throw new ArgumentException("O campo 'DataPagamento' do PedidoDto não pode ser uma data vazia.");
     }
-    if(string.IsNullOrWhiteSpace(dto.Status))
+    if (string.IsNullOrWhiteSpace(dto.Status))
     {
-        throw new ArgumentException("O campo 'Status' do PedidoDto não pode ser nulo ou vazio.", nameof(dto));
-    }
-    if(dto.Pedidos == null || !dto.Pedidos.Any())
-    {
-        throw new ArgumentException("O PedidoDto deve conter pelo menos um item no campo 'Pedidos'.", nameof(dto));
+        throw new ArgumentException("O campo 'Status' não pode ser nulo ou vazio no objeto PedidoDto.");
     }
 
-    return _pedidoService.Adicionar(dto);
+    if(dto.Pedidos == null || dto.Pedidos.Count == 0)
+    {
+        throw new ArgumentException("O PedidoDto deve conter pelo menos um item no campo 'Pedidos'.");
+    }
+    return await _pedidoService.Adicionar(dto);
 }
 
     public Task<PedidoDto> Atualizar(PedidoDto dto)
@@ -35,14 +35,26 @@ public Task<PedidoDto> Adicionar(PedidoDto dto)
         throw new NotImplementedException();
     }
 
-    public Task<bool> Deletar(int id)
+    public async Task<bool> Deletar(int id)
     {
-        throw new NotImplementedException();
+        if (id <= 0)
+        {
+            throw new ArgumentException("O ID do PedidoDto deve ser maior que zero.");
+        }
+        if (_pedidoService.ObterPorId(id) == null)
+        {
+            throw new KeyNotFoundException($"PedidoDto com ID {id} não encontrado.");
+        }
+        return await _pedidoService.Deletar(id);   
     }
 
-    public Task<PedidoDto> ObterPorId(int id)
+    public async Task<PedidoDto> ObterPorId(int id)
     {
-        throw new NotImplementedException();
+        if (id <= 0)
+        {
+            throw new ArgumentException("O ID do PedidoDto deve ser maior que zero.");
+        }
+        return await _pedidoService.ObterPorId(id);
     }
 
     public Task<List<PedidoDto>> ObterTodos()
