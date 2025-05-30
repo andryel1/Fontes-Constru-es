@@ -1,5 +1,6 @@
 using Application.Interfaces.Service;
 using Application.Dtos;
+using Azure.Messaging;
 
 namespace Application.Service
 {
@@ -17,19 +18,31 @@ namespace Application.Service
             return _categoriaService.ObterCategoriasPorProdutoId(produtoId);
         }
 
-        public Task<bool> AdicionarProdutoACategoria(int categoriaId, int produtoId)
+        public async Task<bool> AdicionarProdutoACategoria(int categoriaId, int produtoId)
         {
-            return _categoriaService.AdicionarProdutoACategoria(categoriaId, produtoId);
+
+            return await _categoriaService.AdicionarProdutoACategoria(categoriaId, produtoId);
         }
 
-        public Task<bool> RemoverProdutoDaCategoria(int categoriaId, int produtoId)
+        public async Task<bool> RemoverProdutoDaCategoria(int categoriaId, int produtoId)
         {
-            return _categoriaService.RemoverProdutoDaCategoria(categoriaId, produtoId);
+            if (categoriaId <= 0)
+            {
+                throw new ArgumentException($"O categoriaId {categoriaId} não pode ser menor ou igual a zero");
+            }
+            return await _categoriaService.RemoverProdutoDaCategoria(categoriaId, produtoId);
         }
-
-        public Task<CategoriaDto> Adicionar(CategoriaDto dto)
+        public async Task<CategoriaDto> Adicionar(CategoriaDto dto)
         {
-            return _categoriaService.Adicionar(dto);
+            if (string.IsNullOrEmpty(dto.Nome))
+            {
+                throw new ArgumentException("Nome não pode ser nulo e nem vazio.");
+            }
+            if (dto.Produtos == null)
+            {
+                throw new ArgumentException("Produto é obrigatório para fazer isso.");
+            }
+            return await _categoriaService.Adicionar(dto);
         }
 
         public Task<CategoriaDto> Atualizar(CategoriaDto dto)
@@ -39,11 +52,19 @@ namespace Application.Service
 
         public Task<bool> Deletar(int id)
         {
+            if (id <= 0)
+            {
+                throw new ArgumentException("O id deve ser um número positivo.");
+            }
             return _categoriaService.Deletar(id);
         }
 
         public Task<CategoriaDto> ObterPorId(int id)
         {
+            if (id <= 0)
+            {
+                  throw new ArgumentException("Id não encontrado. O id deve ser um número positivo.");
+            }
             return _categoriaService.ObterPorId(id);
         }
 
