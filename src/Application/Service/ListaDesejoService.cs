@@ -4,26 +4,16 @@ using Application.Interfaces.Service;
 
 namespace Application.Service;
 
-public class ListaDesejoService : IListaDesejoService
+public class ListaDesejoService(IListaDesejoRepository listaDesejoService) : IListaDesejoService
 {
-    private readonly IListaDesejoRepository _listaDesejoRepository;
+    private readonly IListaDesejoRepository _listaDesejoRepository = listaDesejoService;
 
-    public ListaDesejoService(IListaDesejoRepository listaDesejoService)
+    public async Task<ListaDesejoDto> ObterListaDesejoPorUsuario(Guid usuarioId)
     {
-        _listaDesejoRepository = listaDesejoService;
-    }
-
-    public Task<ListaDesejoDto> ObterListaDesejoPorUsuario(Guid usuarioId)
-    {
-        throw new NotImplementedException();
+        return await _listaDesejoRepository.ObterListaDesejoPorUsuario(usuarioId);
     }
 
     public Task<bool> VerificaSeProdutoJaEstaNaLista(Guid usuarioId, Guid produtoId)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<bool> AdicionarProdutoNaLista(Guid usuarioId, Guid produtoId)
     {
         throw new NotImplementedException();
     }
@@ -33,9 +23,17 @@ public class ListaDesejoService : IListaDesejoService
         throw new NotImplementedException();
     }
 
-    public Task<ListaDesejoDto> Adicionar(ListaDesejoDto dto)
+    public async Task<ListaDesejoDto> Adicionar(ListaDesejoDto dto)
     {
-        throw new NotImplementedException();
+        if (dto.DataAdicionada == default)
+            dto.DataAdicionada = DateTime.UtcNow;
+
+        if (dto.Produtos == null )
+        {
+            throw new KeyNotFoundException("Você deve adicionar um produto");        
+        }
+
+        return await _listaDesejoRepository.Adicionar(dto);
     }
 
     public Task<ListaDesejoDto> Atualizar(ListaDesejoDto dto)

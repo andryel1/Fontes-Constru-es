@@ -1,6 +1,5 @@
 using Application.Interfaces.Service;
 using Application.Dtos;
-using System.Linq;
 
 namespace Application.Service;
 
@@ -29,12 +28,37 @@ public async Task<PedidoDto> Adicionar(PedidoDto dto)
     }
     return await _pedidoService.Adicionar(dto);
 }
-
-    public Task<PedidoDto> Atualizar(PedidoDto dto)
+public async Task<PedidoDto> Atualizar(PedidoDto dto)
+{
+    if (dto.Id <= 0)
     {
-        throw new NotImplementedException();
+        throw new ArgumentException("O ID do PedidoDto deve ser maior que zero.");
     }
 
+    var pedidoExistente = await _pedidoService.ObterPorId(dto.Id)
+    ?? throw new KeyNotFoundException($"PedidoDto com ID {dto.Id} não encontrado.");
+
+        dto.Id = pedidoExistente.Id;
+
+    if (dto.Valor <= 0)
+    {
+        throw new ArgumentException("O campo 'Valor' do Pedido deve ser maior que zero.");
+    }
+    if (dto.DataPagamento == DateTime.MinValue)
+    {
+        throw new ArgumentException("O campo 'DataPagamento' do PedidoDto não pode ser uma data vazia.");
+    }
+    if (string.IsNullOrWhiteSpace(dto.Status))
+    {
+        throw new ArgumentException("O campo 'Status' não pode ser nulo ou vazio no objeto PedidoDto.");
+    }
+    if (dto.Pedidos == null || dto.Pedidos.Count == 0)
+    {
+        throw new ArgumentException("O PedidoDto deve conter pelo menos um item no campo 'Pedidos'.");
+    }
+
+    return await _pedidoService.Atualizar(dto);
+}
     public async Task<bool> Deletar(int id)
     {
         if (id <= 0)

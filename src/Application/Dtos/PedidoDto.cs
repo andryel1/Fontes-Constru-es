@@ -2,7 +2,7 @@ using Ecommerce.Domain.Entities;
 
 namespace Application.Dtos;
 
-public class PedidoDto
+public class PedidoDto : EntitybaseDto
 {
         public double Valor { get; set; }
         public required string TipoPagamento { get; set; }

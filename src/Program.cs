@@ -1,29 +1,40 @@
 using Application.DependencyInjection;
-using DependencyInjectionSample.Interfaces;
-using DependencyInjectionSample.Services;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-
+using Microsoft.Extensions.Hosting;
+using MyApp.Resources; // <- Assumindo que MessagesHelper.cs está em Resources
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Injeção de dependência da aplicação
+builder.Services.AddApplicationServices();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Ambiente de desenvolvimento
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();ICarrinhoService
+// HTTPS
+app.UseHttpsRedirection();
 
+// 📌 Definindo a cultura (en ou pt-BR)
+CultureInfo.CurrentUICulture = new CultureInfo("en"); // Você pode trocar para "pt-BR" se quiser
+
+// ✅ Teste da tradução
+app.MapGet("/hello", () => MessagesHelper.Hello);
+app.MapGet("/bye", () => MessagesHelper.Goodbye);
+app.MapGet("/welcome", () => MessagesHelper.Welcome);
+
+// Rota de previsão do tempo (original)
 var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -31,7 +42,7 @@ var summaries = new[]
 
 app.MapGet("/weatherforecast", () =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
+    var forecast = Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast
         (
             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
@@ -43,10 +54,10 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast")
 .WithOpenApi();
-builder.Services.AddApplicationServices();
 
 app.Run();
 
+// 🔽 Record da previsão
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);

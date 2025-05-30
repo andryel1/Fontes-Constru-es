@@ -32,7 +32,6 @@ namespace Application.Service
             throw new NotImplementedException();
         }
 
-        // IInterfaceBaseRepository<DescontoDto, Desconto> members
         public Task<DescontoDto> Adicionar(DescontoDto dto)
         {
             throw new NotImplementedException();
