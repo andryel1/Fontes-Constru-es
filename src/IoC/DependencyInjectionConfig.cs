@@ -24,7 +24,7 @@ public static class DependencyInjectionConfig
         services.AddScoped<IDetalhePedidoService, DetalhePedidoService>();
         services.AddScoped<IImagemService, ImagemService>();    
         services.AddScoped<IEnviarEmailService, EnviarEmailService>();
-
+        services.AddScoped<IItemCarrinhoService, ItemCarrinhoService>();
 
         return services;
     }
