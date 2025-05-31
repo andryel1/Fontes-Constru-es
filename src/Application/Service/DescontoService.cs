@@ -3,25 +3,18 @@ using Application.Dtos;
 
 namespace Application.Service
 {
-    public class DescontoService : IDescontoService
+    public class DescontoService(IDescontoService descontoService) : IDescontoService
     {
-        private readonly IDescontoService _descontoService;
-
-        public DescontoService(IDescontoService descontoService)
-        {
-            _descontoService = descontoService;
-        }
+        private readonly IDescontoService _descontoService = descontoService;
 
         public async Task<DescontoDto> ObterDescontoPorId(int id)
         {
+            if (id <= 0)
+            {
+                throw new ArgumentException("O Id não pode ser menor que 0.");
+            }
             return await _descontoService.ObterDescontoPorId(id);
         }
-
-        public async Task<IEnumerable<DescontoDto>> ObterDescontosPorProdutoId(int produtoId)
-        {
-            return await _descontoService.ObterDescontosPorProdutoId(produtoId);
-        }
-
         public async Task<IEnumerable<DescontoDto>> ObterDescontosAtivos()
         {
             return await _descontoService.ObterDescontosAtivos();
