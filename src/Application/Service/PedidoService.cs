@@ -81,19 +81,34 @@ public async Task<PedidoDto> Atualizar(PedidoDto dto)
         return await _pedidoService.ObterPorId(id);
     }
 
-    public Task<List<PedidoDto>> ObterTodos()
+    public async Task<List<PedidoDto>> ObterTodos()
     {
-        throw new NotImplementedException();
+        return await _pedidoService.ObterTodos();
     }
 
     // IPedidoRepository
-    public Task<IEnumerable<PedidoDto>> ObterPedidosPorClienteId(Guid clienteId)
+    public async Task<IEnumerable<PedidoDto>> ObterPedidosPorClienteId(Guid clienteId)
     {
-        throw new NotImplementedException();
+        if (clienteId == Guid.Empty)
+        {
+            throw new ArgumentException("Não pode ser vazio.");
+        }
+        return await _pedidoService.ObterPedidosPorClienteId(clienteId);
     }
 
-    public Task<bool> AtualizarStatusPedido(Guid pedidoId, string novoStatus)
+  public async Task<bool> AtualizarStatusPedido(Guid pedidoId, string novoStatus)
+{
+    if (pedidoId == Guid.Empty)
     {
-        throw new NotImplementedException();
+        throw new ArgumentException("O Id do pedido não pode ser vazio.");
     }
+
+    if (string.IsNullOrWhiteSpace(novoStatus))
+    {
+        throw new ArgumentException("O novo status não pode ser nulo ou vazio.");
+    }
+
+    return await _pedidoService.AtualizarStatusPedido(pedidoId, novoStatus);
+}
+
 }
