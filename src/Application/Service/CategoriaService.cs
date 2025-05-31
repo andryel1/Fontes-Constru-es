@@ -10,11 +10,19 @@ namespace Application.Service
 
         public Task<List<CategoriaDto>> ObterCategoriasPorNome(string nome)
         {
+            if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrEmpty(nome))
+            {
+                throw new ArgumentException("O nome não pode ser vazio o nulo.");
+            }
             return _categoriaService.ObterCategoriasPorNome(nome);
         }
 
         public Task<List<CategoriaDto>> ObterCategoriasPorProdutoId(int produtoId)
         {
+            if (produtoId <= 0)
+            {
+                throw new ArgumentException("Não pode ser menor ou igual 0.");
+            }
             return _categoriaService.ObterCategoriasPorProdutoId(produtoId);
         }
 
@@ -45,32 +53,40 @@ namespace Application.Service
             return await _categoriaService.Adicionar(dto);
         }
 
-        public Task<CategoriaDto> Atualizar(CategoriaDto dto)
+        public async Task<CategoriaDto> Atualizar(CategoriaDto dto)
         {
-            return _categoriaService.Atualizar(dto);
+            if (dto == null)
+            {
+            throw new ArgumentNullException(nameof(dto), "O objeto CategoriaDto não pode ser nulo.");
+            }
+            if (string.IsNullOrWhiteSpace(dto.Nome))
+            {
+            throw new ArgumentException("Nome não pode ser nulo, vazio ou composto apenas por espaços em branco.");
+            }
+            return await _categoriaService.Atualizar(dto);
         }
 
-        public Task<bool> Deletar(int id)
+        public async Task<bool> Deletar(int id)
         {
             if (id <= 0)
             {
                 throw new ArgumentException("O id deve ser um número positivo.");
             }
-            return _categoriaService.Deletar(id);
+            return await _categoriaService.Deletar(id);
         }
 
-        public Task<CategoriaDto> ObterPorId(int id)
+        public async Task<CategoriaDto> ObterPorId(int id)
         {
             if (id <= 0)
             {
                   throw new ArgumentException("Id não encontrado. O id deve ser um número positivo.");
             }
-            return _categoriaService.ObterPorId(id);
+            return await _categoriaService.ObterPorId(id);
         }
 
-        public Task<List<CategoriaDto>> ObterTodos()
+        public async Task<List<CategoriaDto>> ObterTodos()
         {
-            return _categoriaService.ObterTodos();
+            return await _categoriaService.ObterTodos();
         }
     }
 }
