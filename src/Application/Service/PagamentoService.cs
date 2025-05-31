@@ -4,16 +4,13 @@ using Ecommerce.Domain.Entities; // Assuming Pagamento is here
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
+
 namespace Application.Service
 {
-    public class PagamentoService : IPagamentoService
+    public class PagamentoService(IPagamentoService pagamentoService) : IPagamentoService
     {
-        private readonly IPagamentoService _pagamentoService;
+        private readonly IPagamentoService _pagamentoService = pagamentoService;
 
-        public PagamentoService(IPagamentoService pagamentoService)
-        {
-            _pagamentoService = pagamentoService;
-        }
         public async Task<PagamentoDto> Adicionar(PagamentoDto dto)
         {
             return await _pagamentoService.Adicionar(dto);
