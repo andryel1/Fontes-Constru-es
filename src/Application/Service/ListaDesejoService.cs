@@ -41,9 +41,13 @@ public class ListaDesejoService(IListaDesejoRepository listaDesejoService) : ILi
         throw new NotImplementedException();
     }
 
-    public Task<bool> Deletar(int id)
+    public async Task<bool> Deletar(int id)
     {
-        throw new NotImplementedException();
+        if (id <= 0)
+        {
+            throw new KeyNotFoundException("O Id tem que ser maior que 0.");
+        }
+        return await _listaDesejoRepository.Deletar(id);
     }
 
     public Task<ListaDesejoDto> ObterPorId(int id)
