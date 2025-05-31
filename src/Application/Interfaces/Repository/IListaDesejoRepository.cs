@@ -8,5 +8,4 @@ public interface IListaDesejoRepository : IInterfaceBaseRepository<ListaDesejoDt
 
     Task<ListaDesejoDto> ObterListaDesejoPorUsuario(Guid usuarioId);
     Task<bool> VerificaSeProdutoJaEstaNaLista(Guid usuarioId, Guid produtoId);
-    Task<bool> RemoverProdutoDaLista(Guid usuarioId, Guid produtoId);
 }

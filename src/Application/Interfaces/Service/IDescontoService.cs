@@ -3,5 +3,5 @@ namespace Application.Interfaces.Service;
 
 public interface IDescontoService : IDescontoRepository
 {
-
+ 
 }

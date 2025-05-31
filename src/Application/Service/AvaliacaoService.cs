@@ -7,38 +7,62 @@ namespace Application.Service
     {
         private readonly IAvaliacaoService _avaliacaoService = avaliacaoService;
 
-       public Task<AvaliacaoDto> Adicionar(AvaliacaoDto entity)
+        public async Task<AvaliacaoDto> Adicionar(AvaliacaoDto entity)
         {
-            throw new NotImplementedException();
-        }
-        public Task<AvaliacaoDto> Atualizar(AvaliacaoDto entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> Deletar(int id)
-        {
-            throw new NotImplementedException();
+             if (entity.Nota < 1 || entity.Nota > 5)
+                throw new ArgumentException("Nota deve ser entre 1 e 5.");
+             if (entity == null)
+                throw new ArgumentNullException(nameof(entity), "Avaliação não pode ser nula.");
+            return await _avaliacaoService.Adicionar(entity);
         }
 
-        public Task<List<AvaliacaoDto>> ObterAvaliacoesPorProdutoId(int produtoId)
+        public async Task<AvaliacaoDto> Atualizar(AvaliacaoDto entity)
         {
-            throw new NotImplementedException();
+            if (entity == null)
+                throw new ArgumentNullException(nameof(entity), "Avaliação não pode ser nula.");
+            if (entity.Nota < 1 || entity.Nota > 5)
+                throw new ArgumentException("Nota deve ser entre 1 e 5.");
+
+            return await _avaliacaoService.Atualizar(entity);
         }
 
-        public Task<List<AvaliacaoDto>> ObterAvaliacoesPorUsuarioId(int usuarioId)
+        public async Task<bool> Deletar(int id)
         {
-            throw new NotImplementedException();
+            if (id <= 0)
+                throw new ArgumentException("Id inválido para exclusão.");
+                
+
+            return await _avaliacaoService.Deletar(id);
         }
 
-        public Task<AvaliacaoDto> ObterPorId(int id)
+        public async Task<List<AvaliacaoDto>> ObterAvaliacoesPorProdutoId(int produtoId)
         {
-            throw new NotImplementedException();
+            if (produtoId <= 0)
+                throw new ArgumentException("Produto inválido.");
+
+            return await _avaliacaoService.ObterAvaliacoesPorProdutoId(produtoId);
         }
 
-        public Task<List<AvaliacaoDto>> ObterTodos()
+        public async Task<List<AvaliacaoDto>> ObterAvaliacoesPorUsuarioId(int usuarioId)
         {
-            throw new NotImplementedException();
+            if (usuarioId <= 0)
+                throw new ArgumentException("UsuarioId inválido.");
+
+            return await _avaliacaoService.ObterAvaliacoesPorUsuarioId(usuarioId);
         }
+
+        public async Task<AvaliacaoDto> ObterPorId(int id)
+        {
+            if (id <= 0)
+                throw new ArgumentException("Id inválido.");
+
+            return await _avaliacaoService.ObterPorId(id);
+        }
+
+        public async Task<List<AvaliacaoDto>> ObterTodos()
+        {
+            return await _avaliacaoService.ObterTodos();
+        }
+
     }
 }

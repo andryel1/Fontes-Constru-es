@@ -8,21 +8,13 @@ public class ItemCarrinhoService(IItemCarrinhoService itemCarrinhoService) : IIt
 {
     private readonly IItemCarrinhoService _itemCarrinhoService = itemCarrinhoService;
 
-    public async Task<ItemCarrinhoDto> ObterItemCarrinhoPorId(Guid id)
-    {
-        return await _itemCarrinhoService.ObterItemCarrinhoPorId(id);
-    }
-
-    public async Task<ItemCarrinhoDto> ObterItemCarrinhoPorIdProduto(Guid idProduto)
-    {
-        return await _itemCarrinhoService.ObterItemCarrinhoPorIdProduto(idProduto);
-    }
+    
 
     public async Task<ItemCarrinhoDto> Adicionar(ItemCarrinhoDto dto)
     {
         if (dto.Produto == null)
         {
-            throw new KeyNotFoundException("Produto deve ser adicionado.");
+            throw new ArgumentException("Produto deve ser adicionado.");
         }
         return await _itemCarrinhoService.Adicionar(dto);
     }
@@ -31,7 +23,7 @@ public class ItemCarrinhoService(IItemCarrinhoService itemCarrinhoService) : IIt
     {
     if (dto.ProdutoId <= 0)
     {
-        throw new KeyNotFoundException("ProdutoId deve ser maior que 0.");
+        throw new ArgumentException("ProdutoId deve ser maior que 0.");
     }
     return await _itemCarrinhoService.Atualizar(dto);
     }
@@ -40,7 +32,7 @@ public class ItemCarrinhoService(IItemCarrinhoService itemCarrinhoService) : IIt
     {
         if (id <= 0)
         {
-            throw new KeyNotFoundException("O id só pode ser maior que 0.");
+            throw new ArgumentException("O id só pode ser maior que 0.");
         }
         return await _itemCarrinhoService.Deletar(id);
     }
@@ -49,7 +41,7 @@ public class ItemCarrinhoService(IItemCarrinhoService itemCarrinhoService) : IIt
     {
         if (id <= 0)
         {
-            throw new KeyNotFoundException("O id só pode ser maior que 0.");
+            throw new ArgumentException("O id só pode ser maior que 0.");
         }
         return await _itemCarrinhoService.ObterPorId(id);
     }
@@ -58,4 +50,13 @@ public class ItemCarrinhoService(IItemCarrinhoService itemCarrinhoService) : IIt
     {
         return await _itemCarrinhoService.ObterTodos();
     }
+
+   public async Task<ItemCarrinhoDto> ObterItemCarrinhoPorIdProduto(int idProduto)
+{
+    if (idProduto <= 0)
+    {
+        throw new ArgumentException("O idProduto deve ser maior que 0.");
+    }
+    return await _itemCarrinhoService.ObterItemCarrinhoPorIdProduto(idProduto);
+}
 }

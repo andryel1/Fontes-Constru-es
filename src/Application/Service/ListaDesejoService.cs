@@ -1,6 +1,7 @@
 using Application.Dtos;
 using Application.Interfaces.Repository;
 using Application.Interfaces.Service;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Application.Service;
 
@@ -10,18 +11,26 @@ public class ListaDesejoService(IListaDesejoRepository listaDesejoService) : ILi
 
     public async Task<ListaDesejoDto> ObterListaDesejoPorUsuario(Guid usuarioId)
     {
+        if (usuarioId == Guid.Empty)
+        {
+            throw new ArgumentException("Parâmetro 'usuarioId' está vazio.");
+        }
         return await _listaDesejoRepository.ObterListaDesejoPorUsuario(usuarioId);
     }
-
-    public Task<bool> VerificaSeProdutoJaEstaNaLista(Guid usuarioId, Guid produtoId)
-    {
-        throw new NotImplementedException();
+public async Task<bool> VerificaSeProdutoJaEstaNaLista(Guid usuarioId, Guid produtoId)
+{
+    if (usuarioId == Guid.Empty)
+    {   
+        throw new ArgumentException("Parâmetro 'usuarioId' está vazio.");
     }
 
-    public Task<bool> RemoverProdutoDaLista(Guid usuarioId, Guid produtoId)
+    if (produtoId == Guid.Empty)
     {
-        throw new NotImplementedException();
+        throw new ArgumentException("Parâmetro 'produtoId' está vazio.");
     }
+
+    return await _listaDesejoRepository.VerificaSeProdutoJaEstaNaLista(usuarioId, produtoId);
+}
 
     public async Task<ListaDesejoDto> Adicionar(ListaDesejoDto dto)
     {
@@ -30,7 +39,7 @@ public class ListaDesejoService(IListaDesejoRepository listaDesejoService) : ILi
 
         if (dto.Produtos == null )
         {
-            throw new KeyNotFoundException("Você deve adicionar um produto");        
+            throw new ArgumentException("Você deve adicionar um produto");        
         }
 
         return await _listaDesejoRepository.Adicionar(dto);
@@ -45,19 +54,19 @@ public class ListaDesejoService(IListaDesejoRepository listaDesejoService) : ILi
     {
         if (id <= 0)
         {
-            throw new KeyNotFoundException("O Id tem que ser maior que 0.");
+            throw new ArgumentException("O Id tem que ser maior que 0.");
         }
         return await _listaDesejoRepository.Deletar(id);
     }
 
-    public Task<ListaDesejoDto> ObterPorId(int id)
+    public async Task<ListaDesejoDto> ObterPorId(int id)
     {
-        throw new NotImplementedException();
+        return await _listaDesejoRepository.ObterPorId(id);
     }
 
-    public Task<List<ListaDesejoDto>> ObterTodos()
+    public async Task<List<ListaDesejoDto>> ObterTodos()
     {
-        throw new NotImplementedException();
+        return await _listaDesejoRepository.ObterTodos();
     }
 }
 

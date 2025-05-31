@@ -2,7 +2,7 @@ using Application.Interfaces.Repository;
 
 namespace Application.Interfaces.Service
 {
-    public interface IItemCarrinhoService  : IItemCarrinhoRepository
+    public interface IItemCarrinhoService : IItemCarrinhoRepository
     {
     }
 }

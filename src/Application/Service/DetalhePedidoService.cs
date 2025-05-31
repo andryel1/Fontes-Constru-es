@@ -7,54 +7,70 @@ namespace Application.Service
     {
         private readonly IDetalhePedidoService _detalhePedido = detalhePedido;
 
-        public Task<DescontoDto> ObterDescontoPorId(int id)
+        public async Task<DescontoDto> ObterDescontoPorId(int id)
         {
-            throw new NotImplementedException();
+            if (id <= 0)
+                throw new ArgumentException("Id deve ser maior que zero.", nameof(id));
+
+            return await _detalhePedido.ObterDescontoPorId(id);
         }
 
-        public Task<IEnumerable<DescontoDto>> ObterDescontosPorProdutoId(int produtoId)
+        public async Task<IEnumerable<DescontoDto>> ObterDescontosAtivos()
         {
-            throw new NotImplementedException();
+            return await _detalhePedido.ObterDescontosAtivos();
         }
 
-        public Task<IEnumerable<DescontoDto>> ObterDescontosAtivos()
+        public async Task<IEnumerable<DescontoDto>> ObterDescontosInativos()
         {
-            throw new NotImplementedException();
+            return await _detalhePedido.ObterDescontosInativos();
         }
 
-        public Task<IEnumerable<DescontoDto>> ObterDescontosInativos()
+        public async Task<IEnumerable<DescontoDto>> ObterDescontosExpirados()
         {
-            throw new NotImplementedException();
+            return await _detalhePedido.ObterDescontosExpirados();
         }
 
-        public Task<IEnumerable<DescontoDto>> ObterDescontosExpirados()
+        public async Task<DescontoDto> Adicionar(DescontoDto dto)
         {
-            throw new NotImplementedException();
+            if (dto == null)
+                throw new ArgumentNullException(nameof(dto), "O DTO não pode ser nulo.");
+
+            if (string.IsNullOrWhiteSpace(dto.Nome))
+                throw new ArgumentException("O nome do desconto é obrigatório.");
+
+            return await _detalhePedido.Adicionar(dto);
         }
 
-        public Task<DescontoDto> Adicionar(DescontoDto dto)
+        public async Task<DescontoDto> Atualizar(DescontoDto dto)
         {
-            throw new NotImplementedException();
+            if (dto == null)
+                throw new ArgumentNullException(nameof(dto), "O DTO não pode ser nulo.");
+
+            if (dto.ProdutoId <= 0)
+                throw new ArgumentException("Id deve ser maior que zero.");
+
+            return await _detalhePedido.Atualizar(dto);
         }
 
-        public Task<DescontoDto> Atualizar(DescontoDto dto)
+        public async Task<bool> Deletar(int id)
         {
-            throw new NotImplementedException();
+            if (id <= 0)
+                throw new ArgumentException("Id deve ser maior que zero.", nameof(id));
+
+            return await _detalhePedido.Deletar(id);
         }
 
-        public Task<bool> Deletar(int id)
+        public async Task<DescontoDto> ObterPorId(int id)
         {
-            throw new NotImplementedException();
+            if (id <= 0)
+                throw new ArgumentException("Id deve ser maior que zero.", nameof(id));
+
+            return await _detalhePedido.ObterPorId(id);
         }
 
-        public Task<DescontoDto> ObterPorId(int id)
+        public async Task<List<DescontoDto>> ObterTodos()
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<DescontoDto>> ObterTodos()
-        {
-            throw new NotImplementedException();
+            return await _detalhePedido.ObterTodos();
         }
     }
 }
