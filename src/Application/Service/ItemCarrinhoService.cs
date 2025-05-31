@@ -20,21 +20,37 @@ public class ItemCarrinhoService(IItemCarrinhoService itemCarrinhoService) : IIt
 
     public async Task<ItemCarrinhoDto> Adicionar(ItemCarrinhoDto dto)
     {
+        if (dto.Produto == null)
+        {
+            throw new KeyNotFoundException("Produto deve ser adicionado.");
+        }
         return await _itemCarrinhoService.Adicionar(dto);
     }
 
     public async Task<ItemCarrinhoDto> Atualizar(ItemCarrinhoDto dto)
     {
-        return await _itemCarrinhoService.Atualizar(dto);
+    if (dto.ProdutoId <= 0)
+    {
+        throw new KeyNotFoundException("ProdutoId deve ser maior que 0.");
+    }
+    return await _itemCarrinhoService.Atualizar(dto);
     }
 
     public async Task<bool> Deletar(int id)
     {
+        if (id <= 0)
+        {
+            throw new KeyNotFoundException("O id só pode ser maior que 0.");
+        }
         return await _itemCarrinhoService.Deletar(id);
     }
 
     public async Task<ItemCarrinhoDto> ObterPorId(int id)
     {
+        if (id <= 0)
+        {
+            throw new KeyNotFoundException("O id só pode ser maior que 0.");
+        }
         return await _itemCarrinhoService.ObterPorId(id);
     }
 
