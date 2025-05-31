@@ -1,48 +1,30 @@
-🛒 Plataforma de E-commerce para Pequenos Negócios
-Este projeto é uma plataforma de e-commerce criada especialmente para pequenos empreendedores que ainda não têm um site próprio e querem começar a vender online de forma simples, acessível e com acompanhamento de dados.
+# 🛒 Plataforma de E-commerce para Pequenos Negócios
 
-🧭 Visão Geral
-Com o crescimento das vendas pela internet, é essencial que até os pequenos negócios tenham presença digital. No entanto, muitos ainda enfrentam dificuldades por não terem estrutura ou ferramentas acessíveis para isso.
+Esta é uma plataforma de e-commerce desenvolvida para ajudar pequenos negócios a venderem online de forma simples e acessível.
 
-Essa plataforma resolve esse problema, permitindo que qualquer loja possa:
+## 🚀 Objetivo
 
-Criar sua própria vitrine online
+Permitir que empreendedores criem sua própria loja virtual e acompanhem suas vendas com facilidade.
 
-Vender produtos diretamente pela internet
+## 🔧 Funcionalidades
 
-Acompanhar vendas, produtos mais vendidos, conversões e comportamento dos clientes
+- Criação de lojas online
+- Visualização de vendas e conversões
+- Produtos mais vendidos
+- Análise do comportamento dos clientes
+- Filtros por categoria, produto e canal de marketing
+- Recomendações automáticas baseadas em dados
 
-Ter uma interface simples e intuitiva, pensada para quem não tem experiência técnica
+## ❗ Problema Resolvido
 
-❗ Problema
-Pequenos negócios costumam depender apenas das vendas físicas e não têm alcance digital. Isso dificulta o crescimento e o contato com novos clientes.
+Pequenos negócios têm dificuldade para escalar e alcançar clientes, por dependerem apenas de lojas físicas. Esta plataforma ajuda a mudar isso.
 
-🎯 Objetivo
-Oferecer uma solução completa de e-commerce que permita:
+## 👥 Público-Alvo
 
-Criar lojas online personalizadas
+- Pequenos comércios
+- Empreendedores sem site próprio
+- Órgãos públicos que apoiam o comércio local
 
-Integrar com meios de pagamento e entrega
+## 📌 Justificativa
 
-Acompanhar dados e métricas de desempenho
-
-Melhorar a tomada de decisão com base em dados reais
-
-✅ Funcionalidades
-Interface amigável para o vendedor e para o cliente
-
-Painel com dados de vendas, produtos mais buscados e canais de marketing mais eficientes
-
-Filtros por categoria, produto e canal de aquisição
-
-Alertas e recomendações automáticas com base nos dados da loja
-
-📌 Justificativa
-No cenário atual, estar online não é mais uma opção, mas uma necessidade. Essa plataforma ajuda os pequenos empreendedores a vencerem essa barreira, começando de forma simples e com ferramentas úteis para crescer com segurança e estratégia.
-
-👥 Público-Alvo
-Pequenos comércios que ainda não vendem online
-
-Empreendedores iniciantes que querem começar no digital
-
-Órgãos públicos que apoiam a digitalização do comércio local
+Com o crescimento do comércio digital, é essencial ter presença online. Esta plataforma facilita o início dessa jornada.
