@@ -55,7 +55,7 @@ namespace Application.Service
         public async Task<bool> Deletar(int id)
         {
             if (id <= 0)
-                throw new ArgumentException("Id deve ser maior que zero.", nameof(id));
+                throw new ArgumentException("Id deve ser maior que zero.");
 
             return await _detalhePedido.Deletar(id);
         }
@@ -63,7 +63,7 @@ namespace Application.Service
         public async Task<DescontoDto> ObterPorId(int id)
         {
             if (id <= 0)
-                throw new ArgumentException("Id deve ser maior que zero.", nameof(id));
+                throw new ArgumentException("Id deve ser maior que zero.");
 
             return await _detalhePedido.ObterPorId(id);
         }

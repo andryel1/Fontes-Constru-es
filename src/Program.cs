@@ -2,7 +2,7 @@ using Application.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MyApp.Resources; // <- Assumindo que MessagesHelper.cs está em Resources
+using Resources;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);

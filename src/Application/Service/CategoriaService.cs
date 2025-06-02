@@ -28,7 +28,14 @@ namespace Application.Service
 
         public async Task<bool> AdicionarProdutoACategoria(int categoriaId, int produtoId)
         {
-
+            if (categoriaId <= 0)
+            {
+            throw new ArgumentException("O categoriaId deve ser um número positivo.");
+            }
+            if (produtoId <= 0)
+            {
+            throw new ArgumentException("O produtoId deve ser um número positivo.");
+            }
             return await _categoriaService.AdicionarProdutoACategoria(categoriaId, produtoId);
         }
 

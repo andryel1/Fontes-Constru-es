@@ -10,11 +10,23 @@ public class TagService(ITagService tagService) : ITagService
 
     public async Task<TagDto> Adicionar(TagDto dto)
     {
+        if (string.IsNullOrEmpty(dto.Nome))
+        {
+            throw new ArgumentException("O nome não pode ser ");
+        }
+        if (dto.Produtos == null)
+        {
+            throw new ArgumentException("Produto é obrigatório.");
+        }
         return await _tagService.Adicionar(dto);
     }
 
     public async Task<TagDto> Atualizar(TagDto dto)
     {
+        if (string.IsNullOrEmpty(dto.Nome))
+        {
+            throw new ArgumentException("Nome é obrigatório");
+        }
         return await _tagService.Atualizar(dto);
     }
 
@@ -31,20 +43,5 @@ public class TagService(ITagService tagService) : ITagService
     public async Task<List<TagDto>> ObterTodos()
     {
         return await _tagService.ObterTodos();
-    }
-
-    public async Task<TagDto> GetTagById(int id)
-    {
-        return await _tagService.GetTagById(id);
-    }
-
-    public async Task<List<TagDto>> GetTagsByProdutoId(int produtoId)
-    {
-        return await _tagService.GetTagsByProdutoId(produtoId);
-    }
-
-    public async Task<List<TagDto>> GetTagsByCategoriaId(int categoriaId)
-    {
-        return await _tagService.GetTagsByCategoriaId(categoriaId);
     }
 }
