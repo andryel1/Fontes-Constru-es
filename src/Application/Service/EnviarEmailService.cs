@@ -1,6 +1,5 @@
 using Application.Interfaces.Service;
 using Application.Dtos;
-using MailKit;
 using MimeKit;
 using Application.Interfaces.Repository;
 

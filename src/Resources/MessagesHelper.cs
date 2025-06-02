@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Resources;
 
-namespace Application.Resources;
+namespace Resources;
 
 public static class MessagesHelper
 {
