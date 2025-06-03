@@ -39,9 +39,14 @@ namespace Application.Service
         {
             return await _descontoService.Atualizar(dto);
         }
-
         public async Task<bool> Deletar(int id)
         {
+            if (id <= 0)
+            {
+            throw new ArgumentException("O Id não pode ser menor ou igual a zero.");
+            }
+
+            var desconto = await _descontoService.ObterDescontoPorId(id) ?? throw new KeyNotFoundException($"Desconto com Id {id} não encontrado.");
             return await _descontoService.Deletar(id);
         }
 
