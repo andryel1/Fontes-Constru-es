@@ -10,18 +10,17 @@ namespace Application.Interfaces.Validacao
         {
             RuleFor(x => x.Id)
                 .GreaterThan(0)
-                .WithMessage(MessagesHelper.ValorDeveSerMaiorQueZero)
-                .NotEmpty()
-                .NotNull()
-                .WithMessage(MessagesHelper.IdObrigatorio);
+                .WithMessage(MessagesHelper.ValorDeveSerMaiorQueZero);
 
             RuleFor(x => x.Nome)
                 .NotEmpty()
-                .WithMessage(MessagesHelper.DescricaoObrigatoria);
-            RuleFor(x => x.Nome)
-            .NotEmpty()
-            .WithMessage(MessagesHelper.DescricaoMax200);            
-           
+                .WithMessage(MessagesHelper.DescricaoObrigatoria)
+                .MaximumLength(200)
+                .WithMessage(MessagesHelper.DescricaoMax200);
+
+            RuleFor(x => x.Produtos)
+                .NotNull()
+                .WithMessage(MessagesHelper.ValorDeveSerMaiorQueZero);
         }
     }
 }

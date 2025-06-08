@@ -1,12 +1,14 @@
 using Application.Interfaces.Service;
 using Application.Dtos;
+using Application.Interfaces.Validacao;
 
 namespace Application.Service;
 
 // Implements all required interfaces
-public class TagService(ITagService tagService) : ITagService
+public class TagService(ITagService tagService, TagValidator tagValidator) : ITagService
 {
     private readonly ITagService _tagService = tagService;
+    private readonly TagValidator _tagValidator = tagValidator;
 
     public async Task<TagDto> Adicionar(TagDto dto)
     {
