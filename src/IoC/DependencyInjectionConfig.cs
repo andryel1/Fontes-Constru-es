@@ -1,6 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Application.Interfaces.Service;
 using Application.Service;
+using FluentValidation;
+using Application.Dtos;
+using Application.Interfaces.Validacao;
 
 namespace IoC;
 
@@ -25,6 +28,9 @@ public static class DependencyInjectionConfig
         services.AddScoped<IImagemService, ImagemService>();    
         services.AddScoped<IEnviarEmailService, EnviarEmailService>();
         services.AddScoped<IItemCarrinhoService, ItemCarrinhoService>();
+
+        //Referência de  Validações
+        services.AddScoped<IValidator<TagDto>, TagValidator>();
 
         return services;
     }

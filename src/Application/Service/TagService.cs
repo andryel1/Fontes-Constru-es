@@ -1,12 +1,13 @@
 using Application.Interfaces.Service;
 using Application.Dtos;
+using Application.Interfaces.Validacao;
 
 namespace Application.Service;
 
-// Implements all required interfaces
-public class TagService(ITagService tagService) : ITagService
-{
-    private readonly ITagService _tagService = tagService;
+    public class TagService(ITagService tagService) :  ITagService
+    {
+        private readonly ITagService _tagService = tagService;
+
 
     public async Task<TagDto> Adicionar(TagDto dto)
     {
@@ -16,9 +17,9 @@ public class TagService(ITagService tagService) : ITagService
         }
         if (dto.Produtos == null)
         {
-            throw new ArgumentException("Produto é obrigatório.");
+            throw new ArgumentException("Produtos não podem ser nulos");
         }
-        return await _tagService.Adicionar(dto);
+         return await _tagService.Adicionar(dto);
     }
 
     public async Task<TagDto> Atualizar(TagDto dto)
