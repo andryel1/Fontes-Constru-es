@@ -12,7 +12,7 @@ public static class MessagesHelper
     resourceManager.GetString("ValorDeveSerMaiorQueZero", CultureInfo.CurrentUICulture) ?? "[ValorDeveSerMaiorQueZero]";
 
     public static string DescricaoObrigatoria =>
-        resourceManager.GetString("DescricaoObrigatoria", CultureInfo.CurrentUICulture) ?? "[DescricaoObrigatoria]";
+    resourceManager.GetString("Descricao Obrigatoria", CultureInfo.CurrentUICulture) ?? "[DescricaoObrigatoria]";
 
     public static string DescricaoMax200 =>
      resourceManager.GetString("DescricaoMax200", CultureInfo.CurrentUICulture) ?? "[DescricaoMax200]";
