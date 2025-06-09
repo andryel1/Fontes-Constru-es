@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="NomeObrigatorio">
+    <value>O nome do produto é obrigatório.</value>
+  </data>
+  <data name="PrecoInvalido">
+    <value>O preço deve ser maior que zero.</value>
+  </data>
+  <data name="DescricaoCurta">
+    <value>A descrição deve ter pelo menos 10 caracteres.</value>
+  </data>
+</root>
