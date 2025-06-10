@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="ValorDeveSerMaiorQueZero">
+  <value>The discount value must be greater than zero.</value>
+</data>
+<data name="DescricaoObrigatoria">
+  <value>The discount description is required.</value>
+</data>
+<data name="DescricaoMax200">
+  <value>The discount description must be at most 200 characters long.</value>
+</data>
+<data name="IdObrigatorio">
+  <value>The ID is required.</value>
+</data>
+
+</root>

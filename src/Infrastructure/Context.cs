@@ -1,11 +1,7 @@
 ﻿namespace Infrastructure
 {
-    public class Context : DbContext
+    public class Context(DbContextOptions<Context> options) : DbContext(options)
     {
-        // Construtor que recebe as opções do contexto
-        public Context(DbContextOptions<Context> options) : base(options)
-        {
-        }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
 
