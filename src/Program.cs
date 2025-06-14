@@ -22,6 +22,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+services.AddApplicationServices(connectionString);
 
 // HTTPS
 app.UseHttpsRedirection();
