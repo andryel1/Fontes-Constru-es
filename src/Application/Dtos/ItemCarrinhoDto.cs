@@ -1,14 +1,13 @@
 using Ecommerce.Domain.Entities;
 
-namespace Application.Dtos{
-
-    public class ItemCarrinhoDto 
-    {
-        public int Quantidade { get; set; }
-        public required double Preco { get; set; }
-        public required Produto Produto { get; set; } 
-        public required Carrinho Carrinho { get; set; } 
-        public int CarrinhoId { get; set; } 
-        public int ProdutoId { get; set; } 
-    }
+namespace Application.Dtos
+{
+    public record ItemCarrinhoDto(
+        int Quantidade,
+        required double Preco,
+        required Produto Produto,
+        required Carrinho Carrinho,
+        int CarrinhoId,
+        int ProdutoId
+    );
 }

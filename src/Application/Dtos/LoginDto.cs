@@ -1,6 +1,5 @@
 namespace Application.Dtos;
-public class LoginDto
-{
-    public required string Email { get; set; }
-    public required string Password { get; set; }
-}
+public record LoginDto(
+    required string Email,
+    required string Password
+);
