@@ -3,13 +3,15 @@ using Application.Interfaces.Service;
 using Application.Service;
 using FluentValidation;
 using Application.Dtos;
+using Microsoft.EntityFrameworkCore;
 using Application.Interfaces.Validacao;
+using Infrastructure;
 
 namespace IoC;
 
 public static class DependencyInjectionConfig
 {
-    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+    public static IServiceCollection AddApplicationServices(this IServiceCollection services, string connectionString)
     {
         services.AddScoped<IPedidoService, PedidoService>();
         services.AddScoped<IPagamentoService, PagamentoService>();
@@ -27,11 +29,14 @@ public static class DependencyInjectionConfig
         services.AddScoped<IDetalhePedidoService, DetalhePedidoService>();
         services.AddScoped<IImagemService, ImagemService>();    
         services.AddScoped<IEnviarEmailService, EnviarEmailService>();
-        services.AddScoped<IItemCarrinhoService, ItemCarrinhoService>();
 
         //Referência de  Validações
         services.AddScoped<IValidator<TagDto>, TagValidator>();
 
-        return services;
+        
+
+    return services;
+
+    
     }
 }
