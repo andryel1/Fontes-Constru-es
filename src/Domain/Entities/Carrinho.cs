@@ -6,6 +6,6 @@ namespace Ecommerce.Domain.Entities;
         public double PrecoTotal { get; set; }
         public Cliente Cliente { get; set; } = null!;
         public int ClienteId { get; set; }
-        public Pedido Pedido { get; set; } = null!;
+        public Pedido Pedido { get; set; } 
         public int PedidoId { get; set; }
     }
