@@ -1,8 +1,8 @@
 using FluentValidation;
-using Application.Interfaces.Validacao;
 using Application.Dtos;
 using Resources.Messages;
 
+namespace Application.Interfaces.Validacao;
 public class CarrinhoValidator : AbstractValidator<CarrinhoDto>
 {
     public CarrinhoValidator()

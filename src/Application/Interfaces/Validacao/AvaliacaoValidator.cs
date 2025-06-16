@@ -2,6 +2,7 @@ using Application.Dtos;
 using FluentValidation;
 using Resources.Messages;
 
+namespace Application.Interfaces.Validacao;
 public class AvaliacaoValidator : AbstractValidator<AvaliacaoDto>
 {
     public AvaliacaoValidator()
