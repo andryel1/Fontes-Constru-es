@@ -1,10 +1,12 @@
+using System;
 using Ecommerce.Domain.Entities;
 
 namespace Application.Dtos;
 public record AdministradorDto(
-    required string UserNome,
-    required string Password,
-    required string Email,
+    int Id,
+    string UserNome,
+    string Password,
+    string Email,
     DateTime DataNascimento,
-    required Usuario Usuarios
+    Usuario Usuarios
 );

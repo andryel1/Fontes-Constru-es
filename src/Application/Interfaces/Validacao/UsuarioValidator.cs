@@ -1,8 +1,8 @@
 using Resources.Messages;
 using Application.Dtos;
 using FluentValidation;
-using Ecommerce.Domain.Entities;
 
+namespace Application.Interfaces.Validacao;
 public class UsuarioValidator : AbstractValidator<AvaliacaoDto>
 {
     public UsuarioValidator()

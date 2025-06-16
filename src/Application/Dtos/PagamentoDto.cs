@@ -3,11 +3,12 @@ using Ecommerce.Domain.Entities;
 namespace Application.Dtos;
 
 public record PagamentoDto(
+    int Id,
     double Valor,
-    required string TipoPagamento,
-    required string Status,
+    string TipoPagamento,
+    string Status,
     DateTime DataPagamento,
-    required Parcelamento Parcelamento,
-    required int ParcelamentoId,
-    required List<Pedido> Pedidos
+    Parcelamento Parcelamento,
+    int ParcelamentoId,
+    List<Pedido> Pedidos
 );

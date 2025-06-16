@@ -1,17 +1,21 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿﻿using Microsoft.EntityFrameworkCore;
 using Ecommerce.Domain.Entities;
 using Infrastructure.Configurations;
 
 namespace Infrastructure
 {
-    public class Context(DbContextOptions<Context> options) : DbContext(options), DbContext
+    public class Context : DbContext
     {
+        public Context(DbContextOptions<Context> options) : base(options)
+        {
+        }
+
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<Avaliacao> Avaliacoes { get; set; }
         public DbSet<Carrinho> Carrinhos { get; set; }
         public DbSet<ItemCarrinho> ItensCarrinho { get; set; }
-        public DbSet<ListaDesejo> ListaDesejo{ get; set; }
+        public DbSet<ListaDesejo> ListasDesejo { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

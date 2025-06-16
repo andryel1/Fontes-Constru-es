@@ -7,6 +7,7 @@ namespace Application.Service
     {
         private readonly IAdministradorService _administradorService = administradorService;
 
+
         public async Task<AdministradorDto> Adicionar(AdministradorDto dto)
         {
             return await _administradorService.Adicionar(dto);

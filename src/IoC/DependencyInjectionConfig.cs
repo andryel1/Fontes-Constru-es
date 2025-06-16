@@ -2,16 +2,16 @@
 using Application.Interfaces.Service;
 using Application.Service;
 using FluentValidation;
-using Application.Dtos;
 using Microsoft.EntityFrameworkCore;
 using Application.Interfaces.Validacao;
-using Infrastructure;
+using Application.Dtos;
+
 
 namespace IoC;
 
 public static class DependencyInjectionConfig
 {
-    public static IServiceCollection AddApplicationServices(this IServiceCollection services, string connectionString)
+    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
         services.AddScoped<IPedidoService, PedidoService>();
         services.AddScoped<IPagamentoService, PagamentoService>();
@@ -32,14 +32,14 @@ public static class DependencyInjectionConfig
 
         //Referência de  Validações
         services.AddScoped<IValidator<TagDto>, TagValidator>();
-        services.AddScoped<IValidator<UsuarioDto>, UsuarioValidator>();
+        // services.AddScoped<IValidator<UsuarioDto>, UsuarioValidator>();
         services.AddScoped<IValidator<AdministradorDto>, AdministradorValidator>();
         services.AddScoped<IValidator<AvaliacaoDto>, AvaliacaoValidator>();
         services.AddScoped<IValidator<CarrinhoDto>, CarrinhoValidator>();
         services.AddScoped<IValidator<CategoriaDto>, CategoriaValidator>();
         services.AddScoped<IValidator<ClienteDto>, ClienteValidator>();
         services.AddScoped<IValidator<DescontoDto>, DescontoValidator>();
-        services.AddScoped<IValidator<DetalhamentoPedidoDto>, DetalhamentoPedidoValidator>();
+        // services.AddScoped<IValidator<DetalhamentoPedidoDto>, DetalhamentoPedidoValidator>();
         services.AddScoped<IValidator<ImagemDto>, ImagemValidator>();
         services.AddScoped<IValidator<InformacoesEnvioDto>, InformacoesEnvioValidator>();
         services.AddScoped<IValidator<ItemCarrinhoDto>, ItemCarrinhoValidator>();
@@ -48,9 +48,7 @@ public static class DependencyInjectionConfig
         services.AddScoped<IValidator<PedidoDto>, PedidoValidator>();
         services.AddScoped<IValidator<ProdutoDto>, ProdutoValidator>();
 
-        services.AddDbContext<Context>(options =>
-            options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
-
+    
         return services;
     }
 }

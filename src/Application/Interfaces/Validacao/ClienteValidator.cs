@@ -14,13 +14,13 @@ public class ClienteValidator : AbstractValidator<ClienteDto>
 
         RuleFor(x => x.Cpf)
             .NotEmpty().WithMessage(ClienteMessages.CpfObrigatorio)
-            .Length(11).WithMessage(ClienteMessages.CpfInvalido);
+            .Must(cpf => cpf.ToString().Length == 11).WithMessage(ClienteMessages.CpfInvalido);
 
         RuleFor(x => x.Email)
             .NotEmpty().WithMessage(ClienteMessages.EmailObrigatorio)
             .EmailAddress().WithMessage(ClienteMessages.EmailInvalido);
 
-        RuleFor(x => x.Senha)
+        RuleFor(x => x.Password)
             .NotEmpty().WithMessage(ClienteMessages.SenhaObrigatoria)
             .MinimumLength(8).WithMessage(ClienteMessages.SenhaMin8);
     }

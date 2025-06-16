@@ -10,12 +10,6 @@ namespace Application.Interfaces.Validacao
     {
         public TagValidator()
         {
-            RuleFor(tag => tag.Nome)
-                .NotEmpty().WithMessage(TagMessages.NomeObrigatorio)
-                .MaximumLength(50).WithMessage(TagMessages.NomeMax50);
-
-            RuleFor(tag => tag.Produtos)
-                .NotEmpty().WithMessage(TagMessages.ProdutosObrigatorio);
         }
     }
 }

@@ -4,7 +4,7 @@ using Application.Interfaces.Repository;
 
 namespace Application.Interfaces.Repository
 {
-    public interface IUsuarioRepository 
+    public interface IUsuarioRepository : IInterfaceBaseRepository<UsuarioDto, Usuario>
     {
 
     }

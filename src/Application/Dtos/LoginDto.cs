@@ -1,5 +1,6 @@
 namespace Application.Dtos;
 public record LoginDto(
-    required string Email,
-    required string Password
+    int Id,
+    string Email,
+    string Password
 );

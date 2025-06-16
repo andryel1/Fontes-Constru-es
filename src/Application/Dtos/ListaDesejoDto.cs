@@ -1,4 +1,6 @@
 using Ecommerce.Domain.Entities;
+using System.Collections.Generic;
+using System;
 
 namespace Application.Dtos;
 

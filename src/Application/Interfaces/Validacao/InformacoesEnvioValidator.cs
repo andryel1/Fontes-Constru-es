@@ -1,8 +1,9 @@
 using Application.Dtos;
-using Resources;
+
 using FluentValidation;
 using Resources.Messages;
 
+namespace Application.Interfaces.Validacao;
 public class InformacoesEnvioValidator : AbstractValidator<InformacoesEnvioDto>
 {
     public InformacoesEnvioValidator()

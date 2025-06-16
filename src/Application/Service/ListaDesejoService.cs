@@ -1,7 +1,6 @@
 using Application.Dtos;
 using Application.Interfaces.Repository;
 using Application.Interfaces.Service;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Application.Service;
 
@@ -35,7 +34,7 @@ public async Task<bool> VerificaSeProdutoJaEstaNaLista(Guid usuarioId, Guid prod
     public async Task<ListaDesejoDto> Adicionar(ListaDesejoDto dto)
     {
         if (dto.DataAdicionada == default)
-            dto.DataAdicionada = DateTime.UtcNow;
+            // dto.DataAdicionada = DateTime.UtcNow;
 
         if (dto.Produtos == null )
         {

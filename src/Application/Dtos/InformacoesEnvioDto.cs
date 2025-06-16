@@ -3,6 +3,8 @@ using Ecommerce.Domain.Entities;
 namespace Application.Dtos
 {
     public record InformacoesEnvioDto(
+
+        int Id,
         string Endereco,
         string Cidade,
         string Estado,

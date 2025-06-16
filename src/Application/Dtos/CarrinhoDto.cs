@@ -2,8 +2,9 @@ using Ecommerce.Domain.Entities;
 
 namespace Application.Dtos;
 public record CarrinhoDto(
+    int Id,
     DateTime DataCriacao,
-    required List<ItemCarrinho> Itens,
+    List<ItemCarrinho> Itens,
     double PrecoTotal,
     int ClienteId,
     int PedidoId
