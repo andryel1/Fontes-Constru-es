@@ -18,8 +18,8 @@ namespace Infrastructure.Configurations
             builder.HasMany(ld => ld.Produtos)
                    .WithMany();
 
-            builder.HasOne(ld => ld.Clientes)
-                   .WithMany()
+            builder.HasOne(ld => ld.Cliente)
+                   .WithMany(ld => ld.ListaDesejo)
                    .HasForeignKey(ld => ld.ClienteId)
                    .IsRequired();
         }
