@@ -3,7 +3,7 @@ using Ecommerce.Domain.Entities;
 
 namespace Application.Interfaces.Repository;
 
-public interface IClienteRepository 
+public interface IClienteRepository : IInterfaceBaseRepository<ClienteDto,Cliente>
 {
 
 }
