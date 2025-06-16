@@ -8,7 +8,7 @@ public class ImagemValidator : AbstractValidator<ImagemDto>
     {
         RuleFor(x => x.Url)
             .NotEmpty().WithMessage(ImagemMessages.UrlObrigatoria)
-            .Must(url => Uri.IsWellFormedUriString(url, UriKind.Absolute))
+            .Must((_, url) => Uri.IsWellFormedUriString(url.AbsoluteUri, UriKind.Absolute))
             .WithMessage(ImagemMessages.UrlInvalida);
 
         RuleFor(x => x.ProdutoId)
