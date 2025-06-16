@@ -1,6 +1,7 @@
 using FluentValidation;
 using Application.Dtos;
-using Resources;
+using Resources.Messages;
+using System.Text.RegularExpressions;
 
 namespace Application.Interfaces.Validacao
 {
@@ -10,17 +11,25 @@ namespace Application.Interfaces.Validacao
         {
             RuleFor(x => x.Id)
                 .GreaterThan(0)
-                .WithMessage(MessagesHelper.ValorDeveSerMaiorQueZero);
+                .WithMessage(TagMessages.ValorDeveSerMaiorQueZero);
 
             RuleFor(x => x.Nome)
                 .NotEmpty()
-                .WithMessage(MessagesHelper.DescricaoObrigatoria)
+                .WithMessage(TagMessages.DescricaoObrigatoria)
                 .MaximumLength(200)
-                .WithMessage(MessagesHelper.DescricaoMax200);
+                .WithMessage(TagMessages.DescricaoMax200)
+                .Must(nome => !string.IsNullOrWhiteSpace(nome))
+                .WithMessage(TagMessages.NomeNaoPodeSerApenasEspacos)
+                .Must(nome => nome == nome.Trim())
+                .WithMessage(TagMessages.NomeNaoDeveTerEspacosExtremos)
+                .Must(nome => !Regex.IsMatch(nome, @"[<>]"))
+                .WithMessage(TagMessages.NomeNaoPodeTerCaracteresEspeciais);
 
             RuleFor(x => x.Produtos)
                 .NotNull()
-                .WithMessage(MessagesHelper.ValorDeveSerMaiorQueZero);
+                .WithMessage(TagMessages.ListaProdutosNaoPodeSerNula)
+                .Must(produtos => produtos != null && produtos.Any())
+                .WithMessage(TagMessages.TagDeveTerProduto);
         }
     }
 }

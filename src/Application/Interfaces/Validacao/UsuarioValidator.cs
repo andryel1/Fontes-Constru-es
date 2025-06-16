@@ -1,4 +1,4 @@
-using Resources;
+using Resources.Messages;
 using Application.Dtos;
 using FluentValidation;
 using Ecommerce.Domain.Entities;

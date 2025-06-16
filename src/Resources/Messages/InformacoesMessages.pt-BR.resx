@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EnderecoObrigatorio" xml:space="preserve">
+    <value>O endereço é obrigatório.</value>
+  </data>
+  <data name="CidadeObrigatoria" xml:space="preserve">
+    <value>A cidade é obrigatória.</value>
+  </data>
+  <data name="EstadoObrigatorio" xml:space="preserve">
+    <value>O estado é obrigatório.</value>
+  </data>
+  <data name="CepObrigatorio" xml:space="preserve">
+    <value>O CEP é obrigatório.</value>
+  </data>
+  <data name="CepInvalido" xml:space="preserve">
+    <value>O CEP informado é inválido.</value>
+  </data>
+  <data name="NumeroObrigatorio" xml:space="preserve">
+    <value>O número é obrigatório.</value>
+  </data>
+  <data name="ComplementoObrigatorio" xml:space="preserve">
+    <value>O complemento é obrigatório.</value>
+  </data>
+  <data name="TelefoneObrigatorio" xml:space="preserve">
+    <value>O telefone é obrigatório.</value>
+  </data>
+  <data name="TelefoneInvalido" xml:space="preserve">
+    <value>O telefone informado é inválido.</value>
+  </data>
+  <data name="NomeDestinatarioObrigatorio" xml:space="preserve">
+    <value>O nome do destinatário é obrigatório.</value>
+  </data>
+  <data name="SobrenomeDestinatarioObrigatorio" xml:space="preserve">
+    <value>O sobrenome do destinatário é obrigatório.</value>
+  </data>
+  <data name="CpfDestinatarioObrigatorio" xml:space="preserve">
+    <value>O CPF do destinatário é obrigatório.</value>
+  </data>
+  <data name="CpfDestinatarioInvalido" xml:space="preserve">
+    <value>O CPF do destinatário informado é inválido.</value>
+  </data>
+  <data name="EmailDestinatarioObrigatorio" xml:space="preserve">
+    <value>O e-mail do destinatário é obrigatório.</value>
+  </data>
+  <data name="EmailDestinatarioInvalido" xml:space="preserve">
+    <value>O e-mail do destinatário informado é inválido.</value>
+  </data>
+  <data name="ProdutoObrigatorio" xml:space="preserve">
+    <value>O produto é obrigatório.</value>
+  </data>
+  <data name="ProdutoIdObrigatorio" xml:space="preserve">
+    <value>O ID do produto é obrigatório.</value>
+  </data>
+  <data name="DataEnvioObrigatoria" xml:space="preserve">
+    <value>A data de envio é obrigatória.</value>
+  </data>
+  <data name="DataEnvioPrevistaObrigatoria" xml:space="preserve">
+    <value>A data de envio prevista é obrigatória.</value>
+  </data>
+</root> 

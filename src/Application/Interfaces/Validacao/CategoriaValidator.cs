@@ -1,3 +1,18 @@
 using FluentValidation;
 using Application.Dtos;
-using Resources;
+using Resources.Messages;
+
+public class CategoriaValidator : AbstractValidator<CategoriaDto>
+{
+    public CategoriaValidator()
+    {
+        RuleFor(x => x.Nome)
+            .NotEmpty().WithMessage(CategoriaMessages.NomeObrigatorio)
+            .MaximumLength(100).WithMessage(CategoriaMessages.NomeMax100);
+
+        RuleFor(x => x.Produtos)
+            .NotNull().WithMessage(CategoriaMessages.ProdutosObrigatorio)
+            .Must(produtos => produtos != null && produtos.Any())
+            .WithMessage(CategoriaMessages.ProdutosMin1);
+    }
+}
