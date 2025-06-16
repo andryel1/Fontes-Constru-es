@@ -1,9 +1,11 @@
-using Application.Dtos;
 using Ecommerce.Domain.Entities;
+using Application.Dtos; 
 
-namespace Application.Interfaces.Repository;
 
-public interface IClienteRepository 
+namespace Application.Interfaces.Repository
 {
-
+    public interface IClienteRepository : IInterfaceBaseRepository<ClienteDto, Cliente>
+    {
+        
+    }
 }
