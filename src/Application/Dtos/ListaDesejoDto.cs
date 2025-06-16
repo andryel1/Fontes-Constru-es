@@ -4,6 +4,7 @@ namespace Application.Dtos;
 
 public record ListaDesejoDto(
     DateTime DataAdicionada,
-    required List<Produto> Produtos,
-    required Cliente Clientes
+    List<Produto> Produtos,
+    Cliente Clientes,
+    int ClienteId
 );
