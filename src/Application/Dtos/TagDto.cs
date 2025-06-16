@@ -1,9 +1,10 @@
 using Ecommerce.Domain.Entities;
+using System.Collections.Generic;
 
 namespace Application.Dtos;
 
 public record TagDto(
     int Id,
-    required string Nome,
-    required List<Produto> Produtos
+    string Nome,
+    List<Produto> Produtos
 );

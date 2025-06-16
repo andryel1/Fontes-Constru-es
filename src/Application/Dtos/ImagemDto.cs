@@ -1,7 +1,12 @@
-namespace Application.Dtos;
+using System;
 
-public record ImagemDto(
-    int Id,
-    required Uri Url,
-    int ProdutoId
-);
+namespace Application.Dtos
+{
+    public record ImagemDto
+    {
+        public int Id { get; init; }
+        public Uri? Url { get; init; }
+        public int ProdutoId { get; init; }
+        public ProdutoDto? Produto { get; init; }
+    }
+}

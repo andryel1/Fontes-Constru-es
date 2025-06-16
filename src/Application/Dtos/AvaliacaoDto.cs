@@ -3,7 +3,8 @@ using Ecommerce.Domain.Entities;
 namespace Application.Dtos;
 
 public record AvaliacaoDto(
+    int Id,
     int Nota,
-    required string Comentario,
+    string Comentario,
     DateTime Data
 );

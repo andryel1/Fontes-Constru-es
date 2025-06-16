@@ -2,11 +2,12 @@ using Ecommerce.Domain.Entities;
 
 namespace Application.Dtos;
 public record ClienteDto(
-    required string Nome,
-    required int Cpf,
-    required string Password,
-    required string Telefone,
-    required string Email,
+    int Id,
+    string Nome,
+    int Cpf,
+    string Password,
+    string Telefone,
+    string Email,
     DateTime DataNascimento,
     Usuario? Usuarios
 );

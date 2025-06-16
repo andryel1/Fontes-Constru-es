@@ -4,15 +4,15 @@ namespace Application.Dtos;
 
 public record ProdutoDto(
     int Id,
-    required string Nome,
-    required string Descricao,
-    required string Estoque,
-    required decimal Preco,
-    required List<Imagem> Imagens,
-    required List<Avaliacao> Avaliacoes,
-    required List<ItemCarrinho> ItensCarrinho,
-    required List<Pedido> Pedidos,
-    required List<ListaDesejo> ListaDesejos,
-    required List<Categoria> Categorias,
-    required List<Tag> Tags
+    string Nome,
+    string Descricao,
+    string Estoque,
+    decimal Preco,
+    List<Imagem> Imagens,
+    List<Avaliacao> Avaliacoes,
+    List<ItemCarrinho> ItensCarrinho,
+    List<Pedido> Pedidos,
+    List<ListaDesejo> ListaDesejos,
+    List<Categoria> Categorias,
+    List<Tag> Tags
 );

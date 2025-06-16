@@ -1,13 +1,18 @@
 using Ecommerce.Domain.Entities;
+using System.Collections.Generic;
+using System;
 
 namespace Application.Dtos;
 
 public record PedidoDto(
     int Id,
-    double Valor,
-    required string TipoPagamento,
-    required string Status,
-    DateTime DataPagamento,
-    required int ParcelamentoId,
-    required List<Pedido> Pedidos
+    DateTime DataPedido,
+    string? Status,
+    double ValorTotal,
+    ICollection<Carrinho> Itens,
+    ICollection<Cliente> Clientes,
+    DateTime? DataEnvio,
+    DateTime? DataEntrega,
+    ICollection<Pagamento> Pagamentos,
+    ICollection<InformacoesEnvio> InformacoesEnvio
 );
