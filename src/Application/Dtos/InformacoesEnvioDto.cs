@@ -3,20 +3,20 @@ using Ecommerce.Domain.Entities;
 namespace Application.Dtos
 {
     public record InformacoesEnvioDto(
-        required string Endereço,
-        required string Cidade,
-        required string Estado,
-        required string Cep,
-        required int Numero,
-        required string Complemento,
-        required string Telefone,
-        required string NomeDestinatario,
-        required string SobrenomeDestinatario,
-        required string CpfDestinatario,
-        required string EmailDestinatario,
-        required Produto Produto,
-        required int ProdutoId,
-        required DateTime DatetimeEnvio,
-        required DateTime DataDeEnvioPrevista
+        string Endereco,
+        string Cidade,
+        string Estado,
+        string Cep,
+        int Numero,
+        string Complemento,
+        string Telefone,
+        string NomeDestinatario,
+        string SobrenomeDestinatario,
+        string CpfDestinatario,
+        string EmailDestinatario,
+        Produto Produto,
+        int ProdutoId,
+        DateTime DatetimeEnvio,
+        DateTime DataDeEnvioPrevista
     );
 }
