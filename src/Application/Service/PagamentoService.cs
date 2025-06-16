@@ -1,9 +1,5 @@
 using Application.Interfaces.Service;
-using Application.Dtos; // Assuming PagamentoDto is here
-using Ecommerce.Domain.Entities; // Assuming Pagamento is here
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
+using Application.Dtos;
 
 namespace Application.Service
 {

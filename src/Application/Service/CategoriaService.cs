@@ -1,6 +1,5 @@
 using Application.Interfaces.Service;
 using Application.Dtos;
-using Azure.Messaging;
 
 namespace Application.Service
 {

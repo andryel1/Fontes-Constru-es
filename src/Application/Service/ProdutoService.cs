@@ -1,6 +1,5 @@
 using Application.Dtos;
 using Application.Interfaces.Service;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace Application.Service;
 

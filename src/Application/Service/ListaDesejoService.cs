@@ -1,7 +1,6 @@
 using Application.Dtos;
 using Application.Interfaces.Repository;
 using Application.Interfaces.Service;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Application.Service;
 
