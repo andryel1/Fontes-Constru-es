@@ -2,7 +2,7 @@ namespace Ecommerce.Domain.Entities
 {
     public class Categoria : Entitybase
     {
-        public required string Nome;
-        public required ICollection<Produto> Produtos { get; set; } 
+        public string? Nome;
+        public ICollection<Produto> Produtos { get; set; } = [];
     }
 }
