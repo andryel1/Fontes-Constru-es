@@ -2,20 +2,20 @@ namespace Ecommerce.Domain.Entities
 {
     public class InformacoesEnvio : Entitybase
     {
-        public required string Endereço { get; set; }
-        public required string Cidade { get; set; }
-        public required string Estado { get; set; }
-        public required string Cep { get; set; }
-        public required int Numero { get; set; }
-        public required string Complemento { get; set; }
-        public required string Telefone { get; set; }
-        public required string NomeDestinatario { get; set; }
-        public required string SobrenomeDestinatario { get; set; }
-        public required string CpfDestinatario { get; set; }
-        public required string EmailDestinatario { get; set; }
-        public required Produto Produto { get; set; }
-        public required int ProdutoId { get; set; }
-        public required DateTime DatetimeEnvio { get; set; }
-        public required DateTime DataDeEnvioPrevista { get; set; }
+        public string? Endereço { get; set; }
+        public string? Cidade { get; set; }
+        public string? Estado { get; set; }
+        public string? Cep { get; set; }
+        public int Numero { get; set; }
+        public string? Complemento { get; set; }
+        public string? Telefone { get; set; }
+        public string? NomeDestinatario { get; set; }
+        public string? SobrenomeDestinatario { get; set; }
+        public string? CpfDestinatario { get; set; }
+        public string? EmailDestinatario { get; set; }
+        public Produto? Produto { get; set; }
+        public int ProdutoId { get; set; }
+        public DateTime DatetimeEnvio { get; set; }
+        public DateTime DataDeEnvioPrevista { get; set; }
     }
 }
