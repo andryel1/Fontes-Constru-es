@@ -20,21 +20,18 @@ namespace Infrastructure.Configurations
                 .IsRequired()
                 .HasColumnType("decimal(10, 2)");
 
-            // Relacionamento com Cliente
             builder.HasOne(c => c.Cliente)
                 .WithMany()
                 .HasForeignKey(c => c.ClienteId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Relacionamento com Pedido
             builder.HasOne(c => c.Pedido)
                 .WithMany(p => p.Itens)
                 .HasForeignKey(c => c.PedidoId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Relacionamento com ItensCarrinho
             builder.HasMany(c => c.Itens)
                 .WithOne(i => i.Carrinho)
                 .HasForeignKey(i => i.CarrinhoId)
