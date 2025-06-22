@@ -1,3 +1,4 @@
+using System;
 using Ecommerce.Domain.Entities;
 
 namespace Application.Dtos;
