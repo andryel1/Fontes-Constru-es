@@ -10,7 +10,7 @@ namespace Infrastructure.Configurations
         {
             builder.ToTable("ListaDesejo");
 
-          
+            builder.HasKey(c => c.Id);
         }
     }
 }
