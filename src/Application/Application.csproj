@@ -2,7 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Ecommerce.Domain.csproj" />
-</ItemGroup>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.5" />
@@ -14,9 +14,9 @@
   </ItemGroup>
 
   <PropertyGroup>
-   <ImplicitUsings>enable</ImplicitUsings>
+    <ImplicitUsings>enable</ImplicitUsings>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <OutputType>Exe</OutputType>  </PropertyGroup>
 
 </Project>
