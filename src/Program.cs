@@ -11,32 +11,23 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Injeção de dependência da aplicação
 builder.Services.AddApplicationServices();
 
 var app = builder.Build();
 
-// Ambiente de desenvolvimento
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-services.AddApplicationServices(connectionString);
 
-// HTTPS
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddApplicationServices(connectionString); 
+
 app.UseHttpsRedirection();
 
-// 📌 Definindo a cultura (en ou pt-BR)
-CultureInfo.CurrentUICulture = new CultureInfo("en"); // Você pode trocar para "pt-BR" se quiser
+CultureInfo.CurrentUICulture = new CultureInfo("en"); 
 
-// ✅ Teste da tradução
-app.MapGet("/hello", () => MessagesHelper.Hello);
-app.MapGet("/bye", () => MessagesHelper.Goodbye);
-app.MapGet("/welcome", () => MessagesHelper.Welcome);
-
-// Rota de previsão do tempo (original)
 var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -59,7 +50,6 @@ app.MapGet("/weatherforecast", () =>
 
 app.Run();
 
-// 🔽 Record da previsão
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
