@@ -11,13 +11,12 @@ public class DescontoConfiguration : IEntityTypeConfiguration<Desconto>
         builder.ToTable("Desconto");
 
         builder.HasKey(d => d.Id);
-        builder.Property(d => d.Nome);
 
         builder.Property(d => d.Ativo);
 
-        builder.HasMany(d => d.Produtos)
-        .WithMany(d => d.Desconto)
-        .HasForeignKey("ClienteId");
+      builder.HasMany(d => d.Produtos)
+       .WithOne(p => p.Desconto)
+       .HasForeignKey(p => p.DescontoId);
 
         builder.Property(d => d.Valor);
 
