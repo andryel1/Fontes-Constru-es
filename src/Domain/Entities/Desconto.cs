@@ -5,8 +5,8 @@ namespace Ecommerce.Domain.Entities
         public double Valor { get; set; }
         public DateTime DataInicio { get; set; }
         public DateTime DataFim { get; set; }
-        public Produto? Produto { get; set; } 
         public bool Ativo { get; set; }
         public int ProdutoId { get; set; }
+        public ICollection<Produto> Produtos { get; set; } = [];
     }
 }

@@ -6,6 +6,8 @@ namespace Ecommerce.Domain.Entities
         public string? Descricao { get; set; }
         public string? Estoque { get; set; }
         public decimal Preco { get; set; }
+        public Desconto? Desconto { get; set; }
+        public int DescontoId { get; set; }
         public ICollection<Imagem> Imagens { get; set; } = [];
         public ICollection<Avaliacao> Avaliacoes { get; set; } = [];
         public ICollection<ItemCarrinho> ItensCarrinho { get; set; } = [];

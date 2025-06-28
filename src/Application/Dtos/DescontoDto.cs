@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using Ecommerce.Domain.Entities;
 
 namespace Application.Dtos;
@@ -12,5 +10,5 @@ public record DescontoDto(
     DateTime DataFim,
     List<Produto> Produtos,
     int ProdutoId,
-    bool Ativo;
+    bool Ativo
 );

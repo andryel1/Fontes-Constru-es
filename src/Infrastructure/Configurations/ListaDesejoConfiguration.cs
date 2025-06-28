@@ -4,9 +4,9 @@ using Ecommerce.Domain.Entities;
 
 namespace Infrastructure.Configurations
 {
-    public class ListaDesejoConfiguration : IEntityTypeConfiguration<Pedido>
+    public class ListaDesejoConfiguration : IEntityTypeConfiguration<ListaDesejo>
     {
-        public void Configure(EntityTypeBuilder<Pedido> builder)
+        public void Configure(EntityTypeBuilder<ListaDesejo> builder)
         {
             builder.ToTable("ListaDesejo");
 

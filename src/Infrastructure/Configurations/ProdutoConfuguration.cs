@@ -4,7 +4,7 @@ using Ecommerce.Domain.Entities;
 
 namespace Infrastructure.Configurations
 {
-    public class ProdutoConfiguration : IEntityTypeConfiguration<Produto>
+    public class ProdutoConfiguration :IEntityTypeConfiguration<Produto>
     {
         public void Configure(EntityTypeBuilder<Produto> builder)
         {
@@ -27,7 +27,6 @@ namespace Infrastructure.Configurations
             builder.Property(p => p.Preco)
             .IsRequired()
             .HasColumnType("decimal(10, 2)");
-            
         }
     }
 }
