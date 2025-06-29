@@ -15,7 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
-    <ProjectReference Include="..\DependencyInjection\IoC.csproj" />
+    <ProjectReference Include="..\Ioc\Ioc.csproj" />
   </ItemGroup>
 
 </Project>
