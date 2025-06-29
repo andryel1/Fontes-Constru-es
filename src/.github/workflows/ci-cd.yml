@@ -2,9 +2,8 @@ name: .NET Core Build and Test
 
 on:
   push:
-  pull_request:
-    branches: [ "main" ]   
-
+  pull_request:  
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,26 +12,20 @@ jobs:
       matrix:
         configuration: [Debug, Release]
 
-    env:
-      Solution_Name: Construes.sln
-      Test_Project_Path: Tests/Tests.csproj
-
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Setup .NET Core SDK
+      - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
 
-      - name: Restore solution
-        run: dotnet restore ${{ env.Solution_Name }}
+      - name: Restore dependencies
+        run: dotnet restore Construes.sln
 
       - name: Build solution
-        run: dotnet build ${{ env.Solution_Name }} --configuration ${{ matrix.configuration }} --no-restore
+        run: dotnet build Construes.sln --configuration ${{ matrix.configuration }} --no-restore
 
       - name: Run tests
-        run: dotnet test ${{ env.Test_Project_Path }} --configuration ${{ matrix.configuration }} --no-build --verbosity normal
+        run: dotnet test Tests/Tests.csproj --configuration ${{ matrix.configuration }} --no-build --verbosity normal
