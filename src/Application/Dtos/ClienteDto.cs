@@ -5,7 +5,7 @@ public record ClienteDto(
 
     int Id,
     string Nome,
-    int Cpf,
+    string Cpf,
     string Password,
     string Telefone,
     string Email,
