@@ -1,30 +1,31 @@
-name: .NET CI Pipeline
+name: .NET Core Build and Test
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
+  pull_request:  
+  
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+
     steps:
-      - name: heckout do código
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
         with:
-         dotnet-version: '8.0.117'
+          dotnet-version: 8.0.x
 
+      - name: Restore dependencies
+        run: dotnet restore Construes.sln
 
-      - name: estaurar pacotes NuGet
-        run: dotnet restore
+      - name: Build solution
+        run: dotnet build Construes.sln --configuration ${{ matrix.configuration }} --no-restore
 
-      - name: Build do projeto
-        run: dotnet build --no-restore --configuration Release
-
-      - name: Executar testes
-        run: dotnet test --no-build --verbosity normal
+      - name: Run tests
+        run: dotnet test Tests/Tests.csproj --configuration ${{ matrix.configuration }} --no-build --verbosity normal
