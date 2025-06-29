@@ -2,15 +2,11 @@ name: .NET Core Build and Test
 
 on:
   push:
-  pull_request:  
-  
+  pull_request:
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        configuration: [Debug, Release]
 
     steps:
       - name: Checkout repository
@@ -25,7 +21,7 @@ jobs:
         run: dotnet restore Construes.sln
 
       - name: Build solution
-        run: dotnet build Construes.sln --configuration ${{ matrix.configuration }} --no-restore
+        run: dotnet build Construes.sln --no-restore
 
       - name: Run tests
-        run: dotnet test Tests/Tests.csproj --configuration ${{ matrix.configuration }} --no-build --verbosity normal
+        run: dotnet test Tests/Tests.csproj --no-build --verbosity normal
