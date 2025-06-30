@@ -22,10 +22,13 @@ namespace Infrastructure.Configurations;
         builder.Property(p => p.DataEnvio);
         builder.Property(p => p.DataEntrega);
 
-        builder.HasMany(p => p.Detalhes)
-               .WithOne(d => d.Pedido)
-               .HasForeignKey(d => d.PedidoId)
-               .OnDelete(DeleteBehavior.Cascade);
+        builder.HasMany(p => p.Itens)
+        .WithOne(p => p.Pedido)
+        .HasForeignKey(p => p.PedidoId);
+
+        builder.HasMany(p => p.Pagamentos)
+        .WithMany(p => p.Pedidos);
+
     }
 }
 
