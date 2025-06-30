@@ -6,6 +6,7 @@ namespace Ecommerce.Domain.Entities
         public string? Password { get; set; }
         public string? Email { get; set; }
         public DateTime DataNascimento { get; set; }
-        public Usuario? Usuarios { get; set; }
+        public Usuario? Usuario { get; set; }
+        public int UsuarioId { get; set; }
     }
 }
