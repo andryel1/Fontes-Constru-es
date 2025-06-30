@@ -21,9 +21,6 @@ public class DetalhePedidoConfiguration : IEntityTypeConfiguration<DetalhePedido
             .HasColumnType("decimal(18,2)")
             .IsRequired();
 
-        builder.HasOne(d => d.Pedido)
-            .WithMany(p => p.Detalhes)
-            .HasForeignKey(d => d.PedidoId)
-            .OnDelete(DeleteBehavior.Cascade);
+
     }
 }
