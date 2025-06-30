@@ -7,6 +7,8 @@ namespace Ecommerce.Domain.Entities
         public string? Email { get; set; }
         public DateTime DataNascimento { get; set; }
         public Cliente? Cliente { get; set; }
+        public int ClienteId { get; set; }
         public Administrador? Administrador { get; set; }
+        public int AdministradorId { get; set; }
     }
 }
