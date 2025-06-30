@@ -27,6 +27,32 @@ namespace Infrastructure.Configurations
             builder.Property(p => p.Preco)
             .IsRequired()
             .HasColumnType("decimal(10, 2)");
+
+            builder.HasMany(p => p.Imagens)
+            .WithOne(i => i.Produto)
+            .HasForeignKey(i => i.ProdutoId);
+
+            builder.HasMany(p => p.Avaliacoes)
+            .WithOne(a => a.Produto)
+            .HasForeignKey(a => a.ProdutoId);
+
+            builder.HasMany(p => p.ItensCarrinho)
+            .WithOne(i => i.Produto)
+            .HasForeignKey(i => i.ProdutoId);
+
+            builder.HasMany(p => p.Pedidos)
+            .WithOne(p => p.Produto)
+            .HasForeignKey(i => i.ProdutoId);
+
+            builder.HasMany(p => p.ListaDesejos)
+            .WithMany(l => l.Produtos);
+
+            builder.HasMany(p => p.Categorias)
+            .WithMany(c => c.Produtos);
+
+            builder.HasMany(p => p.Tags)
+            .WithOne(t => t.Produto)
+            .HasForeignKey(t => t.ProdutoId);
         }
     }
 }
