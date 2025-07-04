@@ -4,12 +4,8 @@ using Infrastructure.Configurations;
 
 namespace Infrastructure
 {
-    public class Context : DbContext
+    public class Context(DbContextOptions<Context> options) : DbContext(options)
     {
-        public Context(DbContextOptions<Context> options) : base(options)
-        {
-        }
-
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<Avaliacao> Avaliacoes { get; set; }

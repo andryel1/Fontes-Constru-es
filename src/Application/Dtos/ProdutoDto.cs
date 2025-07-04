@@ -1,5 +1,5 @@
 using Ecommerce.Domain.Entities;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace Application.Dtos;
 
