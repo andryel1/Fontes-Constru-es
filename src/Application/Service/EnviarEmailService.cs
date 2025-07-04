@@ -16,7 +16,7 @@ namespace Application.Service
                 var email = new MimeMessage();
                 email.From.Add(MailboxAddress.Parse(emailDto.Nome));
                 email.To.Add(MailboxAddress.Parse(emailDto.Email));
-                // Add subject and body if needed
+               
                 email.Subject = emailDto.Assunto;
                 email.Body = new TextPart("plain") { Text = emailDto.Mensagem };
 
@@ -34,7 +34,6 @@ namespace Application.Service
 
         public async Task EnviarEmail(string de, string para, string mensagem)
         {
-            // Implement the method or delegate to repository
             await _emailRepository.EnviarEmail(de, para, mensagem);
         }
     }

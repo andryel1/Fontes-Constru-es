@@ -2,7 +2,8 @@ using Application.Interfaces.Repository;
 
 namespace Application.Interfaces.Service
 {
-    public interface IDetalhePedidoService : IDescontoRepository
+    public interface IDetalhePedidoService : IDetalhePedidoRepository
     {
+        
     }
 }
