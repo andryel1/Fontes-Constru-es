@@ -2,7 +2,7 @@
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoC", "IoC\IoC.csproj", "{8196E50B-BA78-4791-A4A4-F0200C3802C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoC", "Ioc\Ioc.csproj", "{8196E50B-BA78-4791-A4A4-F0200C3802C4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.Domain", "Domain\Ecommerce.Domain.csproj", "{CB3F5DCB-C8E0-467A-9426-E7D10D5B5B65}"
 EndProject
