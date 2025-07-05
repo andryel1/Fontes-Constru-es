@@ -13,7 +13,7 @@ Permitir que empreendedores criem sua própria loja virtual e acompanhem suas ve
 - Produtos mais vendidos
 - Análise do comportamento dos clientes
 - Filtros por categoria, produto e canal de marketing
-- Recomendações automáticas baseadas em dados
+- Recomendações automáticas baseadas em dados   
 
 ## ❗ Problema Resolvido
 
