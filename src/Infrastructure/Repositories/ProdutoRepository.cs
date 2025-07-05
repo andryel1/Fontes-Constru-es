@@ -172,7 +172,7 @@ public class ProdutoRepository : IProdutoRepository
         var produto = await _context.Produtos
             .FirstOrDefaultAsync(p => p.Nome == nome);
 
-        if (produto == null) return null;
+        if (produto == null) return null!;
 
         return new ProdutoDto(
             produto.Id,

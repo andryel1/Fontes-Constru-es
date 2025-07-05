@@ -5,7 +5,8 @@ using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Application.Interfaces.Validacao;
 using Application.Dtos;
-
+using Application.Interfaces.Repository;
+using Infrastructure.Repositories;
 
 namespace IoC;
 
@@ -29,6 +30,10 @@ public static class DependencyInjectionConfig
         services.AddScoped<IDetalhePedidoService, DetalhePedidoService>();
         services.AddScoped<IImagemService, ImagemService>();    
         services.AddScoped<IEnviarEmailService, EnviarEmailService>();
+
+        // Serviços de Autenticação
+        services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<IAuthRepository, AuthRepository>();
 
         //Referência de  Validações
         services.AddScoped<IValidator<TagDto>, TagValidator>();
