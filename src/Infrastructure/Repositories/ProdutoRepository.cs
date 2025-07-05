@@ -63,7 +63,7 @@ public class ProdutoRepository : IProdutoRepository
     public async Task<ProdutoDto> Atualizar(ProdutoDto dto)
     {
         var produto = await _context.Produtos.FindAsync(dto.Id);
-        if (produto == null) return null;
+        if (produto == null) return null!;
 
         produto.Nome = dto.Nome;
         produto.Descricao = dto.Descricao;
@@ -86,7 +86,7 @@ public class ProdutoRepository : IProdutoRepository
     public async Task<ProdutoDto> ObterPorId(int id)
     {
         var produto = await _context.Produtos.FindAsync(id);
-        if (produto == null) return null;
+        if (produto == null) return null!;
 
         return new ProdutoDto(
             produto.Id,
