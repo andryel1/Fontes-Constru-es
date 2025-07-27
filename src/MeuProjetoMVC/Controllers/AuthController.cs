@@ -44,8 +44,8 @@ public class AuthController : ControllerBase
             // Fazer login com cookies
             await HttpContext.SignInAsync("Cookies", claimsPrincipal, new AuthenticationProperties
             {
-                IsPersistent = true, // Cookie persistente
-                ExpiresUtc = DateTimeOffset.UtcNow.AddHours(2) // Expira em 2 horas
+                IsPersistent = true,
+                ExpiresUtc = DateTimeOffset.UtcNow.AddHours(2) 
             });
 
             return Ok(new 
