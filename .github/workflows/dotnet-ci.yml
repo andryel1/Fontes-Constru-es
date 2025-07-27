@@ -17,10 +17,11 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
+      - name: Restore dependencies
+        run: dotnet restore src/Construes.sln
+
       - name: Build solution
-        run: dotnet build --configuration Release
-        working-directory: src
+        run: dotnet build src/Construes.sln --configuration Release
 
       - name: Run tests
-        run: dotnet test --configuration Release --no-build
-        working-directory: src
+        run: dotnet test src/Construes.sln --configuration Release --no-build
