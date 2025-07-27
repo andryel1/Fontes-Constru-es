@@ -19,6 +19,9 @@ public class AuthRepository : IAuthRepository
 
     public async Task<bool> LoginAsync(LoginDto dto)
     {
+        if (string.IsNullOrEmpty(dto.Password))
+            return false;
+            
         var hashedPassword = HashPassword(dto.Password);
         
         var usuario = await _context.Usuarios
