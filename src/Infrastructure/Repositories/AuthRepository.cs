@@ -1,6 +1,5 @@
 using Application.Dtos;
 using Application.Interfaces.Repository;
-using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Ecommerce.Domain.Entities;
 using System.Security.Cryptography;
@@ -41,8 +40,7 @@ public class AuthRepository : IAuthRepository
         if (existingUser != null)
             return false;
 
-        // Verificar se as senhas coincidem
-        if (dto.Password != dto.ConfirmarPassword)
+        if (string.IsNullOrEmpty(dto.Password) || dto.Password != dto.ConfirmarPassword)
             return false;
 
         var hashedPassword = HashPassword(dto.Password);
