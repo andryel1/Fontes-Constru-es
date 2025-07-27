@@ -4,7 +4,6 @@ on:
   push:
   pull_request:
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,14 +15,13 @@ jobs:
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.118
+          dotnet-version: 8.0.x
 
       - name: Restore dependencies
-        run: dotnet restore 
+        run: dotnet restore src/Construes.sln
 
       - name: Build solution
-        run: dotnet build 
+        run: dotnet build src/Construes.sln --configuration Release
 
-     # - name: Run tests
-    #    run: dotnet test 
- 
+      - name: Run tests
+        run: dotnet test src/Construes.sln --configuration Release --no-build
