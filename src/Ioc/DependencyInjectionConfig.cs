@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using Application.Interfaces.Validacao;
 using Application.Dtos;
 using Application.Interfaces.Repository;
-using Infrastructure.Repositories;
 
 namespace IoC;
 
@@ -33,7 +32,6 @@ public static class DependencyInjectionConfig
 
         // Serviços de Autenticação
         services.AddScoped<IAuthService, AuthService>();
-        services.AddScoped<IAuthRepository, AuthRepository>();
 
         //Referência de  Validações
         services.AddScoped<IValidator<TagDto>, TagValidator>();
