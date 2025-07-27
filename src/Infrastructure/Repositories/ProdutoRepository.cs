@@ -148,7 +148,7 @@ public class ProdutoRepository : IProdutoRepository
     public async Task<List<ProdutoDto>> ObterProdutosPorNome(string nome)
     {
         var produtos = await _context.Produtos
-            .Where(p => p.Nome.Contains(nome))
+            .Where(p => !string.IsNullOrEmpty(p.Nome) && p.Nome.Contains(nome))
             .ToListAsync();
 
         return produtos.Select(p => new ProdutoDto(
@@ -171,6 +171,90 @@ public class ProdutoRepository : IProdutoRepository
     {
         var produto = await _context.Produtos
             .FirstOrDefaultAsync(p => p.Nome == nome);
+
+        if (produto == null) return null!;
+
+        return new ProdutoDto(
+            produto.Id,
+            produto.Nome ?? "",
+            produto.Descricao ?? "",
+            produto.Estoque ?? "",
+            produto.Preco,
+            produto.Imagens.ToList(),
+            produto.Avaliacoes.ToList(),
+            produto.ItensCarrinho.ToList(),
+            produto.Pedidos.ToList(),
+            produto.ListaDesejos.ToList(),
+            produto.Categorias.ToList(),
+            produto.Tags.ToList()
+        );
+    }
+
+    public async Task<ProdutoDto> NomeNaoPodeSerVazioOuNUlo(string nome)
+    {
+        if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrEmpty(nome))
+        {
+            throw new ArgumentException("O nome do produto não pode ser vazio ou nulo.");
+        }
+        
+        var produto = await _context.Produtos
+            .FirstOrDefaultAsync(p => p.Nome == nome);
+
+        if (produto == null) return null!;
+
+        return new ProdutoDto(
+            produto.Id,
+            produto.Nome ?? "",
+            produto.Descricao ?? "",
+            produto.Estoque ?? "",
+            produto.Preco,
+            produto.Imagens.ToList(),
+            produto.Avaliacoes.ToList(),
+            produto.ItensCarrinho.ToList(),
+            produto.Pedidos.ToList(),
+            produto.ListaDesejos.ToList(),
+            produto.Categorias.ToList(),
+            produto.Tags.ToList()
+        );
+    }
+
+    public async Task<ProdutoDto> DescricaoNaoPodeSerVazioOuNulo(string descricao)
+    {
+        if (string.IsNullOrWhiteSpace(descricao) || string.IsNullOrEmpty(descricao))
+        {
+            throw new ArgumentException("A descrição do produto não pode ser vazia ou nula.");
+        }
+        
+        var produto = await _context.Produtos
+            .FirstOrDefaultAsync(p => p.Descricao == descricao);
+
+        if (produto == null) return null!;
+
+        return new ProdutoDto(
+            produto.Id,
+            produto.Nome ?? "",
+            produto.Descricao ?? "",
+            produto.Estoque ?? "",
+            produto.Preco,
+            produto.Imagens.ToList(),
+            produto.Avaliacoes.ToList(),
+            produto.ItensCarrinho.ToList(),
+            produto.Pedidos.ToList(),
+            produto.ListaDesejos.ToList(),
+            produto.Categorias.ToList(),
+            produto.Tags.ToList()
+        );
+    }
+
+    public async Task<ProdutoDto> PrecoNaoPodeSerVazioOuNulo(decimal preco)
+    {
+        if (preco <= 0)
+        {
+            throw new ArgumentException("O preço do produto não pode ser menor ou igual a zero.");
+        }
+        
+        var produto = await _context.Produtos
+            .FirstOrDefaultAsync(p => p.Preco == preco);
 
         if (produto == null) return null!;
 
