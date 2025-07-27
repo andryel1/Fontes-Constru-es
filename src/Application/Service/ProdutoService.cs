@@ -1,12 +1,11 @@
 using Application.Dtos;
 using Application.Interfaces.Service;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace Application.Service;
 
-public class ProdutoService(IProdutoService produto) : IProdutoService
+public class ProdutoService(IProdutoService produtoService) : IProdutoService
 {
-    private readonly IProdutoService _produto = produto;
+    private readonly IProdutoService _produtoService = produtoService;
 
     public async Task<ProdutoDto> VerificarProdutoExistente(string nome)
     {
@@ -15,7 +14,7 @@ public class ProdutoService(IProdutoService produto) : IProdutoService
             throw new ArgumentException("O nome do produto não existe");
         }
         
-        return await _produto.VerificarProdutoExistente(nome);
+        return await _produtoService.VerificarProdutoExistente(nome);
     }
 
     public async Task<ProdutoDto> NomeNaoPodeSerVazioOuNUlo(string nome)
@@ -24,7 +23,7 @@ public class ProdutoService(IProdutoService produto) : IProdutoService
         {
             throw new ArgumentException("O nome do produto não pode ser vazio ou nulo.");
         }
-        return await _produto.NomeNaoPodeSerVazioOuNUlo(nome);
+        return await _produtoService.NomeNaoPodeSerVazioOuNUlo(nome);
     }
 
     public async Task<ProdutoDto> DescricaoNaoPodeSerVazioOuNulo(string descricao)
@@ -33,7 +32,7 @@ public class ProdutoService(IProdutoService produto) : IProdutoService
         {
             throw new ArgumentException("A descrição do produto não pode ser vazia ou nula.");
         }
-        return await _produto.DescricaoNaoPodeSerVazioOuNulo(descricao);
+        return await _produtoService.DescricaoNaoPodeSerVazioOuNulo(descricao);
     }
 
     public async Task<ProdutoDto> PrecoNaoPodeSerVazioOuNulo(decimal preco)
@@ -42,7 +41,7 @@ public class ProdutoService(IProdutoService produto) : IProdutoService
         {
             throw new ArgumentException("O preço do produto não pode ser menor ou igual a zero.");
         }
-        return await _produto.PrecoNaoPodeSerVazioOuNulo(preco);
+        return await _produtoService.PrecoNaoPodeSerVazioOuNulo(preco);
     }
 
     public Task<List<ProdutoDto>> ObterProdutosPorCategoria(string categoria)
@@ -51,7 +50,7 @@ public class ProdutoService(IProdutoService produto) : IProdutoService
         {
             throw new ArgumentException("A categoria do produto não pode ser vazia ou nula.");
         }
-        return _produto.ObterProdutosPorCategoria(categoria);
+        return _produtoService.ObterProdutosPorCategoria(categoria);
     }
 
     public async Task<List<ProdutoDto>> ObterProdutosPorNome(string nome)
@@ -60,7 +59,7 @@ public class ProdutoService(IProdutoService produto) : IProdutoService
         {
             throw new ArgumentException("O nome do produto não pode ser vazio ou nulo.");
         }
-        return await _produto.ObterProdutosPorNome(nome);
+        return await _produtoService.ObterProdutosPorNome(nome);
     }
     public async Task<ProdutoDto> Adicionar(ProdutoDto dto)
     {
@@ -69,7 +68,7 @@ public class ProdutoService(IProdutoService produto) : IProdutoService
         await DescricaoNaoPodeSerVazioOuNulo(dto.Descricao);
         await PrecoNaoPodeSerVazioOuNulo(dto.Preco);
 
-        return await _produto.Adicionar(dto);
+        return await _produtoService.Adicionar(dto);
     }
     
 
@@ -78,7 +77,7 @@ public class ProdutoService(IProdutoService produto) : IProdutoService
         await VerificarProdutoExistente(dto.Nome);
         await NomeNaoPodeSerVazioOuNUlo(dto.Nome);
 
-        return await _produto.Atualizar(dto);
+        return await _produtoService.Atualizar(dto);
     }
 
     public async Task<bool> Deletar(int id)
@@ -87,7 +86,7 @@ public class ProdutoService(IProdutoService produto) : IProdutoService
         {
             throw new ArgumentException("O Id Não pode ser menor que 0.");
         }
-        return await _produto.Deletar(id);
+        return await _produtoService.Deletar(id);
     }
 
     public async Task<ProdutoDto> ObterPorId(int id)
@@ -96,11 +95,11 @@ public class ProdutoService(IProdutoService produto) : IProdutoService
         {
             throw new ArgumentException("O Id não pode ser menor que 0.");
         }
-        return await _produto.ObterPorId(id);
+        return await _produtoService.ObterPorId(id);
     }
 
     public async Task<List<ProdutoDto>> ObterTodos()
     {
-        return await _produto.ObterTodos();
+        return await _produtoService.ObterTodos();
     }
 }
