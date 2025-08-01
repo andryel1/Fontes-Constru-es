@@ -1,17 +1,32 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Application.Interfaces.Service;
+using Application.Interfaces.Repository;
 using Application.Service;
 using FluentValidation;
-using Microsoft.EntityFrameworkCore;
 using Application.Interfaces.Validacao;
 using Application.Dtos;
-using Application.Interfaces.Repository;
+
+using Infrastructure.Repository;
 
 namespace IoC;
 
 public static class DependencyInjectionConfig
 {
     public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+    {
+        Service(services);
+        Validator(services);
+        Repository(services);
+        return services;
+    }
+
+    private static void Repository(IServiceCollection services)
+    {
+        services.AddScoped<IProdutoRepository, ProdutoRepository>();
+    
+    } 
+
+    private static void Service(IServiceCollection services)
     {
         services.AddScoped<IPedidoService, PedidoService>();
         services.AddScoped<IPagamentoService, PagamentoService>();
@@ -27,13 +42,14 @@ public static class DependencyInjectionConfig
         services.AddScoped<ICategoriaService, CategoriaService>();
         services.AddScoped<IClienteService, ClienteService>();
         services.AddScoped<IDetalhePedidoService, DetalhePedidoService>();
-        services.AddScoped<IImagemService, ImagemService>();    
+        services.AddScoped<IImagemService, ImagemService>();
         services.AddScoped<IEnviarEmailService, EnviarEmailService>();
+      //  services.AddScoped<IAuthService, AuthService>();
+    }
 
-        // Serviços de Autenticação
-        services.AddScoped<IAuthService, AuthService>();
 
-        //Referência de  Validações
+        private static void Validator(IServiceCollection services)
+    {
         services.AddScoped<IValidator<TagDto>, TagValidator>();
         // services.AddScoped<IValidator<UsuarioDto>, UsuarioValidator>();
         services.AddScoped<IValidator<AdministradorDto>, AdministradorValidator>();
@@ -49,9 +65,6 @@ public static class DependencyInjectionConfig
         services.AddScoped<IValidator<ListaDesejoDto>, ListaDesejoValidator>();
         services.AddScoped<IValidator<PagamentoDto>, PagamentoValidator>();
         services.AddScoped<IValidator<PedidoDto>, PedidoValidator>();
-        services.AddScoped<IValidator<ProdutoDto>, ProdutoValidator>();
-
-    
-        return services;
     }
+
 }

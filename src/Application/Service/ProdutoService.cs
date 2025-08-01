@@ -1,105 +1,59 @@
 using Application.Dtos;
 using Application.Interfaces.Service;
+using Application.Interfaces.Repository;
+using Application.Validator;
+using AutoMapper;
+using Ecommerce.Domain.Entities;
 
 namespace Application.Service;
 
-public class ProdutoService(IProdutoService produtoService) : IProdutoService
+public class ProdutoService : IProdutoService
 {
-    private readonly IProdutoService _produtoService = produtoService;
+    private readonly IProdutoRepository _produtoRepository;
+    private readonly IMapper _mapper;
 
-    public async Task<ProdutoDto> VerificarProdutoExistente(string nome)
+    public Task<ProdutoDto> VerificarProdutoExistente(string nome)
     {
-        if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrEmpty(nome))
-        {
-            throw new ArgumentException("O nome do produto não existe");
-        }
-        
-        return await _produtoService.VerificarProdutoExistente(nome);
+        throw new NotImplementedException();
     }
 
-    public async Task<ProdutoDto> NomeNaoPodeSerVazioOuNUlo(string nome)
+    public Task<ProdutoDto> NomeNaoPodeSerVazioOuNUlo(string nome)
     {
-        if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrEmpty(nome))
-        {
-            throw new ArgumentException("O nome do produto não pode ser vazio ou nulo.");
-        }
-        return await _produtoService.NomeNaoPodeSerVazioOuNUlo(nome);
+        throw new NotImplementedException();
     }
 
-    public async Task<ProdutoDto> DescricaoNaoPodeSerVazioOuNulo(string descricao)
+    public Task<ProdutoDto> DescricaoNaoPodeSerVazioOuNulo(string descricao)
     {
-        if (string.IsNullOrWhiteSpace(descricao) || string.IsNullOrEmpty(descricao))
-        {
-            throw new ArgumentException("A descrição do produto não pode ser vazia ou nula.");
-        }
-        return await _produtoService.DescricaoNaoPodeSerVazioOuNulo(descricao);
+        throw new NotImplementedException();
     }
 
-    public async Task<ProdutoDto> PrecoNaoPodeSerVazioOuNulo(decimal preco)
+    public Task<ProdutoDto> PrecoNaoPodeSerVazioOuNulo(decimal preco)
     {
-        if (preco <= 0)
-        {
-            throw new ArgumentException("O preço do produto não pode ser menor ou igual a zero.");
-        }
-        return await _produtoService.PrecoNaoPodeSerVazioOuNulo(preco);
+        throw new NotImplementedException();
     }
 
-    public Task<List<ProdutoDto>> ObterProdutosPorCategoria(string categoria)
+    public Task<ProdutoDto> Adicionar(ProdutoDto dto)
     {
-        if (string.IsNullOrWhiteSpace(categoria) || string.IsNullOrEmpty(categoria))
-        {
-            throw new ArgumentException("A categoria do produto não pode ser vazia ou nula.");
-        }
-        return _produtoService.ObterProdutosPorCategoria(categoria);
+        throw new NotImplementedException();
     }
 
-    public async Task<List<ProdutoDto>> ObterProdutosPorNome(string nome)
+    public Task<ProdutoDto> Atualizar(ProdutoDto dto)
     {
-        if (string.IsNullOrEmpty(nome) || string.IsNullOrWhiteSpace(nome))
-        {
-            throw new ArgumentException("O nome do produto não pode ser vazio ou nulo.");
-        }
-        return await _produtoService.ObterProdutosPorNome(nome);
-    }
-    public async Task<ProdutoDto> Adicionar(ProdutoDto dto)
-    {
-        await NomeNaoPodeSerVazioOuNUlo(dto.Nome);
-        await VerificarProdutoExistente(dto.Nome);
-        await DescricaoNaoPodeSerVazioOuNulo(dto.Descricao);
-        await PrecoNaoPodeSerVazioOuNulo(dto.Preco);
-
-        return await _produtoService.Adicionar(dto);
-    }
-    
-
-    public async Task<ProdutoDto> Atualizar(ProdutoDto dto)
-    {
-        await VerificarProdutoExistente(dto.Nome);
-        await NomeNaoPodeSerVazioOuNUlo(dto.Nome);
-
-        return await _produtoService.Atualizar(dto);
+        throw new NotImplementedException();
     }
 
-    public async Task<bool> Deletar(int id)
+    public Task<bool> Deletar(int id)
     {
-        if (id <= 0)
-        {
-            throw new ArgumentException("O Id Não pode ser menor que 0.");
-        }
-        return await _produtoService.Deletar(id);
+        throw new NotImplementedException();
     }
 
-    public async Task<ProdutoDto> ObterPorId(int id)
+    public Task<ProdutoDto> ObterPorId(int id)
     {
-        if (id <= 0)
-        {
-            throw new ArgumentException("O Id não pode ser menor que 0.");
-        }
-        return await _produtoService.ObterPorId(id);
+        throw new NotImplementedException();
     }
 
-    public async Task<List<ProdutoDto>> ObterTodos()
+    public Task<List<ProdutoDto>> ObterTodos()
     {
-        return await _produtoService.ObterTodos();
+        throw new NotImplementedException();
     }
 }

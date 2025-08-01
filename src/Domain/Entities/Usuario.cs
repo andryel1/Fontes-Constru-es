@@ -1,3 +1,5 @@
+using Domain.Enums;
+
 namespace Ecommerce.Domain.Entities
 {
     public class Usuario : Entitybase
@@ -10,5 +12,6 @@ namespace Ecommerce.Domain.Entities
         public int ClienteId { get; set; }
         public Administrador? Administrador { get; set; }
         public int AdministradorId { get; set; }
+        public Perfil Perfil { get; set; }
     }
 }

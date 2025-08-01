@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Infrastructure;
+using IoC;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
@@ -23,31 +24,15 @@ builder.Services.AddDbContext<Context>(options =>
 
 builder.Services.AddDistributedMemoryCache();
 
-builder.Services.AddSession(options =>
-{
-    options.IdleTimeout = TimeSpan.FromMinutes(30);
-    options.Cookie.HttpOnly = true;
-    options.Cookie.IsEssential = true;
-    options.Cookie.Name = "EcommerceSession";
-});
 
-builder.Services.AddAuthentication("Cookies")
-    .AddCookie("Cookies", options =>    
-    {
-        options.LoginPath = "/Auth/Login";
-        options.LogoutPath = "/Auth/Logout";
-        options.AccessDeniedPath = "/Auth/AccessDenied";
-        options.ExpireTimeSpan = TimeSpan.FromHours(2);
-        options.SlidingExpiration = true;
-        options.Cookie.HttpOnly = true;
-        options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
-    });
+builder.Services.AddApplicationServices();
 
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
-    options.AddPolicy("UserOnly", policy => policy.RequireRole("User"));
-});
+builder.Services.AddDbContext<Context>(options =>
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        new MySqlServerVersion(new Version(8, 0, 21))
+    )
+);
 
 var app = builder.Build();
 
