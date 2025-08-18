@@ -1,39 +1,40 @@
 using Application.Dtos;
-
 using FluentValidation;
+using Microsoft.Extensions.Localization;
 using Resources.Messages;
 
 namespace Application.Interfaces.Validacao;
 public class InformacoesEnvioValidator : AbstractValidator<InformacoesEnvioDto>
 {
-    public InformacoesEnvioValidator()
+    public InformacoesEnvioValidator(IStringLocalizer localizer)
     {
+        ArgumentNullException.ThrowIfNull(localizer);
         RuleFor(x => x.Endereco)
-            .NotEmpty().WithMessage(InformacoesMessages.EnderecoObrigatorio);
+            .NotEmpty().WithMessage(localizer[InformacoesMessages.EnderecoObrigatorio]);
 
         RuleFor(x => x.Cidade)
-            .NotEmpty().WithMessage(InformacoesMessages.CidadeObrigatoria);
+            .NotEmpty().WithMessage(localizer[InformacoesMessages.CidadeObrigatoria]);
 
         RuleFor(x => x.Estado)
-            .NotEmpty().WithMessage(InformacoesMessages.EstadoObrigatorio);
+            .NotEmpty().WithMessage(localizer[InformacoesMessages.EstadoObrigatorio]);
 
         RuleFor(x => x.Cep)
-            .NotEmpty().WithMessage(InformacoesMessages.CepObrigatorio)
-            .Length(8).WithMessage(InformacoesMessages.CepInvalido);
+            .NotEmpty().WithMessage(localizer[InformacoesMessages.CepObrigatorio])
+            .Length(8).WithMessage(localizer[InformacoesMessages.CepInvalido]);
 
         RuleFor(x => x.Telefone)
-            .NotEmpty().WithMessage(InformacoesMessages.TelefoneObrigatorio)
-            .Matches(@"^[0-9]{10,11}$").WithMessage(InformacoesMessages.TelefoneInvalido);
+            .NotEmpty().WithMessage(localizer[InformacoesMessages.TelefoneObrigatorio])
+            .Matches(@"^[0-9]{10,11}$").WithMessage(localizer[InformacoesMessages.TelefoneInvalido]);
 
         RuleFor(x => x.NomeDestinatario)
-            .NotEmpty().WithMessage(InformacoesMessages.NomeDestinatarioObrigatorio);
+            .NotEmpty().WithMessage(localizer[InformacoesMessages.NomeDestinatarioObrigatorio]);
 
         RuleFor(x => x.CpfDestinatario)
-            .NotEmpty().WithMessage(InformacoesMessages.CpfDestinatarioObrigatorio)
-            .Length(11).WithMessage(InformacoesMessages.CpfDestinatarioInvalido);
+            .NotEmpty().WithMessage(localizer[InformacoesMessages.CpfDestinatarioObrigatorio])
+            .Length(11).WithMessage(localizer[InformacoesMessages.CpfDestinatarioInvalido]);
 
         RuleFor(x => x.EmailDestinatario)
-            .NotEmpty().WithMessage(InformacoesMessages.EmailDestinatarioObrigatorio)
-            .EmailAddress().WithMessage(InformacoesMessages.EmailDestinatarioInvalido);
+            .NotEmpty().WithMessage(localizer[InformacoesMessages.EmailDestinatarioObrigatorio])
+            .EmailAddress().WithMessage(localizer[InformacoesMessages.EmailDestinatarioInvalido]);
     }
 }
