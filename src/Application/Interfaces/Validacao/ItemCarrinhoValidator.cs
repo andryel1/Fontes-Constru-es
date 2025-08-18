@@ -1,19 +1,21 @@
 using FluentValidation;
 using Application.Dtos;
 using Resources.Messages;
+using Microsoft.Extensions.Localization;
 
 namespace Application.Interfaces.Validacao;
 public class ItemCarrinhoValidator : AbstractValidator<ItemCarrinhoDto>
 {
-    public ItemCarrinhoValidator()
+    public ItemCarrinhoValidator(IStringLocalizer localizer)
     {
+        ArgumentNullException.ThrowIfNull(localizer);
         RuleFor(x => x.ProdutoId)
-            .NotEmpty().WithMessage(ItemCarrinhoMessages.ProdutoIdObrigatorio);
+            .NotEmpty().WithMessage(localizer[ItemCarrinhoMessages.ProdutoIdObrigatorio]);
 
         RuleFor(x => x.Quantidade)
-            .GreaterThan(0).WithMessage(ItemCarrinhoMessages.QuantidadeMaiorQueZero);
+            .GreaterThan(0).WithMessage(localizer[ItemCarrinhoMessages.QuantidadeMaiorQueZero]);
 
         RuleFor(x => x.Preco)
-            .GreaterThan(0).WithMessage(ItemCarrinhoMessages.PrecoMaiorQueZero);
+            .GreaterThan(0).WithMessage(localizer[ItemCarrinhoMessages.PrecoMaiorQueZero]);
     }
 }
