@@ -51,14 +51,12 @@ public static class DependencyInjectionConfig
         private static void Validator(IServiceCollection services)
     {
         services.AddScoped<IValidator<TagDto>, TagValidator>();
-        // services.AddScoped<IValidator<UsuarioDto>, UsuarioValidator>();
         services.AddScoped<IValidator<AdministradorDto>, AdministradorValidator>();
         services.AddScoped<IValidator<AvaliacaoDto>, AvaliacaoValidator>();
         services.AddScoped<IValidator<CarrinhoDto>, CarrinhoValidator>();
         services.AddScoped<IValidator<CategoriaDto>, CategoriaValidator>();
         services.AddScoped<IValidator<ClienteDto>, ClienteValidator>();
         services.AddScoped<IValidator<DescontoDto>, DescontoValidator>();
-        // services.AddScoped<IValidator<DetalhamentoPedidoDto>, DetalhamentoPedidoValidator>();
         services.AddScoped<IValidator<ImagemDto>, ImagemValidator>();
         services.AddScoped<IValidator<InformacoesEnvioDto>, InformacoesEnvioValidator>();
         services.AddScoped<IValidator<ItemCarrinhoDto>, ItemCarrinhoValidator>();
