@@ -1,14 +1,16 @@
 using FluentValidation;
 using Application.Dtos;
 using Resources.Messages;
+using Microsoft.Extensions.Localization;
 
 namespace Application.Interfaces.Validacao;
 public class CategoriaValidator : AbstractValidator<CategoriaDto>
 {
-    public CategoriaValidator()
+    public CategoriaValidator(IStringLocalizer localizer)
     {
+        ArgumentNullException.ThrowIfNull(localizer);
         RuleFor(x => x.Nome)
-            .NotEmpty().WithMessage(CategoriaMessages.NomeObrigatorio)
+            .NotEmpty().WithMessage(localizer[CategoriaMessages.NomeObrigatorio])
             .MaximumLength(100).WithMessage(CategoriaMessages.NomeMax100);
 
         RuleFor(x => x.Produtos)
