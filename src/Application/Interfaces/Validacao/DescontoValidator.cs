@@ -11,10 +11,6 @@ public class DescontoValidator : AbstractValidator<DescontoDto>
     {
         ArgumentNullException.ThrowIfNull(localizer);
         
-        RuleFor(x => x.Nome)
-            .NotEmpty().WithMessage(localizer[DescontoMessages.NomeObrigatorio])
-            .MaximumLength(100).WithMessage(localizer[DescontoMessages.NomeMax100]);
-
         RuleFor(x => x.Valor)
             .GreaterThan(0).WithMessage(localizer[DescontoMessages.ValorMaiorQueZero]);
 
