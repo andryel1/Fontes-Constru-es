@@ -15,6 +15,7 @@ namespace Infrastructure
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Administrador> Administradores { get; set; }
+        public DbSet<Desconto> Descontos { get; set; }
         
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

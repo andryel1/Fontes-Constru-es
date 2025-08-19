@@ -4,7 +4,6 @@ namespace Application.Dtos;
 
 public record DescontoDto(
     int Id,
-    string Nome,
     decimal Valor,
     DateTime DataInicio,
     DateTime DataFim,
