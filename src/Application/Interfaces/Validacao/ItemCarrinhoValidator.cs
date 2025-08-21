@@ -9,6 +9,8 @@ public class ItemCarrinhoValidator : AbstractValidator<ItemCarrinhoDto>
     public ItemCarrinhoValidator(IStringLocalizer localizer)
     {
         ArgumentNullException.ThrowIfNull(localizer);
+
+        RuleFor(x => x.Id);
         RuleFor(x => x.ProdutoId)
             .NotEmpty().WithMessage(localizer[ItemCarrinhoMessages.ProdutoIdObrigatorio]);
 
