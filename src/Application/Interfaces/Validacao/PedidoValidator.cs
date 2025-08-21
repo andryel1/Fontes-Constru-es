@@ -17,15 +17,24 @@ public class PedidoValidator : AbstractValidator<PedidoDto>
 
         RuleFor(x => x.DataPedido)
             .NotNull()
-            .NotEmpty();
+            .NotEmpty()
+            .WithMessage(localizer[PedidoMessages.DataPagamentoObrigatoria]);
 
         RuleFor(x => x.InformacoesEnvio)
             .NotNull()
             .NotEmpty();
 
+        RuleFor(x => x.ValorTotal)
+        .NotNull()
+        .WithMessage(localizer[PedidoMessages.ValorObrigatorio])
+        .NotEmpty()
+        .WithMessage(localizer[PedidoMessages.ValorMaiorQueZero]);
+
         RuleFor(x => x.Pagamentos)
             .NotNull()
-            .NotEmpty();
+            .WithMessage(localizer[PedidoMessages.TipoPagamentoObrigatorio])
+            .Must(p => p != null && p.Count != 0)
+            .WithMessage(localizer[PedidoMessages.TipoPagamentoInvalido]);
 
         RuleFor(x => x.DataEnvio)
             .NotNull()
@@ -34,16 +43,18 @@ public class PedidoValidator : AbstractValidator<PedidoDto>
         RuleFor(x => x.Clientes)
            .NotNull()
            .NotEmpty();
-
+           
         RuleFor(x => x.Itens)
            .NotNull()
            .NotEmpty();
 
-        RuleFor(x => x.DataEntrega)
-            .NotNull()
-            .NotEmpty();
+        RuleFor(x => x.Status)
+        .NotNull()
+        .WithMessage(localizer[PedidoMessages.StatusObrigatorio])
+        .NotEmpty()
+        .WithMessage(localizer[PedidoMessages.StatusInvalido]);
 
-         RuleFor(x => x.DataEnvio)
+        RuleFor(x => x.DataEntrega)
             .NotNull()
             .NotEmpty();
     }
