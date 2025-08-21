@@ -47,6 +47,5 @@ public class InformacoesEnvioValidator : AbstractValidator<InformacoesEnvioDto>
         RuleFor(x => x.Produto);
 
         RuleFor(x => x.ProdutoId);
-        
     }
 }
