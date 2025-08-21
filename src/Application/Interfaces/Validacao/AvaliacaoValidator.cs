@@ -19,6 +19,7 @@ public class AvaliacaoValidator : AbstractValidator<AvaliacaoDto>
             .MaximumLength(500).WithMessage(localizer[AvaliacaoMessages.ComentarioMax500]);
 
         RuleFor(x => x.Data)
-            .NotNull().WithMessage(localizer[AvaliacaoMessages.DataObrigatoria]);
+            .NotNull()
+            .WithMessage(localizer[AvaliacaoMessages.DataObrigatoria]);
     }
 }
