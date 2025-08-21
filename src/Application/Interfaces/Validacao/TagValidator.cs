@@ -18,6 +18,10 @@ namespace Application.Interfaces.Validacao
             .NotNull()
             .NotEmpty()
             .WithMessage(localizer[TagMessages.NomeObrigatorio]);
+
+            RuleFor(x => x.Produtos)
+            .NotNull()
+            .WithMessage(localizer[TagMessages.TagNaoEncontrada]);
         }
     }
 }

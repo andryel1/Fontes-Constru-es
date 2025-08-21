@@ -17,5 +17,11 @@ public class ItemCarrinhoValidator : AbstractValidator<ItemCarrinhoDto>
 
         RuleFor(x => x.Preco)
             .GreaterThan(0).WithMessage(localizer[ItemCarrinhoMessages.PrecoMaiorQueZero]);
+
+        RuleFor(x => x.Carrinho);
+
+        RuleFor(x => x.Produto);
+
+        RuleFor(x => x.CarrinhoId);
     }
 }

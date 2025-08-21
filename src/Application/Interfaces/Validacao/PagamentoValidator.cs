@@ -2,6 +2,7 @@ using FluentValidation;
 using Application.Dtos;
 using Resources.Messages;
 using Microsoft.Extensions.Localization;
+using System.Data;
 
 namespace Application.Interfaces.Validacao;
 
@@ -21,5 +22,11 @@ public class PagamentoValidator : AbstractValidator<PagamentoDto>
 
         RuleFor(x => x.DataPagamento)
             .NotNull().WithMessage(localizer[PagamentoMessages.DataPagamentoObrigatoria]);
+
+        RuleFor(x => x.Pedidos)
+        .NotNull()
+        .WithMessage(localizer[PagamentoMessages.PedidosObrigatorio]);
+
+        RuleFor(x => x.Parcelamento);   
     }
 }

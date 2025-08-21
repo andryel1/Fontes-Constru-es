@@ -1,7 +1,6 @@
 using Application.Dtos;
 using Application.Interfaces.Service;
 using Application.Interfaces.Repository;
-using Application.Validator;
 using AutoMapper;
 using Ecommerce.Domain.Entities;
 
