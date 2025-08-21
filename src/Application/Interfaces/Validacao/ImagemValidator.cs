@@ -9,6 +9,8 @@ public class ImagemValidator : AbstractValidator<ImagemDto>
     public ImagemValidator(IStringLocalizer localizer)
     {
         ArgumentNullException.ThrowIfNull(localizer);
+
+        RuleFor(x => x.Id);
         RuleFor(x => x.Url)
             .NotEmpty().WithMessage(ImagemMessages.UrlObrigatoria)
             .Must((_, url) => url != null && Uri.IsWellFormedUriString(url.AbsoluteUri, UriKind.Absolute))
@@ -16,5 +18,7 @@ public class ImagemValidator : AbstractValidator<ImagemDto>
 
         RuleFor(x => x.ProdutoId)
             .NotEmpty().WithMessage(localizer[ImagemMessages.ProdutoIdObrigatorio]);
+
+        RuleFor(x => x.Produto);
     }
 }
