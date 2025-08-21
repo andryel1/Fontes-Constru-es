@@ -22,6 +22,9 @@ namespace Application.Interfaces.Validacao
             RuleFor(x => x.Produtos)
             .NotNull()
             .WithMessage(localizer[TagMessages.TagNaoEncontrada]);
+
+            RuleFor(x => x.Id);
+            
         }
     }
 }
