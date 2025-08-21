@@ -12,7 +12,9 @@ public class ClienteValidator : AbstractValidator<ClienteDto>
         ArgumentNullException.ThrowIfNull(localizer);
 
         RuleFor(x => x.Nome)
-            .NotEmpty().WithMessage(localizer[ClienteMessages.NomeObrigatorio])
+            .NotEmpty()
+            .Length(3, 100)
+            .WithMessage(localizer[ClienteMessages.NomeObrigatorio])
             .MaximumLength(200).WithMessage(localizer[ClienteMessages.NomeMax200]);
 
         RuleFor(x => x.Cpf)
@@ -26,5 +28,11 @@ public class ClienteValidator : AbstractValidator<ClienteDto>
         RuleFor(x => x.Password)
             .NotEmpty().WithMessage(localizer[ClienteMessages.SenhaObrigatoria])
             .MinimumLength(8).WithMessage(localizer[ClienteMessages.SenhaMin8]);
+
+        RuleFor(x => x.Telefone);
+
+        RuleFor(x => x.DataNascimento);
+
+         RuleFor(x => x.Id);
     }
 }
