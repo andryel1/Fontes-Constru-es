@@ -10,7 +10,7 @@ public class DescontoValidator : AbstractValidator<DescontoDto>
     public DescontoValidator(IStringLocalizer localizer)
     {
         ArgumentNullException.ThrowIfNull(localizer);
-        
+
         RuleFor(x => x.Valor)
             .GreaterThan(0).WithMessage(localizer[DescontoMessages.ValorMaiorQueZero]);
 
@@ -24,5 +24,12 @@ public class DescontoValidator : AbstractValidator<DescontoDto>
             .NotNull().WithMessage(localizer[DescontoMessages.ProdutosObrigatorio])
             .Must(produtos => produtos != null && produtos.Any())
             .WithMessage(DescontoMessages.ProdutosMin1);
+
+        RuleFor(x => x.Ativo);
+
+        RuleFor(x => x.Id);
+
+        RuleFor(x => x.ProdutoId);
+        
     }
 }
