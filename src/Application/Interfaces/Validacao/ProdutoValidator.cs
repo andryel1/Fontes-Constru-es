@@ -2,6 +2,7 @@ using FluentValidation;
 using Application.Dtos;
 using Resources.Messages;
 using Microsoft.Extensions.Localization;
+using System.Data;
 
 namespace Application.Interfaces.Validacao;
 
@@ -28,5 +29,17 @@ public class ProdutoValidator : AbstractValidator<ProdutoDto>
 
         RuleFor(x => x.Categorias)
             .NotNull().WithMessage(localizer[ProdutoMessages.CategoriasObrigatorio]);
+
+           RuleFor(x => x.Avaliacoes)
+          .NotNull();
+
+         RuleFor(x => x.Tags)
+           .NotNull();
+
+         RuleFor(x => x.ItensCarrinho);
+
+         RuleFor(x => x.ListaDesejos);
+
+         RuleFor(x => x.Pedidos);
     }
 }
