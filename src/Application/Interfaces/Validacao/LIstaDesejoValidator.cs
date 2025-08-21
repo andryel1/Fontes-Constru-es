@@ -21,9 +21,12 @@ public class ListaDesejoValidator : AbstractValidator<ListaDesejoDto>
       .NotEmpty()
       .WithMessage(localizer[ListaDesejoMessages.ProdutosObrigatorio]);
 
-     RuleFor(x => x.Clientes)
-     .NotEmpty()
-     .NotNull()
-     .WithMessage(localizer[ListaDesejoMessages.ClienteObrigatorio]);
+    RuleFor(x => x.Clientes)
+    .NotEmpty()
+    .NotNull()
+    .WithMessage(localizer[ListaDesejoMessages.ClienteObrigatorio]);
+
+    RuleFor(x => x.ClienteId);
+    
   }
 }
