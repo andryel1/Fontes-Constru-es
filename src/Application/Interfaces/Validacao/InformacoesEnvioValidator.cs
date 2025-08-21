@@ -1,3 +1,4 @@
+using System.Data;
 using Application.Dtos;
 using FluentValidation;
 using Microsoft.Extensions.Localization;
@@ -36,5 +37,16 @@ public class InformacoesEnvioValidator : AbstractValidator<InformacoesEnvioDto>
         RuleFor(x => x.EmailDestinatario)
             .NotEmpty().WithMessage(localizer[InformacoesMessages.EmailDestinatarioObrigatorio])
             .EmailAddress().WithMessage(localizer[InformacoesMessages.EmailDestinatarioInvalido]);
+
+        RuleFor(x => x.SobrenomeDestinatario);
+
+        RuleFor(x => x.DataDeEnvioPrevista);
+
+        RuleFor(x => x.DatetimeEnvio);
+
+        RuleFor(x => x.Produto);
+
+        RuleFor(x => x.ProdutoId);
+        
     }
 }
