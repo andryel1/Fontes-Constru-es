@@ -11,6 +11,8 @@ public class PagamentoValidator : AbstractValidator<PagamentoDto>
     public PagamentoValidator(IStringLocalizer localizer)
     {
         ArgumentNullException.ThrowIfNull(localizer);
+
+        RuleFor(x => x.Id);
         RuleFor(x => x.Valor)
             .GreaterThan(0).WithMessage(localizer[PagamentoMessages.ValorMaiorQueZero]);
 
@@ -27,6 +29,9 @@ public class PagamentoValidator : AbstractValidator<PagamentoDto>
         .NotNull()
         .WithMessage(localizer[PagamentoMessages.PedidosObrigatorio]);
 
-        RuleFor(x => x.Parcelamento);   
+        RuleFor(x => x.Parcelamento);
+        RuleFor(x => x.Status);
+        RuleFor(x => x.ParcelamentoId); 
+         
     }
 }
