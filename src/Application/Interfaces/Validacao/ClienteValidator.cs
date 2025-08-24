@@ -26,13 +26,24 @@ public class ClienteValidator : AbstractValidator<ClienteDto>
             .EmailAddress().WithMessage(localizer[ClienteMessages.EmailInvalido]);
 
         RuleFor(x => x.Password)
-            .NotEmpty().WithMessage(localizer[ClienteMessages.SenhaObrigatoria])
-            .MinimumLength(8).WithMessage(localizer[ClienteMessages.SenhaMin8]);
+            .NotNull()
+            .WithMessage(localizer[ClienteMessages.SenhaObrigatoria])
+            .NotEmpty()
+            .Must(x => x != null && x.Length > 8)
+            .WithMessage(localizer[ClienteMessages.SenhaMin8]);
 
-        RuleFor(x => x.Telefone);
 
-        RuleFor(x => x.DataNascimento);
+        RuleFor(x => x.Telefone)
+            .NotNull()
+            .NotEmpty()
+            .Matches(@"^[0-9]{10,11}$")
+            .WithMessage(localizer[ClienteMessages.TelefoneInvalido]);
 
-         RuleFor(x => x.Id);
+        RuleFor(x => x.DataNascimento)
+            .NotEmpty()
+            .NotNull()
+            .WithMessage(localizer[ClienteMessages.DataNascimentoInvalida]);
+
+        RuleFor(x => x.Id);
     }
 }
