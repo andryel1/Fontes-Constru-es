@@ -11,15 +11,24 @@ public class AvaliacaoValidator : AbstractValidator<AvaliacaoDto>
     {
         ArgumentNullException.ThrowIfNull(localizer);
         RuleFor(x => x.Nota)
-            .NotNull().WithMessage(localizer[AvaliacaoMessages.NotaObrigatoria])
+            .NotNull()
+            .NotEmpty()
+            .WithMessage(localizer[AvaliacaoMessages.NotaObrigatoria])
             .InclusiveBetween(1, 5).WithMessage(localizer[AvaliacaoMessages.NotaEntre1E5]);
 
         RuleFor(x => x.Comentario)
-            .NotEmpty().WithMessage(AvaliacaoMessages.ComentarioObrigatorio)
+            .NotEmpty()
+            .NotNull()
+            .WithMessage(AvaliacaoMessages.ComentarioObrigatorio)
             .MaximumLength(500).WithMessage(localizer[AvaliacaoMessages.ComentarioMax500]);
 
         RuleFor(x => x.Data)
             .NotNull()
+            .NotEmpty()
             .WithMessage(localizer[AvaliacaoMessages.DataObrigatoria]);
+
+        RuleFor(x => x.Id)
+         .NotNull()
+         .NotEmpty();
     }
 }

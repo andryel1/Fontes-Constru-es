@@ -7,15 +7,9 @@ using System.Text;
 
 namespace Infrastructure.Repositories;
 
-public class AuthRepository : IAuthRepository
+public class AuthRepository(Context context) : IAuthRepository
 {
-    private readonly Context _context;
-
-    public AuthRepository(Context context)
-    {
-        _context = context;
-    }
-
+    private readonly Context _context = context;
     public async Task<bool> LoginAsync(LoginDto dto)
     {
         if (string.IsNullOrEmpty(dto.Password))
@@ -33,7 +27,6 @@ public class AuthRepository : IAuthRepository
 
     public async Task<bool> RegisterAsync(RegistroDto dto)
     {
-        // Verificar se o email já existe
         var existingUser = await _context.Usuarios
             .FirstOrDefaultAsync(u => u.Email == dto.Email);
 

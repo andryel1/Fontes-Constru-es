@@ -38,14 +38,30 @@ public class InformacoesEnvioValidator : AbstractValidator<InformacoesEnvioDto>
             .NotEmpty().WithMessage(localizer[InformacoesMessages.EmailDestinatarioObrigatorio])
             .EmailAddress().WithMessage(localizer[InformacoesMessages.EmailDestinatarioInvalido]);
 
-        RuleFor(x => x.SobrenomeDestinatario);
+        RuleFor(x => x.SobrenomeDestinatario)
+        .NotNull()
+        .NotEmpty()
+        .MaximumLength(100)
+        .WithMessage(localizer[InformacoesMessages.SobrenomeDestinatarioObrigatorio]);
 
-        RuleFor(x => x.DataDeEnvioPrevista);
+        RuleFor(x => x.DataDeEnvioPrevista)
+        .NotEmpty()
+        .NotNull()
+        .WithMessage(localizer[InformacoesMessages.DataEnvioPrevistaObrigatoria]);
 
-        RuleFor(x => x.DatetimeEnvio);
+        RuleFor(x => x.DatetimeEnvio)
+        .NotNull()
+        .NotEmpty()
+        .WithMessage(localizer[InformacoesMessages.DataEnvioObrigatoria]);
 
-        RuleFor(x => x.Produto);
+        RuleFor(x => x.Produto)
+        .NotNull()
+        .NotEmpty()
+        .WithMessage(localizer[InformacoesMessages.ProdutoObrigatorio]);
 
-        RuleFor(x => x.ProdutoId);
+        RuleFor(x => x.ProdutoId)
+        .NotNull()
+        .NotEmpty()
+        .WithMessage(localizer[InformacoesMessages.ProdutoIdObrigatorio]);
     }
 }

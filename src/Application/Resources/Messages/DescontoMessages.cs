@@ -34,4 +34,14 @@ public static class DescontoMessages
 
     public static string ProdutosMin1 =>
         resourceManager.GetString("ProdutosMin1", CultureInfo.CurrentUICulture) ?? "[ProdutosMin1]";
+        
+    public static string AtivoObrigatorio =>
+    resourceManager.GetString("AtivoObrigatorio", CultureInfo.CurrentUICulture) ?? "[AtivoObrigatorio]";
+
+    public static string IdObrigatorio =>
+    resourceManager.GetString("IdObrigatorio", CultureInfo.CurrentUICulture) ?? "[IdObrigatorio]";
+
+    public static string ProdutoIdObrigatorio =>
+    resourceManager.GetString("ProdutoIdObrigatorio", CultureInfo.CurrentUICulture) ?? "[ProdutoIdObrigatorio]";
+
 } 
