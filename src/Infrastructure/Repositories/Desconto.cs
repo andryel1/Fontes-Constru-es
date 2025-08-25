@@ -6,32 +6,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Infrastructure.Repository;
 
-public class DescontoRepository : IDescontoRepository
+public class DescontoRepository(Context context) : IDescontoRepository
 {
-    private readonly Context _context;
-
-    public DescontoRepository(Context context)
-    {
-        _context = context;
-    }
-
-    public async Task<DescontoDto> ObterDescontoPorId(int id)
-    {
-        var desconto = await _context.Descontos.FindAsync(id);
-        if (desconto == null)
-        {
-            return null!;
-        }
-        return new DescontoDto(
-            desconto.Id,
-            (decimal)desconto.Valor,
-            desconto.DataInicio,
-            desconto.DataFim,
-            desconto.Produtos.ToList(),
-            desconto.ProdutoId,
-            desconto.Ativo
-        );
-    }
+    private readonly Context _context = context;
 
     public async Task<IEnumerable<DescontoDto>> ObterDescontosAtivos()
     {
@@ -41,7 +18,7 @@ public class DescontoRepository : IDescontoRepository
             (decimal)p.Valor,
             p.DataInicio,
             p.DataFim,
-            p.Produtos.ToList(),
+            [.. p.Produtos],
             p.ProdutoId,
             p.Ativo
         ));
@@ -55,15 +32,26 @@ public class DescontoRepository : IDescontoRepository
             (decimal)p.Valor,
             p.DataInicio,
             p.DataFim,
-            p.Produtos.ToList(),
+            [..p.Produtos],
             p.ProdutoId,
             p.Ativo
         ));
     }
 
-    public Task<IEnumerable<DescontoDto>> ObterDescontosExpirados()
+    public async Task<IEnumerable<DescontoDto>> ObterDescontosExpirados()
     {
-        throw new NotImplementedException();
+        var now = DateTime.Now;
+        var DescontoExpirado = await _context.Descontos.Where(x => x.DataFim < now && x.Ativo).ToListAsync();
+
+        return DescontoExpirado.Select(p => new DescontoDto(
+            p.Id,
+            (decimal)p.Valor,
+            p.DataInicio,
+            p.DataFim,
+            [..p.Produtos],
+            p.ProdutoId,
+            p.Ativo
+        ));
     }
 
     public async Task<DescontoDto> Adicionar(DescontoDto entity)
@@ -85,29 +73,84 @@ public class DescontoRepository : IDescontoRepository
             (decimal)desconto.Valor,
             desconto.DataInicio,
             desconto.DataFim,
-            desconto.Produtos?.ToList() ?? new List<Produto>(),
+            desconto.Produtos?.ToList() ?? [],
             desconto.ProdutoId,
             desconto.Ativo
         );
     }
 
-    public Task<DescontoDto> Atualizar(DescontoDto entity)
+    public async Task<DescontoDto> Atualizar(DescontoDto entity)
     {
-        throw new NotImplementedException();
+        var desconto = await _context.Descontos.FindAsync(entity.Id);
+        if (desconto == null)
+        {
+            return null!;
+        }
+
+        desconto.Valor = (double)entity.Valor;
+        desconto.DataInicio = entity.DataInicio;
+        desconto.DataFim = entity.DataFim;
+        desconto.ProdutoId = entity.ProdutoId;
+        desconto.Ativo = entity.Ativo;
+
+        _context.Descontos.Update(desconto);
+        await _context.SaveChangesAsync();
+
+        return new DescontoDto(
+            desconto.Id,
+            (decimal)desconto.Valor,
+            desconto.DataInicio,
+            desconto.DataFim,
+            desconto.Produtos?.ToList() ?? [],
+            desconto.ProdutoId,
+            desconto.Ativo
+        );
     }
 
-    public Task<bool> Deletar(int id)
+    public async Task<bool> Deletar(int id)
     {
-        throw new NotImplementedException();
+        var Desconto = await _context.Descontos.FindAsync(id);
+        if (Desconto == null)
+        {
+            return false;
+        }
+        _context.Descontos.Remove(Desconto);
+        await _context.SaveChangesAsync();
+        return true;
     }
 
-    public Task<DescontoDto> ObterPorId(int id)
+    public async Task<DescontoDto> ObterPorId(int id)
     {
-        throw new NotImplementedException();
+     {
+        var desconto = await _context.Descontos.FindAsync(id);
+        if (desconto == null)
+        {
+            return null!;
+        }
+        
+        return new DescontoDto(
+                desconto.Id,
+                (decimal)desconto.Valor,
+                desconto.DataInicio,
+                desconto.DataFim,
+                [.. desconto.Produtos],
+                desconto.ProdutoId,
+                desconto.Ativo
+            );
+    }
     }
 
-    public Task<List<DescontoDto>> ObterTodos()
+    public async Task<List<DescontoDto>> ObterTodos()
     {
-        throw new NotImplementedException();
+        var descontos = await _context.Descontos.ToListAsync();
+        return [.. descontos.Select(p => new DescontoDto(
+            p.Id,
+            (decimal)p.Valor,
+            p.DataInicio,
+            p.DataFim,
+            p.Produtos?.ToList() ?? [],
+            p.ProdutoId,
+            p.Ativo
+        ))];
     }
 }
