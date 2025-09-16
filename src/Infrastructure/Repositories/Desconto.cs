@@ -2,7 +2,6 @@ using Application.Dtos;
 using Application.Interfaces.Repository;
 using Ecommerce.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Infrastructure.Repository;
 
