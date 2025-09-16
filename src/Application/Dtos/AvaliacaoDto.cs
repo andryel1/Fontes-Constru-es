@@ -7,5 +7,6 @@ public record AvaliacaoDto(
     int Id,
     int Nota,
     string Comentario,
-    DateTime Data
+    DateTime Data,
+    int ProdutoId
 );
