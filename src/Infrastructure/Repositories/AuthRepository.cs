@@ -28,7 +28,7 @@ public class AuthRepository(Context context) : IAuthRepository
     public async Task<bool> RegisterAsync(RegistroDto dto)
     {
         var existingUser = await _context.Usuarios
-            .FirstOrDefaultAsync(u => u.Email == dto.Email);
+            .FirstOrDefaultAsync(u => u.Email== dto.Email);
 
         if (existingUser != null)
             return false;
