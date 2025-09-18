@@ -34,15 +34,20 @@ public class AvaliacaoRepository(Context context): IAvaliaçaoRepository
         return entity;
     }
 
-    public Task<bool> Deletar(int id)
+    public async Task<bool> Deletar(int id)
     {
-        throw new NotImplementedException();
+        var Avaliacao = await _context.Avaliacoes.FindAsync(id);
+        if (Avaliacao == null) return false;
+
+        _context.Avaliacoes.Remove(Avaliacao);
+        await _context.SaveChangesAsync();
+        return true;
     }
 
-    public async Task<List<AvaliacaoDto>> ObterAvaliacoesPorProdutoId(int produtoId)
+    public async Task<List<AvaliacaoDto>> ObterAvaliacoesPorProdutoId()
     {
         var Avaliacao = await _context.Avaliacoes.ToListAsync();
-        return Avaliacao.Select(p => new AvaliacaoDto(
+        return [.. Avaliacao.Select(p => new AvaliacaoDto(
             p.Id,
             p.Nota,
             p.Comentario ?? string.Empty,
@@ -50,17 +55,47 @@ public class AvaliacaoRepository(Context context): IAvaliaçaoRepository
             p.ProdutoId
 
 
-        )).ToList();
+        ))];
     }
 
-    public Task<List<AvaliacaoDto>> ObterAvaliacoesPorUsuarioId(int usuarioId)
+    public async Task<List<AvaliacaoDto>> ObterAvaliacoesPorProdutoId(int produtoId)
     {
-        throw new NotImplementedException();
+        var avaliacao = await _context.Avaliacoes.Where(p => p.ProdutoId == produtoId).ToListAsync();
+        return [.. avaliacao.Select(p => new AvaliacaoDto(
+            p.Id,
+            p.Nota,
+            p.Comentario ?? string.Empty,
+            p.Data,
+            p.ProdutoId
+        ))];
     }
 
-    public Task<AvaliacaoDto> ObterPorId(int id)
+    public async Task<List<AvaliacaoDto>> ObterAvaliacoesPorUsuarioId(int usuarioId)
     {
-        throw new NotImplementedException();
+        var avaliacoes = await _context.Avaliacoes
+            .Where(p => p.ClienteId == usuarioId)
+            .ToListAsync();
+        return [.. avaliacoes.Select(p => new AvaliacaoDto(
+            p.Id,
+            p.Nota,
+            p.Comentario ?? string.Empty,
+            p.Data,
+            p.ProdutoId
+        ))];
+    }
+
+    public async Task<AvaliacaoDto> ObterPorId(int id)
+    {
+        var avaliacao = await _context.Avaliacoes.FindAsync(id);
+        if (avaliacao == null) return null!;
+
+        return new AvaliacaoDto(
+            avaliacao.Id,
+            avaliacao.Nota,
+            avaliacao.Comentario ?? string.Empty,
+            avaliacao.Data,
+            avaliacao.ProdutoId
+        );
     }
 
     public async Task<List<AvaliacaoDto>> ObterTodos()
