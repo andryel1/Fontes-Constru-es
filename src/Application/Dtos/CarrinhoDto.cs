@@ -7,7 +7,7 @@ public record CarrinhoDto(
     int Id,
     DateTime DataCriacao,
     List<ItemCarrinho> Itens,
-    double PrecoTotal,
+    decimal PrecoTotal,
     int ClienteId,
     int PedidoId
 ); 
