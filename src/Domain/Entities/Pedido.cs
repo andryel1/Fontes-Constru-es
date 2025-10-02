@@ -9,8 +9,8 @@ namespace Ecommerce.Domain.Entities
         public double ValorTotal { get; set; }
         public Produto? Produto { get; set; }
         public int ProdutoId { get; set; }
+        public Cliente ClienteId { get; set; } = null!;
         public ICollection<Carrinho> Itens { get; set; } = [];
-        public ICollection<Cliente> Clientes { get; set; } = [];
         public ICollection<Pagamento> Pagamentos { get; set; } = [];
         public ICollection<InformacoesEnvio> InformacoesEnvio { get; set; } = [];
     }
