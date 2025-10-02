@@ -40,7 +40,7 @@ public class PedidoValidator : AbstractValidator<PedidoDto>
             .NotNull()
             .NotEmpty();
 
-        RuleFor(x => x.Clientes)
+        RuleFor(x => x.ClienteId)
            .NotNull()
            .NotEmpty();
            

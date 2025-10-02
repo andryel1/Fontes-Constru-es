@@ -5,6 +5,6 @@ namespace Application.Interfaces.Repository;
 
 public interface IPedidoRepository : IInterfaceBaseRepository<PedidoDto, Pedido>
 {
-    Task<IEnumerable<PedidoDto>> ObterPedidosPorClienteId(int clienteId);
     Task<bool> AtualizarStatusPedido(Guid pedidoId, string novoStatus);
+    Task<IEnumerable<PedidoDto>> ObterPedidosPorClienteId(Cliente clienteId);
 }

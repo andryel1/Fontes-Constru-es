@@ -15,7 +15,7 @@ public class PedidoRepository(Context context) : IPedidoRepository
             Id = entity.Id,
             DataPedido = entity.DataPedido,
             Status = entity.Status,
-            Clientes = entity.Clientes,
+            ClienteId = entity.ClienteId,
             DataEnvio = entity.DataEnvio,
             DataEntrega = entity.DataEntrega,
             Pagamentos = entity.Pagamentos,
@@ -47,7 +47,7 @@ public class PedidoRepository(Context context) : IPedidoRepository
         
     }
 
-    async Task<IEnumerable<PedidoDto>> IPedidoRepository.ObterPedidosPorClienteId(int clienteId)
+    async Task<IEnumerable<PedidoDto>> IPedidoRepository.ObterPedidosPorClienteId(Cliente clienteId)
     {
       var pedidos = await _context.Pedidos
     .Where(p => p.ClienteId == clienteId)

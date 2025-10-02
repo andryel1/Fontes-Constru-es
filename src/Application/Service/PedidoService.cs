@@ -1,5 +1,6 @@
 using Application.Interfaces.Service;
 using Application.Dtos;
+using Ecommerce.Domain.Entities;
 
 namespace Application.Service;
 
@@ -7,7 +8,7 @@ public class PedidoService(IPedidoService pedidoService) : IPedidoService
 {
     private readonly IPedidoService _pedidoService = pedidoService;
 
-    public async Task<IEnumerable<PedidoDto>> ObterPedidosPorClienteId(Guid clienteId)
+    public async Task<IEnumerable<PedidoDto>> ObterPedidosPorClienteId(Cliente clienteId)
     {
         return await _pedidoService.ObterPedidosPorClienteId(clienteId);
     }
