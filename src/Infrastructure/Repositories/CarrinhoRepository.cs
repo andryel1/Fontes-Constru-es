@@ -34,9 +34,16 @@ public class CarrinhoRepository(Context context): ICarrinhoRepository
         throw new NotImplementedException();
     }
 
-    public Task<bool> Deletar(int id)
+    public async Task<bool> Deletar(int id)
     {
-        throw new NotImplementedException();
+        var carrinho = await _context.Carrinhos.FindAsync(id);
+          if (carrinho == null)
+            return false;
+            
+        _context.Carrinhos.Remove(carrinho);
+        await _context.SaveChangesAsync();
+        return true;
+        
     }
 
     public Task<bool> FinalizarCompra(int usuarioId, InformacoesEnvioDto informacoesEnvio)
@@ -56,7 +63,16 @@ public class CarrinhoRepository(Context context): ICarrinhoRepository
 
     public Task<CarrinhoDto> ObterPorId(int id)
     {
-        throw new NotImplementedException();
+        var produto = _context.Carrinhos.Find(id);
+        if (produto == null) return null!;
+        return Task.FromResult(new CarrinhoDto(
+            produto.Id,
+            produto.DataCriacao,
+            produto.Itens.ToList() ?? [],
+            produto.PrecoTotal,
+            produto.ClienteId,
+            produto.PedidoId
+        ));
     }
 
     public Task<List<CarrinhoDto>> ObterTodos()

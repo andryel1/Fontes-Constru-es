@@ -15,5 +15,6 @@ public class UsuarioValidator : AbstractValidator<AvaliacaoDto>
 
         RuleFor(x => x.Data)
         .NotNull();
+        
     }
 }

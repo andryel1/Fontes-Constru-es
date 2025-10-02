@@ -10,7 +10,7 @@ public record PedidoDto(
     string? Status,
     double ValorTotal,
     ICollection<Carrinho> Itens,
-    ICollection<Cliente> Clientes,
+    int ClienteId,
     DateTime? DataEnvio,
     DateTime? DataEntrega,
     ICollection<Pagamento> Pagamentos,
