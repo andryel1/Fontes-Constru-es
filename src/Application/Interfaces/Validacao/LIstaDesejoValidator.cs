@@ -1,32 +1,27 @@
 using FluentValidation;
 using Application.Dtos;
-using Microsoft.Extensions.Localization;
 using Resources.Messages;
-using System.Data;
 
 namespace Application.Interfaces.Validacao;
 
 public class ListaDesejoValidator : AbstractValidator<ListaDesejoDto>
 {
-  public ListaDesejoValidator(IStringLocalizer localizer)
-  {
-    ArgumentNullException.ThrowIfNull(localizer);
+    public ListaDesejoValidator()
+    {
+        RuleFor(x => x.DataAdicionada)
+            .NotEmpty()
+            .NotNull()
+            .WithMessage(ListaDesejoMessages.DataAdicaoObrigatoria);
 
-    RuleFor(x => x.DataAdicionada)
-      .NotEmpty()
-      .NotNull()
-      .WithMessage(localizer[ListaDesejoMessages.DataAdicaoObrigatoria]);
+        RuleFor(x => x.Produtos)
+            .NotEmpty()
+            .WithMessage(ListaDesejoMessages.ProdutosObrigatorio);
 
-    RuleFor(x => x.Produtos)
-      .NotEmpty()
-      .WithMessage(localizer[ListaDesejoMessages.ProdutosObrigatorio]);
+        RuleFor(x => x.Clientes)
+            .NotEmpty()
+            .NotNull()
+            .WithMessage(ListaDesejoMessages.ClienteObrigatorio);
 
-    RuleFor(x => x.Clientes)
-    .NotEmpty()
-    .NotNull()
-    .WithMessage(localizer[ListaDesejoMessages.ClienteObrigatorio]);
-
-    RuleFor(x => x.ClienteId);
-    
-  }
+        RuleFor(x => x.ClienteId);
+    }
 }

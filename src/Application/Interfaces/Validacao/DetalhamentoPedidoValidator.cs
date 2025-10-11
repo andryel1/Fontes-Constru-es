@@ -1,37 +1,45 @@
 using FluentValidation;
 using Application.Dtos;
-using Microsoft.Extensions.Localization;
 using Resources.Messages;
 
 namespace Application.Interfaces.Validacao;
 
 public class DetalhamentoPedidoValidator : AbstractValidator<DetalhePedidoDto>
 {
-    public DetalhamentoPedidoValidator(IStringLocalizer localizer)
+    public DetalhamentoPedidoValidator()
     {
-        ArgumentNullException.ThrowIfNull(localizer);
-
         RuleFor(x => x.NomeProduto)
-            .NotEmpty().WithMessage(localizer[DetalhePedidoMessages.NomeObrigatorio])
-            .MaximumLength(100).WithMessage(localizer[DetalhePedidoMessages.NomeMax100])
-            .Must(nome => !string.IsNullOrWhiteSpace(nome)).WithMessage(localizer[DetalhePedidoMessages.NomeObrigatorio]);
+            .NotEmpty()
+            .WithMessage(DetalhePedidoMessages.NomeObrigatorio)
+            .MaximumLength(100)
+            .WithMessage(DetalhePedidoMessages.NomeMax100)
+            .Must(nome => !string.IsNullOrWhiteSpace(nome))
+            .WithMessage(DetalhePedidoMessages.NomeObrigatorio);
 
         RuleFor(x => x.Pedido)
-            .NotNull().WithMessage(localizer[DetalhePedidoMessages.PedidoIdObrigatorio]);
+            .NotNull()
+            .WithMessage(DetalhePedidoMessages.PedidoIdObrigatorio);
 
         RuleFor(x => x.PedidoId)
-            .NotEmpty().WithMessage(localizer[DetalhePedidoMessages.PedidoIdObrigatorio])
-            .GreaterThan(0).WithMessage(localizer[DetalhePedidoMessages.PedidoIdInvalido]);
+            .NotEmpty()
+            .WithMessage(DetalhePedidoMessages.PedidoIdObrigatorio)
+            .GreaterThan(0)
+            .WithMessage(DetalhePedidoMessages.PedidoIdInvalido);
 
         RuleFor(x => x.Preco)
-            .NotEmpty().WithMessage(localizer[DetalhePedidoMessages.PrecoObrigatorio])
-            .GreaterThan(0).WithMessage(localizer[DetalhePedidoMessages.PrecoInvalido]);
+            .NotEmpty()
+            .WithMessage(DetalhePedidoMessages.PrecoObrigatorio)
+            .GreaterThan(0)
+            .WithMessage(DetalhePedidoMessages.PrecoInvalido);
 
         RuleFor(x => x.Quantidade)
-            .NotEmpty().WithMessage(localizer[DetalhePedidoMessages.QuantidadeObrigatoria])
-            .GreaterThan(0).WithMessage(localizer[DetalhePedidoMessages.QuantidadeInvalida]);
+            .NotEmpty()
+            .WithMessage(DetalhePedidoMessages.QuantidadeObrigatoria)
+            .GreaterThan(0)
+            .WithMessage(DetalhePedidoMessages.QuantidadeInvalida);
 
         RuleFor(x => x.SubTotal)
-            .GreaterThan(0).WithMessage(localizer[DetalhePedidoMessages.PrecoInvalido]);
+            .GreaterThan(0)
+            .WithMessage(DetalhePedidoMessages.PrecoInvalido);
     }
 }

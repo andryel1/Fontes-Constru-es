@@ -30,6 +30,19 @@ public static class DependencyInjectionConfig
         services.AddScoped<IAvaliacaoRepository, AvaliacaoRepository>();
         services.AddScoped<IDescontoRepository, DescontoRepository>();
         services.AddScoped<ICarrinhoRepository, CarrinhoRepository>();
+        services.AddScoped<IPagamentoRepository, PagamentoRepository>();
+        services.AddScoped<IItemCarrinhoRepository, ItemCarrinhoRepository>();
+        services.AddScoped<ITagRepository, TagRepository>();
+        services.AddScoped<IInformacoesEnvioRepository, InformacoesEnvioRepository>();
+        services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+        services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+        services.AddScoped<IClienteRepository, ClienteRepository>();
+        services.AddScoped<IDetalhePedidoRepository, DetalhePedidoRepository>();
+        services.AddScoped<IImagemRepository, ImagemRepository>();
+
+
+        services.AddLocalization();
+
 
     } 
 
@@ -48,7 +61,7 @@ public static class DependencyInjectionConfig
         services.AddScoped<IClienteService, ClienteService>();
         services.AddScoped<IDetalhePedidoService, DetalhePedidoService>();
         services.AddScoped<IImagemService, ImagemService>();
-        services.AddScoped<IEnviarEmailService, EnviarEmailService>(); 
+        
     }
 
     private static void Validator(IServiceCollection services)
