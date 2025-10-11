@@ -1,50 +1,57 @@
 using Application.Interfaces.Service;
+using Application.Interfaces.Repository; // Import necessário para o Repositório
 using Application.Dtos;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Application.Service
 {
-    public class DescontoService(IDescontoService descontoService) : IDescontoService
+    // CORRIGIDO: Injeta ITagRepository para evitar o ciclo de dependência.
+    public class DescontoService(IDescontoRepository descontoRepository) : IDescontoService
     {
-        private readonly IDescontoService _descontoService = descontoService;
+        private readonly IDescontoRepository _descontoRepository = descontoRepository;
 
-        public async Task<IEnumerable<DescontoDto>> ObterDescontosAtivos()
+        // Os métodos abaixo usam a dependência de Repositório (_descontoRepository)
+        // para buscar/salvar dados.
+
+        public Task<IEnumerable<DescontoDto>> ObterDescontosAtivos()
         {
-            return await _descontoService.ObterDescontosAtivos();
+            throw new NotImplementedException("O método ObterDescontosAtivos deve ser implementado usando a dependência de Repositório.");
         }
 
-        public async Task<IEnumerable<DescontoDto>> ObterDescontosInativos()
+        public Task<IEnumerable<DescontoDto>> ObterDescontosInativos()
         {
-            return await _descontoService.ObterDescontosInativos();
+            throw new NotImplementedException("O método ObterDescontosInativos deve ser implementado usando a dependência de Repositório.");
         }
 
-        public async Task<IEnumerable<DescontoDto>> ObterDescontosExpirados()
+        public Task<IEnumerable<DescontoDto>> ObterDescontosExpirados()
         {
-            return await _descontoService.ObterDescontosExpirados();
+            throw new NotImplementedException("O método ObterDescontosExpirados deve ser implementado usando a dependência de Repositório.");
         }
 
-        public async Task<DescontoDto> Adicionar(DescontoDto dto)
+        public Task<DescontoDto> Adicionar(DescontoDto dto)
         {
-            return await _descontoService.Adicionar(dto);
+            throw new NotImplementedException("O método Adicionar deve ser implementado usando a dependência de Repositório.");
         }
 
-        public async Task<DescontoDto> Atualizar(DescontoDto dto)
+        public Task<DescontoDto> Atualizar(DescontoDto dto)
         {
-            return await _descontoService.Atualizar(dto);
+            throw new NotImplementedException("O método Atualizar deve ser implementado usando a dependência de Repositório.");
         }
   
-        public async Task<DescontoDto> ObterPorId(int id)
+        public Task<DescontoDto> ObterPorId(int id)
         {
-            return await _descontoService.ObterPorId(id);
+            throw new NotImplementedException("O método ObterPorId deve ser implementado usando a dependência de Repositório.");
         }
 
-        public async Task<List<DescontoDto>> ObterTodos()
+        public Task<List<DescontoDto>> ObterTodos()
         {
-            return await _descontoService.ObterTodos();
+            throw new NotImplementedException("O método ObterTodos deve ser implementado usando a dependência de Repositório.");
         }
 
         public Task<bool> Deletar(int id)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException("O método Deletar deve ser implementado usando a dependência de Repositório.");
         }
     }
 }
