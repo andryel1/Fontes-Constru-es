@@ -98,15 +98,8 @@ public class AvaliacaoRepository(Context context): IAvaliacaoRepository
         );
     }
 
-    public async Task<List<AvaliacaoDto>> ObterTodos()
+    public Task<List<AvaliacaoDto>> ObterTodos()
     {
-        var Avaliacao = await _context.Avaliacoes.ToListAsync();
-        return [.. Avaliacao.Select(p => new AvaliacaoDto(
-            p.Id,
-            p.Nota,
-            p.Comentario ?? string.Empty,
-            p.Data,
-            p.ProdutoId
-        ))];
+        throw new NotImplementedException();
     }
 }

@@ -1,58 +1,54 @@
 using FluentValidation;
 using Application.Dtos;
 using Resources.Messages;
-using Microsoft.Extensions.Localization;
-using System.Data;
 
 namespace Application.Interfaces.Validacao;
 
 public class PedidoValidator : AbstractValidator<PedidoDto>
 {
-    public PedidoValidator(IStringLocalizer localizer)
+    public PedidoValidator()
     {
-        ArgumentNullException.ThrowIfNull(localizer);
-
         RuleFor(x => x.Id)
             .NotNull();
 
         RuleFor(x => x.DataPedido)
             .NotNull()
             .NotEmpty()
-            .WithMessage(localizer[PedidoMessages.DataPagamentoObrigatoria]);
+            .WithMessage(PedidoMessages.DataPagamentoObrigatoria);
 
         RuleFor(x => x.InformacoesEnvio)
             .NotNull()
             .NotEmpty();
 
         RuleFor(x => x.ValorTotal)
-        .NotNull()
-        .WithMessage(localizer[PedidoMessages.ValorObrigatorio])
-        .NotEmpty()
-        .WithMessage(localizer[PedidoMessages.ValorMaiorQueZero]);
+            .NotNull()
+            .WithMessage(PedidoMessages.ValorObrigatorio)
+            .NotEmpty()
+            .WithMessage(PedidoMessages.ValorMaiorQueZero);
 
         RuleFor(x => x.Pagamentos)
             .NotNull()
-            .WithMessage(localizer[PedidoMessages.TipoPagamentoObrigatorio])
+            .WithMessage(PedidoMessages.TipoPagamentoObrigatorio)
             .Must(p => p != null && p.Count != 0)
-            .WithMessage(localizer[PedidoMessages.TipoPagamentoInvalido]);
+            .WithMessage(PedidoMessages.TipoPagamentoInvalido);
 
         RuleFor(x => x.DataEnvio)
             .NotNull()
             .NotEmpty();
 
         RuleFor(x => x.ClienteId)
-           .NotNull()
-           .NotEmpty();
-           
+            .NotNull()
+            .NotEmpty();
+
         RuleFor(x => x.Itens)
-           .NotNull()
-           .NotEmpty();
+            .NotNull()
+            .NotEmpty();
 
         RuleFor(x => x.Status)
-        .NotNull()
-        .WithMessage(localizer[PedidoMessages.StatusObrigatorio])
-        .NotEmpty()
-        .WithMessage(localizer[PedidoMessages.StatusInvalido]);
+            .NotNull()
+            .WithMessage(PedidoMessages.StatusObrigatorio)
+            .NotEmpty()
+            .WithMessage(PedidoMessages.StatusInvalido);
 
         RuleFor(x => x.DataEntrega)
             .NotNull()

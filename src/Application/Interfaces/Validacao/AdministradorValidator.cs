@@ -1,15 +1,11 @@
-using System.Data;
 using Application.Dtos;
-using Ecommerce.Domain.Entities;
 using FluentValidation;
-using Microsoft.Extensions.Localization;
 
 namespace Application.Interfaces.Validacao;
 public class AdministradorValidator : AbstractValidator<AdministradorDto>
 {
-    public AdministradorValidator(IStringLocalizer localizer)
+    public AdministradorValidator()
     {
-        ArgumentNullException.ThrowIfNull(localizer);
 
         RuleFor(x => x.DataNascimento)
         .NotNull()

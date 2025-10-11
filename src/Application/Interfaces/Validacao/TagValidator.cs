@@ -1,30 +1,23 @@
 using FluentValidation;
 using Application.Dtos;
 using Resources.Messages;
-using Ecommerce.Domain.Entities;
-using Microsoft.Extensions.Localization;
-using Org.BouncyCastle.Math.EC.Rfc7748;
-
 
 namespace Application.Interfaces.Validacao
 {
     public class TagValidator : AbstractValidator<TagDto>
     {
-        public TagValidator(IStringLocalizer<TagDto> localizer)
+        public TagValidator()
         {
-            ArgumentNullException.ThrowIfNull(localizer);
-
             RuleFor(x => x.Nome)
-            .NotNull()
-            .NotEmpty()
-            .WithMessage(localizer[TagMessages.NomeObrigatorio]);
+                .NotNull()
+                .NotEmpty()
+                .WithMessage(TagMessages.NomeObrigatorio);
 
             RuleFor(x => x.Produtos)
-            .NotNull()
-            .WithMessage(localizer[TagMessages.TagNaoEncontrada]);
+                .NotNull()
+                .WithMessage(TagMessages.TagNaoEncontrada);
 
             RuleFor(x => x.Id);
-            
         }
     }
 }

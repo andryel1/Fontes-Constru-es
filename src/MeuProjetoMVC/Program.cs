@@ -22,7 +22,9 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<Context>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
+builder.Services.AddDataProtection();              // ← ADICIONE ESTA LINHA
 builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();                     // ← ADICIONE ESTA LINHA
 builder.Services.AddApplicationServices();
 
 var app = builder.Build();
@@ -49,7 +51,7 @@ if (app.Environment.IsDevelopment())
     var urls = app.Urls.ToArray();
     if (urls.Length == 0)
     {
-        urls = ["http://localhost:5000"]; 
+        urls = ["http://localhost:5005"]; 
     }
     
     var swaggerUrl = $"{urls[0]}/swagger";

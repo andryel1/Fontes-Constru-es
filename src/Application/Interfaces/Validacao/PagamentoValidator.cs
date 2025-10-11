@@ -1,37 +1,37 @@
 using FluentValidation;
 using Application.Dtos;
 using Resources.Messages;
-using Microsoft.Extensions.Localization;
-using System.Data;
 
 namespace Application.Interfaces.Validacao;
 
 public class PagamentoValidator : AbstractValidator<PagamentoDto>
 {
-    public PagamentoValidator(IStringLocalizer localizer)
+    public PagamentoValidator()
     {
-        ArgumentNullException.ThrowIfNull(localizer);
-
         RuleFor(x => x.Id);
+
         RuleFor(x => x.Valor)
-            .GreaterThan(0).WithMessage(localizer[PagamentoMessages.ValorMaiorQueZero]);
+            .GreaterThan(0)
+            .WithMessage(PagamentoMessages.ValorMaiorQueZero);
 
         RuleFor(x => x.TipoPagamento)
-            .NotEmpty().WithMessage(localizer[PagamentoMessages.TipoPagamentoObrigatorio]);
+            .NotEmpty()
+            .WithMessage(PagamentoMessages.TipoPagamentoObrigatorio);
 
         RuleFor(x => x.Status)
-            .NotEmpty().WithMessage(localizer[PagamentoMessages.StatusObrigatorio]);
+            .NotEmpty()
+            .WithMessage(PagamentoMessages.StatusObrigatorio);
 
         RuleFor(x => x.DataPagamento)
-            .NotNull().WithMessage(localizer[PagamentoMessages.DataPagamentoObrigatoria]);
+            .NotNull()
+            .WithMessage(PagamentoMessages.DataPagamentoObrigatoria);
 
         RuleFor(x => x.Pedidos)
-        .NotNull()
-        .WithMessage(localizer[PagamentoMessages.PedidosObrigatorio]);
+            .NotNull()
+            .WithMessage(PagamentoMessages.PedidosObrigatorio);
 
         RuleFor(x => x.Parcelamento);
         RuleFor(x => x.Status);
-        RuleFor(x => x.ParcelamentoId); 
-         
+        RuleFor(x => x.ParcelamentoId);
     }
 }
