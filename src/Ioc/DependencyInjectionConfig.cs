@@ -5,8 +5,9 @@ using Application.Service;
 using FluentValidation;
 using Application.Interfaces.Validacao;
 using Application.Dtos;
+using Infrastructure.Repositories;
 
-using Infrastructure.Repository;
+using Infrastructure.Repository; 
 
 namespace IoC;
 
@@ -14,6 +15,8 @@ public static class DependencyInjectionConfig
 {
     public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
+        services.AddLocalization(); 
+
         Service(services);
         Validator(services);
         Repository(services);
@@ -23,15 +26,17 @@ public static class DependencyInjectionConfig
     private static void Repository(IServiceCollection services)
     {
         services.AddScoped<IProdutoRepository, ProdutoRepository>();
-    
+        services.AddScoped<IPedidoRepository, PedidoRepository>();
+        services.AddScoped<IAvaliacaoRepository, AvaliacaoRepository>();
+        services.AddScoped<IDescontoRepository, DescontoRepository>();
+        services.AddScoped<ICarrinhoRepository, CarrinhoRepository>();
+
     } 
 
     private static void Service(IServiceCollection services)
     {
-        services.AddScoped<IPedidoService, PedidoService>();
         services.AddScoped<IPagamentoService, PagamentoService>();
         services.AddScoped<IItemCarrinhoService, ItemCarrinhoService>();
-        services.AddScoped<IListaDesejoService, ListaDesejoService>();
         services.AddScoped<ITagService, TagService>();
         services.AddScoped<IProdutoService, ProdutoService>();
         services.AddScoped<ICarrinhoService, CarrinhoService>();
@@ -43,12 +48,10 @@ public static class DependencyInjectionConfig
         services.AddScoped<IClienteService, ClienteService>();
         services.AddScoped<IDetalhePedidoService, DetalhePedidoService>();
         services.AddScoped<IImagemService, ImagemService>();
-        services.AddScoped<IEnviarEmailService, EnviarEmailService>();
-      //  services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<IEnviarEmailService, EnviarEmailService>(); 
     }
 
-
-        private static void Validator(IServiceCollection services)
+    private static void Validator(IServiceCollection services)
     {
         services.AddScoped<IValidator<TagDto>, TagValidator>();
         services.AddScoped<IValidator<AdministradorDto>, AdministradorValidator>();
@@ -62,7 +65,5 @@ public static class DependencyInjectionConfig
         services.AddScoped<IValidator<ItemCarrinhoDto>, ItemCarrinhoValidator>();
         services.AddScoped<IValidator<ListaDesejoDto>, ListaDesejoValidator>();
         services.AddScoped<IValidator<PagamentoDto>, PagamentoValidator>();
-        services.AddScoped<IValidator<PedidoDto>, PedidoValidator>();
     }
-
 }
