@@ -6,7 +6,6 @@ namespace Application.Interfaces.Service
 {
     public interface IAuthService : IAuthRepository
     {
-        Task<Usuario?> GetUserByEmailAsync(string email);
-        ClaimsPrincipal CreateUserClaims(Usuario usuario);
+       ClaimsPrincipal CreateUserClaims(Usuario usuario);
     }
 }
