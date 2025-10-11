@@ -5,14 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repository;
 
-public class ProdutoRepository : IProdutoRepository
+public class ProdutoRepository(Context context) : IProdutoRepository
 {
-    private readonly Context _context;
-
-    public ProdutoRepository(Context context)
-    {
-        _context = context;
-    }
+    private readonly Context _context = context;
 
     public async Task<ProdutoDto> Adicionar(ProdutoDto dto)
     {
