@@ -1,48 +1,43 @@
-using Application.Interfaces.Service;
 using Application.Dtos;
-using Application.Interfaces.Validacao;
+using Application.Interfaces.Service;
+using Application.Interfaces.Repository; 
 
-namespace Application.Service;
 
-    public class TagService(ITagService tagService) :  ITagService
+namespace Application.Service
+{
+
+    public class TagService(ITagRepository tagRepository) : ITagService
     {
-        private readonly ITagService _tagService = tagService;
+        private readonly ITagRepository _tagRepository = tagRepository;
 
 
-    public async Task<TagDto> Adicionar(TagDto dto)
-    {
-        if (string.IsNullOrEmpty(dto.Nome))
+        public Task<TagDto> Adicionar(TagDto dto)
         {
-            throw new ArgumentException("O nome não pode ser ");
+            throw new NotImplementedException("O método Adicionar deve ser implementado usando a dependência de Repositório.");
         }
-        if (dto.Produtos == null)
+
+        public Task<TagDto> Atualizar(TagDto dto)
         {
-            throw new ArgumentException("Produtos não podem ser nulos");
+            // Implementação real deve incluir mapeamento de DTO para Entity e chamada a _tagRepository.Atualizar()
+            throw new NotImplementedException("O método Atualizar deve ser implementado usando a dependência de Repositório.");
         }
-         return await _tagService.Adicionar(dto);
-    }
-
-    public async Task<TagDto> Atualizar(TagDto dto)
-    {
-        if (string.IsNullOrEmpty(dto.Nome))
+  
+        public Task<bool> Deletar(int id)
         {
-            throw new ArgumentException("Nome é obrigatório");
+            // Implementação real deve chamar _tagRepository.Deletar(id)
+            throw new NotImplementedException("O método Deletar deve ser implementado usando a dependência de Repositório.");
         }
-        return await _tagService.Atualizar(dto);
-    }
+        
+        public Task<TagDto> ObterPorId(int id)
+        {
+            // Implementação real deve chamar _tagRepository.ObterPorId(id) e mapear para DTO.
+            throw new NotImplementedException("O método ObterPorId deve ser implementado usando a dependência de Repositório.");
+        }
 
-    public async Task<bool> Deletar(int id)
-    {
-        return await _tagService.Deletar(id);
-    }
-
-    public async Task<TagDto> ObterPorId(int id)
-    {
-        return await _tagService.ObterPorId(id);
-    }
-
-    public async Task<List<TagDto>> ObterTodos()
-    {
-        return await _tagService.ObterTodos();
+        public Task<List<TagDto>> ObterTodos()
+        {
+            // Implementação real deve chamar _tagRepository.ObterTodos() e mapear para List<TagDto>.
+            throw new NotImplementedException("O método ObterTodos deve ser implementado usando a dependência de Repositório.");
+        }
     }
 }

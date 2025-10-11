@@ -6,10 +6,9 @@ using Ecommerce.Domain.Entities;
 
 namespace Application.Service;
 
-public class ProdutoService : IProdutoService
+public class ProdutoService(IProdutoRepository produtoRepository) : IProdutoService
 {
-    private readonly IProdutoRepository _produtoRepository;
-    private readonly IMapper _mapper;
+    private readonly IProdutoRepository _produtoRepository = produtoRepository;
 
     public Task<ProdutoDto> VerificarProdutoExistente(string nome)
     {
@@ -33,7 +32,7 @@ public class ProdutoService : IProdutoService
 
     public Task<ProdutoDto> Adicionar(ProdutoDto dto)
     {
-        throw new NotImplementedException();
+        return _produtoRepository.Adicionar(dto);
     }
 
     public Task<ProdutoDto> Atualizar(ProdutoDto dto)

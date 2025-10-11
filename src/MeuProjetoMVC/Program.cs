@@ -7,8 +7,8 @@ using System.Runtime.InteropServices;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddLocalization(); 
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { 
@@ -23,16 +23,7 @@ builder.Services.AddDbContext<Context>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 builder.Services.AddDistributedMemoryCache();
-
-
 builder.Services.AddApplicationServices();
-
-builder.Services.AddDbContext<Context>(options =>
-    options.UseMySql(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
-        new MySqlServerVersion(new Version(8, 0, 21))
-    )
-);
 
 var app = builder.Build();
 
@@ -50,18 +41,15 @@ if (!app.Environment.IsDevelopment())
 
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.UseSession();
-
 app.MapControllers();
-
 
 if (app.Environment.IsDevelopment())
 {
     var urls = app.Urls.ToArray();
     if (urls.Length == 0)
     {
-        urls = ["http://localhost:5005"]; 
+        urls = ["http://localhost:5000"]; 
     }
     
     var swaggerUrl = $"{urls[0]}/swagger";
@@ -73,7 +61,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.Run();
+await app.RunAsync();
 
 static void OpenBrowser(string url)
 {

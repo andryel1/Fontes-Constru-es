@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories;
 
-public class AvaliacaoRepository(Context context): IAvaliaçaoRepository
+public class AvaliacaoRepository(Context context): IAvaliacaoRepository
 {
     private readonly Context _context = context;
  
