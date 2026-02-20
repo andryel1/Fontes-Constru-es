@@ -31,17 +31,14 @@ public class AuthController : ControllerBase
                 return Unauthorized(new { message = "Email ou senha inválidos" });
             }
 
-            // Buscar o usuário para criar as claims
             var usuario = await _authService.GetUserByEmailAsync(loginDto.Email);
             if (usuario == null)
             {
                 return Unauthorized(new { message = "Usuário não encontrado" });
             }
 
-            // Criar claims do usuário
             var claimsPrincipal = _authService.CreateUserClaims(usuario);
 
-            // Fazer login com cookies
             await HttpContext.SignInAsync("Cookies", claimsPrincipal, new AuthenticationProperties
             {
                 IsPersistent = true,

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Application.Interfaces.Service;
 using Application.Dtos;
+using Ecommerce.Domain.Entities;
 
 
 namespace MeuProjetoMVC.Controllers
@@ -42,6 +43,36 @@ namespace MeuProjetoMVC.Controllers
             _logger.LogInformation("Sua avaliação foi ralizada com sucesso");
             return CreatedAtAction(nameof(Get),new{id = result.Id}, result );
 
+        }
+
+        [HttpPut]
+        
+        public async Task<IActionResult> Put([FromBody] AvaliacaoDto avaliacao)
+        {
+            if(avaliacao == null)
+            {
+                _logger.LogError("Você não mudou nada");
+                return BadRequest();
+            }
+        var result =  await __avaliacaoService.Atualizar(avaliacao);
+            if( result == null)
+            {
+                _logger.LogError("Produto para atualização não encontrado.");
+                return  NotFound();
+            }
+            return Ok(result);
+
+        }
+        [HttpDelete("id")]
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var avaliacao = await __avaliacaoService.Deletar(id);
+            if(!avaliacao)
+            {
+                _logger.LogInformation("Não existe nada para apagar!");
+            }
+            return NoContent();
         }
     }
 }
