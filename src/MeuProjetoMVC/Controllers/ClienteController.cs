@@ -25,5 +25,18 @@ public class ClienteController(IClienteService clienteService, ILogger<ClienteCo
             return Ok(Cliente);
             
         }
+
+        [HttpDelete("Id")]
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var Cliente = await _clienteService.Deletar(id);
+            if(!Cliente)
+            {
+                _logger.LogError("O cliente não existe");
+                return BadRequest();
+            }
+            return NoContent();
+        }
     }
 }
